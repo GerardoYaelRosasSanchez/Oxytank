@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".registrarComercio_comercio">
+
+    <!--ScrollBar-->
+    <ScrollView
+        android:layout_width="410dp"
+        android:layout_height="601dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <!--LinearLayout-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <!--Contenido: Título-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="410dp"
+                android:layout_height="100dp">
+
+                <!--Título-->
+                <TextView
+                    android:id="@+id/tv_registrarComercio_comercio_titulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@string/tv_registrarComercio_usuario_titulo"
+                    android:textAllCaps="true"
+                    android:textSize="24sp"
+                    android:typeface="serif"
+                    tools:text="@string/tv_registrarComercio_comercio_titulo" />
+
+            </androidx.cardview.widget.CardView>
+
+            <!--Contenido: Agregar nombre de comercio-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="410dp"
+                android:layout_height="150dp" >
+
+                <!--TextView: Comercio-->
+                <TextView
+                    android:id="@+id/tv_registrarComercio_comercio_nombreComercio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@string/tv_registrarComercio_comercio_nombreComercio"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"
+                    android:typeface="serif" />
+
+                <!--EditText: Comercio-->
+                <EditText
+                    android:id="@+id/edt_registrarComercio_comercio_nombreComercio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="80dp"
+                    android:autofillHints="@string/edt_registrarComercio_usuario_nombreUsuario"
+                    android:ems="10"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:hint="@string/edt_registrarComercio_comercio_nombreComercio"
+                    android:inputType="text"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:typeface="serif" />
+            </androidx.cardview.widget.CardView>
+
+            <!--Contenido: Agregar telefono-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="410dp"
+                android:layout_height="150dp" >
+
+                <!--TextView: Teléfono-->
+                <TextView
+                    android:id="@+id/tv_registrarComercio_comercio_telefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@string/tv_registrarComercio_comercio_servicio"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"
+                    android:typeface="serif"
+                    tools:text="@string/tv_registrarComercio_comercio_telefono" />
+
+                <!--EditText: Teléfono-->
+                <EditText
+                    android:id="@+id/edt_registrarComercio_comercio_telefono"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="80dp"
+                    android:autofillHints="@string/edt_registrarComercio_usuario_correo"
+                    android:ems="10"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:hint="@string/edt_registrarComercio_comercio_telefono"
+                    android:inputType="phone"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:typeface="serif" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!--Contenido: Agregar nombre de comercio-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="410dp"
+                android:layout_height="150dp" >
+
+                <!--TextView: Servicios-->
+                <TextView
+                    android:id="@+id/tv_registrarComercio_comercio_servicios"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@string/tv_registrarComercio_comercio_servicio"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"
+                    android:typeface="serif"
+                    tools:text="@string/tv_registrarComercio_comercio_servicio" />
+
+                <!--CheckBox: Servicios-->
+
+                <!--CheckBox: Servicios-->
+                <CheckBox
+                    android:id="@+id/ckbx_registrarComercio_comercio_venta"
+                    android:layout_width="130dp"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="10dp"
+                    android:padding="20dp"
+                    android:layout_marginTop="80dp"
+                    android:text="@string/ckbx_registrarComercio_comercio_servicio_Venta" />
+
+                <!--CheckBox: Servicios-->
+                <CheckBox
+                    android:id="@+id/ckbx_registrarComercio_comercio_renta"
+                    android:layout_width="130dp"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:textSize="18sp"
+                    android:padding="20dp"
+                    android:layout_marginLeft="140dp"
+                    android:layout_marginTop="80dp"
+                    android:text="@string/ckbx_registrarComercio_comercio_servicio_Renta" />
+
+                <!--CheckBox: Servicios-->
+                <CheckBox
+                    android:id="@+id/ckbx_registrarComercio_comercio_servicios"
+                    android:layout_width="130dp"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:textSize="18dp"
+                    android:padding="20dp"
+                    android:layout_marginLeft="270dp"
+                    android:layout_marginTop="80dp"
+                    android:layout_marginRight="10dp"
+
+                    android:text="@string/ckbx_registrarComercio_comercio_servicio_Refil" />
+
+
+            </androidx.cardview.widget.CardView>
+
+            <!--Contenido: Pasar a la actividad "registrarComercio_ubicacion-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="410dp"
+                android:layout_height="100dp" >
+
+                <!--Button: Intent (registrarComercio_ubicacion)-->
+                <Button
+                    android:id="@+id/btn_registrarComercio_comercio_ubicacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@string/btn_registrarComercio_comercio_guardarUbicacion"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:typeface="serif" />
+
+
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

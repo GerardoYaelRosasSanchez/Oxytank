@@ -1,0 +1,29 @@
+<resources>
+    <!--Barra de acción-->
+    <string name="app_name">Oxytank_1.0</string>
+
+    <!--Pantalla: registrarComercio_usuario-->
+    <string name="tv_registrarComercio_usuario_titulo">Regístrate</string>
+    <string name="tv_registrarComercio_usuario_nombreUsuario">Nombre de Usuario</string>
+    <string name="edt_registrarComercio_usuario_nombreUsuario">Ingresar nombre de usuario</string>
+    <string name="tv_registrarComercio_usuario_correo">Correo</string>
+    <string name="edt_registrarComercio_usuario_correo">Ingresar correo electronico</string>
+    <string name="tv_registrarComercio_usuario_contrasenia">Contraseña</string>
+    <string name="edt_registrarComercio_usuario_contrasenia">Ingresar una contraseña</string>
+    <string name="tv_registrarComercio_usuario_verificarContrasenia">Verificar Contraseña</string>
+    <string name="edt_registrarComercio_usuario_verificarContrasenia">Ingresar una contraseña</string>
+    <string name="btn_registrarComercio_usuario_ingresarDatosComercio">Continuar</string>
+
+    <!--Pantalla: registrarComercio_comercio-->
+    <string name="tv_registrarComercio_comercio_titulo">Datos del comercio</string>
+    <string name="tv_registrarComercio_comercio_nombreComercio">Nombre del Comercio</string>
+    <string name="edt_registrarComercio_comercio_nombreComercio">Ingresar nombre de comercio</string>
+    <string name="tv_registrarComercio_comercio_telefono">Telefono</string>
+    <string name="edt_registrarComercio_comercio_telefono">Ingresar número telefonico</string>
+    <string name="tv_registrarComercio_comercio_servicio">Servicios que proporciona el negocio</string>
+    <string name="ckbx_registrarComercio_comercio_servicio_Renta">Renta</string>
+    <string name="ckbx_registrarComercio_comercio_servicio_Venta">Venta</string>
+    <string name="ckbx_registrarComercio_comercio_servicio_Refil">Refil</string>
+    <string name="btn_registrarComercio_comercio_guardarUbicacion">Continuar</string>
+
+</resources>
