@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.oxytank_10">
+    package="com.example.oxytank_10" >
+
+    <!--Permisos para usar el GPS-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -8,12 +12,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Oxytank_10">
-        <activity android:name=".registrarComercio_comercio"></activity>
+        android:theme="@style/Theme.Oxytank_10" >
+        <activity android:name=".registrarComercio_ubicacion" >
+        </activity>
+        <activity android:name=".registrarComercio_comercio" />
         <activity android:name=".registrarComercio_usuario" />
         <activity android:name=".registrarComercio_ingresarCodigo" />
         <activity android:name=".seleccionarRegistro" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
