@@ -7,4 +7,61 @@
     android:layout_height="match_parent"
     tools:context=".registrarComercio_ubicacion">
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+  <com.google.android.gms.maps.MapView
+      android:id="@+id/mapView"
+      android:layout_width="412dp"
+      android:layout_height="496dp"
+      android:layout_marginTop="49dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.991" />
+
+  <EditText
+      android:id="@+id/editTextTextPersonName4"
+      android:layout_width="277dp"
+      android:layout_height="48dp"
+      android:layout_marginTop="48dp"
+      android:ems="10"
+      android:inputType="textPersonName"
+      android:text="Name"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.119"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <ImageButton
+      android:id="@+id/imageButton2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="48dp"
+      android:layout_marginEnd="6dp"
+      android:layout_marginRight="6dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/imageButton3"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@android:drawable/ic_menu_save" />
+
+  <ImageButton
+      android:id="@+id/imageButton3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="48dp"
+      app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+      app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName4"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@android:drawable/ic_menu_search" />
+
+  <TextView
+      android:id="@+id/textView4"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:text="TextView"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.532"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
