@@ -16,11 +16,10 @@ public class registrarComercio_comercio extends AppCompatActivity {
 
     //Métodos.
 
-    //Ir a la pantalla Registrar Comercio: Ubicación.
+    //Ir a la pantalla Registrar Comercio: Ubicacion.
     public void registrarComercio_ubicacion(View view){
         //Pasar a la actividad "registrarComercio_ubicacion".
         Intent Act_registrarComercio_ubicacion = new Intent(this, registrarComercio_ubicacion.class);
         startActivity(Act_registrarComercio_ubicacion);
     }
-
 }
