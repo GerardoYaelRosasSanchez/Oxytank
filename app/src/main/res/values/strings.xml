@@ -31,5 +31,7 @@
     <!--Pantalla: registrarComercio_comercio-->
     <string name="tv_registrarComercio_ubicacion_titulo">Buscar Dirección</string>
     <string name="edt_registrarComercio_ubicacion_solicitarDireccion">Ingresa la ubicación del comercio</string>
+    <string name="btn_registrarComercio_ubicacion_buscarDireccion">Buscar</string>
+    <string name="btn_registrarComercio_ubicacion_guardarDireccion">Guardar</string>
 
 </resources>

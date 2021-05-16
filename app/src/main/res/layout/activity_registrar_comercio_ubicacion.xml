@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".registrarComercio_ubicacion">
 
+  <!--Text View: Titulo-->
   <TextView
       android:id="@+id/tv_registrarComercio_ubicacion_titulo"
       android:layout_width="wrap_content"
@@ -23,6 +24,7 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
 
+  <!--Edit Text: Solicitar dirección.-->
   <EditText
       android:id="@+id/edt_registrarComercio_comercio_solicitarDireccion"
       android:layout_width="277dp"
@@ -31,31 +33,37 @@
       android:ems="10"
       android:hint="@string/edt_registrarComercio_ubicacion_solicitarDireccion"
       android:inputType="textPersonName"
+      android:autofillHints="@string/edt_registrarComercio_ubicacion_solicitarDireccion"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.025"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
 
+  <!--Boton: Buscar la dirección en el mapa.-->
   <ImageButton
       android:id="@+id/imgbtn_registrarComercio_ubicacion_buscarDireccion"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="49dp"
       android:onClick="convertirDireccionEnLatLon"
+      android:contentDescription="@string/btn_registrarComercio_ubicacion_buscarDireccion"
       app:layout_constraintStart_toEndOf="@+id/edt_registrarComercio_comercio_solicitarDireccion"
       app:layout_constraintTop_toTopOf="parent"
       app:srcCompat="@android:drawable/ic_menu_search" />
 
+  <!--Boton: Guardar los datos de la dirección.-->
   <ImageButton
       android:id="@+id/imgbtn_registrarComercio_ubicacion_guardarDireccion"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="49dp"
       app:layout_constraintEnd_toEndOf="parent"
+      android:contentDescription="@string/btn_registrarComercio_ubicacion_guardarDireccion"
       app:layout_constraintStart_toEndOf="@+id/imgbtn_registrarComercio_ubicacion_buscarDireccion"
       app:layout_constraintTop_toTopOf="parent"
-      app:srcCompat="@android:drawable/ic_menu_save" />
+      app:srcCompat="@android:drawable/ic_menu_save"/>
 
+  <!--Mapa-->
   <fragment
       android:id="@+id/mapFr_registrarComercio_ubicacion_mapa"
       android:name="com.google.android.gms.maps.SupportMapFragment"
