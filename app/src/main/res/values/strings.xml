@@ -26,5 +26,6 @@
     <string name="ckbx_registrarComercio_comercio_servicio_Refil">Refil</string>
     <string name="btn_registrarComercio_comercio_guardarUbicacion">Continuar</string>
     <string name="title_activity_registrar_comercio_ubicacion">Map</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

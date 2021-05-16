@@ -1,5 +1,6 @@
 package com.example.oxytank_10;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
@@ -10,7 +11,6 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.widget.Toast;
 
-import com.example.oxytank_10.databinding.ActivityRegistrarComercioUbicacion3Binding;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -28,15 +28,20 @@ import com.karumi.dexter.listener.single.PermissionListener;
 public class registrarComercio_ubicacion extends AppCompatActivity implements OnMapReadyCallback  {
 
     boolean dioPermiso;
-    private GoogleMap mMap;
-    private ActivityRegistrarComercioUbicacion3Binding binding;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar_comercio_ubicacion);
 
         revisarPermiso();
+
+        if (dioPermiso){
+            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.mapFr_registrarComercio_ubicacion_mapa);
+            mapFragment.getMapAsync(this);
+
+        }
 
     }
 
@@ -46,6 +51,7 @@ public class registrarComercio_ubicacion extends AppCompatActivity implements On
             //Si el usuario acepta el permiso.
             @Override
             public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                dioPermiso = true;
                 Toast.makeText(registrarComercio_ubicacion.this, "Permiso", Toast.LENGTH_SHORT).show();
             }
             //Si el usuario no acepta el permiso.
@@ -68,12 +74,10 @@ public class registrarComercio_ubicacion extends AppCompatActivity implements On
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
+        LatLng sydney = new LatLng(20.702429853485203, -103.38843748731824);
+        googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 18));
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 
 }
