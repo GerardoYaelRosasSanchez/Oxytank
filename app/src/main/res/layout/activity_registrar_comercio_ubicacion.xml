@@ -7,61 +7,66 @@
     android:layout_height="match_parent"
     tools:context=".registrarComercio_ubicacion">
 
-  <EditText
-      android:id="@+id/editTextTextPersonName4"
-      android:layout_width="277dp"
-      android:layout_height="48dp"
-      android:layout_marginTop="48dp"
-      android:ems="10"
-      android:inputType="textPersonName"
-      android:text="Name"
+  <TextView
+      android:id="@+id/tv_registrarComercio_ubicacion_titulo"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal|center_vertical"
+      android:fontFamily="sans-serif-condensed-medium"
+      android:textAllCaps="true"
+      android:textSize="24sp"
+      android:typeface="serif"
+      android:layout_marginTop="15dp"
+      android:text="@string/tv_registrarComercio_ubicacion_titulo"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.119"
+      app:layout_constraintHorizontal_bias="0.546"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <EditText
+      android:id="@+id/edt_registrarComercio_comercio_solicitarDireccion"
+      android:layout_width="277dp"
+      android:layout_height="52dp"
+      android:layout_marginTop="49dp"
+      android:ems="10"
+      android:hint="@string/edt_registrarComercio_ubicacion_solicitarDireccion"
+      android:inputType="textPersonName"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.025"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
 
   <ImageButton
-      android:id="@+id/imageButton2"
+      android:id="@+id/imgbtn_registrarComercio_ubicacion_buscarDireccion"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginTop="48dp"
-      android:layout_marginEnd="6dp"
-      android:layout_marginRight="6dp"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toEndOf="@+id/imageButton3"
-      app:layout_constraintTop_toTopOf="parent"
-      app:srcCompat="@android:drawable/ic_menu_save" />
-
-  <ImageButton
-      android:id="@+id/imageButton3"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="48dp"
-      app:layout_constraintEnd_toStartOf="@+id/imageButton2"
-      app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName4"
+      android:layout_marginTop="49dp"
+      android:onClick="convertirDireccionEnLatLon"
+      app:layout_constraintStart_toEndOf="@+id/edt_registrarComercio_comercio_solicitarDireccion"
       app:layout_constraintTop_toTopOf="parent"
       app:srcCompat="@android:drawable/ic_menu_search" />
 
-  <TextView
-      android:id="@+id/textView4"
+  <ImageButton
+      android:id="@+id/imgbtn_registrarComercio_ubicacion_guardarDireccion"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginTop="16dp"
-      android:text="TextView"
+      android:layout_marginTop="49dp"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.532"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintStart_toEndOf="@+id/imgbtn_registrarComercio_ubicacion_buscarDireccion"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@android:drawable/ic_menu_save" />
 
   <fragment
       android:id="@+id/mapFr_registrarComercio_ubicacion_mapa"
       android:name="com.google.android.gms.maps.SupportMapFragment"
-      android:layout_width="0dp"
-      android:layout_height="0dp"
+      android:layout_width="390dp"
+      android:layout_height="620dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="1.0"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

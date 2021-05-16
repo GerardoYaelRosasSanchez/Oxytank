@@ -3,7 +3,7 @@
     <string name="app_name">Oxytank_1.0</string>
 
     <!--Pantalla: registrarComercio_usuario-->
-    <string name="tv_registrarComercio_usuario_titulo">Regístrate</string>
+    <string name="tv_registrarComercio_usuario_titulo">Datos del usuario</string>
     <string name="tv_registrarComercio_usuario_nombreUsuario">Nombre de Usuario</string>
     <string name="edt_registrarComercio_usuario_nombreUsuario">Ingresar nombre de usuario</string>
     <string name="tv_registrarComercio_usuario_correo">Correo</string>
@@ -27,5 +27,9 @@
     <string name="btn_registrarComercio_comercio_guardarUbicacion">Continuar</string>
     <string name="title_activity_registrar_comercio_ubicacion">Map</string>
     <string name="title_activity_maps">Map</string>
+
+    <!--Pantalla: registrarComercio_comercio-->
+    <string name="tv_registrarComercio_ubicacion_titulo">Buscar Dirección</string>
+    <string name="edt_registrarComercio_ubicacion_solicitarDireccion">Ingresa la ubicación del comercio</string>
 
 </resources>

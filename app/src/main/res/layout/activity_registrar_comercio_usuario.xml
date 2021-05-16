@@ -74,7 +74,7 @@
                     android:hint="@string/edt_registrarComercio_usuario_nombreUsuario"
                     android:inputType="text"
                     android:textAlignment="center"
-                    android:textSize="18sp"
+                    android:textSize="24sp"
                     android:typeface="serif" />
             </androidx.cardview.widget.CardView>
 
@@ -110,7 +110,7 @@
                     android:hint="@string/edt_registrarComercio_usuario_correo"
                     android:inputType="text"
                     android:textAlignment="center"
-                    android:textSize="18sp"
+                    android:textSize="24sp"
                     android:typeface="serif" />
 
             </androidx.cardview.widget.CardView>
@@ -147,7 +147,7 @@
                     android:hint="@string/edt_registrarComercio_usuario_contrasenia"
                     android:inputType="textPassword"
                     android:textAlignment="center"
-                    android:textSize="18sp"
+                    android:textSize="24sp"
                     android:typeface="serif" />
             </androidx.cardview.widget.CardView>
 
@@ -183,7 +183,7 @@
                     android:hint="@string/edt_registrarComercio_usuario_verificarContrasenia"
                     android:inputType="textPassword"
                     android:textAlignment="center"
-                    android:textSize="18sp"
+                    android:textSize="24sp"
                     android:typeface="serif" />
             </androidx.cardview.widget.CardView>
 
