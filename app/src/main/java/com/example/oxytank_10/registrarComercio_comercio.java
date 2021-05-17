@@ -115,7 +115,7 @@ public class registrarComercio_comercio extends AppCompatActivity {
                     String refil = "Sin servicio";
                     registro.put("refil", refil);
                 }
-                registro.put("nombreUsuario", llaveForanea);
+                registro.put("nombreUsuario", llaveForanea); //Se agrega la llave foranea de usuarios de tipo comercio.
 
                 //Insertar los valores dentro de la tabla "usuarios".
                 BaseDatos.insert("comercios", null, registro);
