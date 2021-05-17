@@ -190,7 +190,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:onClick="registrarComercio_ubicacion"
+                    android:onClick="agregarDatosComercio"
                     android:text="@string/btn_registrarComercio_comercio_guardarUbicacion"
                     android:textAlignment="center"
                     android:textSize="24sp"

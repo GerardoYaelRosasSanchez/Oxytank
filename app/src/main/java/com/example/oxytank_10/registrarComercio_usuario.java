@@ -12,7 +12,12 @@ import android.widget.Toast;
 
 public class registrarComercio_usuario extends AppCompatActivity {
 
+    //Relación con el entorno gráfico
     EditText edt_nombreUsuario, edt_correo, edt_contrasenia, edt_verificarContrasenia;
+
+    //Cambio Actividad
+    private Boolean cumpleRequisitos = false;
+
 
 
     @Override
@@ -30,14 +35,23 @@ public class registrarComercio_usuario extends AppCompatActivity {
     //Métodos.
 
     //Ir a la pantalla Registrar Comercio: Datos Comercio.
-    public void registrarComercio_comercio(View view){
+    public void agregarDatosUsuario(View view){
+
+        //Agregar del usuario en la base de datos.
+        agregarDatosUsuarioBD();
+
         //Pasar a la actividad "registrarComercio_comercio".
-        Intent Act_registrarComercio_comercio = new Intent(this, registrarComercio_comercio.class);
-        startActivity(Act_registrarComercio_comercio);
+        if(cumpleRequisitos){
+            Intent Act_registrarComercio_comercio = new Intent(this, registrarComercio_comercio.class);
+            Act_registrarComercio_comercio.putExtra("usuario_id", edt_nombreUsuario.getText().toString());
+            startActivity(Act_registrarComercio_comercio);
+        }
     }
 
     // Agrega los datos del usuario en la base de datos.
-    public void agregarDatosUsuario(View view){
+    public void agregarDatosUsuarioBD(){
+
+        //Objeto: Administrar la base de datos.
         DBHelper admin = new DBHelper(this, "Oxytank_db", null, 1);
 
         // Abrir la base de datos en modo lectura y escritura.
@@ -54,23 +68,35 @@ public class registrarComercio_usuario extends AppCompatActivity {
 
             // Comprobar que la contrasenia sea la misma.
             if (contrasenia.equals(verificarContrasenia)){
+
+                //Objeto: Guardar las opciones ingresadas por el usuario.
                 ContentValues registro = new ContentValues();
+
+                //Guardar los datos en el objeto "registro".
                 registro.put("nombreUsuario", nombreUsuario);
                 registro.put("correo", correo);
                 registro.put("contrasenia", contrasenia);
 
+                //Insertar los valores dentro de la tabla "usuarios".
                 BaseDatos.insert("usuarios", null, registro);
 
+                //Cerrar la Base de datos.
                 BaseDatos.close();
 
+                /*
                 edt_nombreUsuario.setText("");
                 edt_correo.setText("");
                 edt_contrasenia.setText("");
                 edt_verificarContrasenia.setText("");
+                 */
 
                 Toast.makeText(this, "Registro exitoso.", Toast.LENGTH_LONG).show();
 
+                //Permitir pasar a la siguiente actividad.
+                cumpleRequisitos = true;
+
             }
+            //Solicitar que el usuario revise las contraseñas.
             else{
                 Toast.makeText(this, "Las contraseñas tiene que ser iguales.", Toast.LENGTH_LONG).show();
             }
