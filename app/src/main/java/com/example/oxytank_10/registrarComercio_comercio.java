@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -61,6 +62,7 @@ public class registrarComercio_comercio extends AppCompatActivity {
 
         // Guardar la información ingresada por el usuario.
         String nombreComercio = edt_nombreComercio.getText().toString();
+        int id_comercio = Integer.parseInt(nombreComercio);
         String telefono = edt_telefono.getText().toString();
         //Recibir el ID ingresado por el usuario de "registrarComercio_usuario"
         String usuario_id = getIntent().getStringExtra("usuario_id");
@@ -75,7 +77,7 @@ public class registrarComercio_comercio extends AppCompatActivity {
                 ContentValues registro = new ContentValues();
 
                 //Guardar los datos en el objeto "registro".
-                registro.put("nombreComercio", nombreComercio);
+                registro.put("nombreComercio", id_comercio);
                 registro.put("telefono", telefono);
                 registro.put("nombreUsuario", usuario_id);
 

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.location.Address;
 import android.location.Geocoder;
@@ -42,7 +43,7 @@ public class registrarComercio_ubicacion extends AppCompatActivity implements On
     boolean dioPermiso; // Guardar si el usuario dio permiso de GPS.
     EditText solicitarDireccion; // Guarda la dirección ingresada por el usuario.
     GoogleMap mGoogleMap; //Variable para utilizar el fragmento de Google Maps en otras partes del código.
-    //Double latitud = 0.0, longitud = 0.0; // Guarda la latitud y la longitud del lugar.
+    Double latitud_db, longitud_db; // Guarda la latitud y la longitud del lugar.
     String direccionUsuario; //Guarda la direccion ingresada por el usuario.
     boolean cumpleRequisitos; //Cambio Actividad
 
@@ -127,8 +128,8 @@ public class registrarComercio_ubicacion extends AppCompatActivity implements On
                 Address direccion = addressList.get(0); //Conseguir la primera dirección del array.
 
                 // Guardar la latitud y longitud del lugar.
-                //latitud = direccion.getLatitude();
-                //longitud = direccion.getLongitude();
+                latitud_db = direccion.getLatitude();
+                longitud_db = direccion.getLongitude();
 
                 gotoLocation(direccion.getLatitude(), direccion.getLongitude()); // Mostrar la dirección del usuario en el mapa.
 
@@ -152,7 +153,11 @@ public class registrarComercio_ubicacion extends AppCompatActivity implements On
     }
 
     // Guardar los datos de la dirección ingresara por el usuario en la base de datos.
-    /*public void agregarDatosUbicacionBD(){
+    public void agregarDatosUbicacionBD(){
+
+        //Recibir el ID ingresado por el usuario de "registrarComercio_comercio"
+        String comercio_id = getIntent().getStringExtra("comercio_id");
+        int id_comercio = Integer.parseInt(comercio_id);
 
         //Objeto: Administrar la base de datos.
         DBHelper admin = new DBHelper(this, "Oxytank_db", null, 1);
@@ -168,11 +173,11 @@ public class registrarComercio_ubicacion extends AppCompatActivity implements On
 
             //Guardar los datos en el objeto "registro".
             registro.put("direccion", direccionUsuario);
-            registro.put("longitud", longitud);
-            registro.put("latitud", latitud);
+            registro.put("longitud", longitud_db);
+            registro.put("latitud", latitud_db);
 
-            //Insertar los valores dentro de la tabla "comercios".
-            BaseDatos.insert("comercios", null, registro);
+            // Agregar la dirección del usuario en la base de datos.
+            int cantidad = BaseDatos.update("comercios", registro, "nombreComercio=" + id_comercio, null);
 
             //Cerrar la Base de datos.
             BaseDatos.close();
@@ -190,13 +195,13 @@ public class registrarComercio_ubicacion extends AppCompatActivity implements On
 
 
 
-    }*/
+    }
 
     //Ir a la pantalla Comprobar información.
     public void agregarDatosUbicacion(View view){
 
         //Agregala ubicacíon del comercio en la base de datos.
-        //agregarDatosUbicacionBD();
+        agregarDatosUbicacionBD();
 
         //Pasar a la actividad "registrarComercio_comprobarDatos".
         if(cumpleRequisitos){

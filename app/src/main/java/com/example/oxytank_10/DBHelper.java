@@ -23,7 +23,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("create table usuarios(nombreUsuario text primary key, correo text, contrasenia text, tipo text)");
 
         //Crear la tabla comercios.
-        db.execSQL("create table comercios(nombreComercio text primary key, " +
+        db.execSQL("create table comercios(nombreComercio int primary key, " +
                 "telefono int, longitud real, latitud real,direccion text,  " +
                 "renta text, venta text, refil text," +
                 "nombreUsuario text)");
