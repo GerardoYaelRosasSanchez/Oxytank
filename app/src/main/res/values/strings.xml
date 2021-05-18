@@ -11,7 +11,7 @@
     <string name="tv_registrarComercio_usuario_contrasenia">Contraseña</string>
     <string name="edt_registrarComercio_usuario_contrasenia">Ingresar una contraseña</string>
     <string name="tv_registrarComercio_usuario_verificarContrasenia">Verificar Contraseña</string>
-    <string name="edt_registrarComercio_usuario_verificarContrasenia">Ingresar una contraseña</string>
+    <string name="edt_registrarComercio_usuario_verificarContrasenia">Verificar la contraseña</string>
     <string name="btn_registrarComercio_usuario_ingresarDatosComercio">Continuar</string>
 
     <!--Pantalla: registrarComercio_comercio-->
@@ -29,7 +29,7 @@
     <string name="title_activity_maps">Map</string>
 
     <!--Pantalla: registrarComercio_comercio-->
-    <string name="tv_registrarComercio_ubicacion_titulo">Buscar Dirección</string>
+    <string name="tv_registrarComercio_ubicacion_titulo">Agregar Dirección</string>
     <string name="edt_registrarComercio_ubicacion_solicitarDireccion">Ingresa la ubicación del comercio</string>
     <string name="btn_registrarComercio_ubicacion_buscarDireccion">Buscar</string>
     <string name="btn_registrarComercio_ubicacion_guardarDireccion">Guardar</string>

@@ -4,7 +4,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.location.Address;
 import android.location.Geocoder;
 import android.media.audiofx.BassBoost;
@@ -40,6 +42,9 @@ public class registrarComercio_ubicacion extends AppCompatActivity implements On
     boolean dioPermiso; // Guardar si el usuario dio permiso de GPS.
     EditText solicitarDireccion; // Guarda la dirección ingresada por el usuario.
     GoogleMap mGoogleMap; //Variable para utilizar el fragmento de Google Maps en otras partes del código.
+    //Double latitud = 0.0, longitud = 0.0; // Guarda la latitud y la longitud del lugar.
+    String direccionUsuario; //Guarda la direccion ingresada por el usuario.
+    boolean cumpleRequisitos; //Cambio Actividad
 
     // Al iniciar la aplicación.
     @Override
@@ -92,7 +97,7 @@ public class registrarComercio_ubicacion extends AppCompatActivity implements On
 
     }
 
-    // Mostrar la ubicación seleccionada en el mapa.
+    // Mostrar la ubicación seleccionada en el mapa. La opción por default es Ceti Colomos.
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap; // Creo una nueva variable para poder mover la ubicación desde otras partes del código.
@@ -105,7 +110,7 @@ public class registrarComercio_ubicacion extends AppCompatActivity implements On
     //Convertir la dirección ingresada por el usuario en latitud y longitud.
     public void convertirDireccionEnLatLon(View view){
 
-        String direccionTexto = solicitarDireccion.getText().toString(); // Guardar la dirección ingresada por el usuario.
+        direccionUsuario = solicitarDireccion.getText().toString(); // Guardar la dirección ingresada por el usuario.
 
         /*
         * Declarar una variable de tipo Geocoder.
@@ -115,11 +120,15 @@ public class registrarComercio_ubicacion extends AppCompatActivity implements On
 
         //Regresar una arreglo con las direcciones que describen el nombre de una ubicacion.
         try {
-            List<Address> addressList = geocoder.getFromLocationName(direccionTexto, 1);
+            List<Address> addressList = geocoder.getFromLocationName(direccionUsuario, 1);
 
             // Revisar si existe la dirección.
             if(addressList.size()>0){
                 Address direccion = addressList.get(0); //Conseguir la primera dirección del array.
+
+                // Guardar la latitud y longitud del lugar.
+                //latitud = direccion.getLatitude();
+                //longitud = direccion.getLongitude();
 
                 gotoLocation(direccion.getLatitude(), direccion.getLongitude()); // Mostrar la dirección del usuario en el mapa.
 
@@ -128,18 +137,72 @@ public class registrarComercio_ubicacion extends AppCompatActivity implements On
 
             }
 
-        } catch (IOException e) {
+        } catch (IOException ignored) {
         }
 
     }
 
-    // Mostrar una ubicación en el mapa.
+    // Mostrar una ubicación ingresada por el usuario en el mapa.
     private void gotoLocation(double latitude, double longitude) {
 
         LatLng latLng = new LatLng(latitude, longitude); // Crear una variable para gaurdar la latitud y la longiutud.
-
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 18); // Crear una variable para mover la ubicación del usuario en el mapa.
         mGoogleMap.moveCamera(cameraUpdate); // Mover la camara a la ubicacion.
+
+    }
+
+    // Guardar los datos de la dirección ingresara por el usuario en la base de datos.
+    /*public void agregarDatosUbicacionBD(){
+
+        //Objeto: Administrar la base de datos.
+        DBHelper admin = new DBHelper(this, "Oxytank_db", null, 1);
+
+        // Abrir la base de datos en modo lectura y escritura.
+        SQLiteDatabase BaseDatos = admin.getWritableDatabase();
+
+        //Verificar que el usuario haya ingresado una dirección.
+        if(!direccionUsuario.isEmpty()){
+
+            //Objeto: Guardar las opciones ingresadas por el usuario.
+            ContentValues registro = new ContentValues();
+
+            //Guardar los datos en el objeto "registro".
+            registro.put("direccion", direccionUsuario);
+            registro.put("longitud", longitud);
+            registro.put("latitud", latitud);
+
+            //Insertar los valores dentro de la tabla "comercios".
+            BaseDatos.insert("comercios", null, registro);
+
+            //Cerrar la Base de datos.
+            BaseDatos.close();
+
+            Toast.makeText(this, "Registro exitoso.", Toast.LENGTH_LONG).show();
+
+            //Permitir pasar a la siguiente actividad.
+            cumpleRequisitos = true;
+
+        }
+        //Solicitar al usuario que llene todos los campos.
+        else{
+            Toast.makeText(this, "Debes de llenar todos los campos", Toast.LENGTH_LONG).show();
+        }
+
+
+
+    }*/
+
+    //Ir a la pantalla Comprobar información.
+    public void agregarDatosUbicacion(View view){
+
+        //Agregala ubicacíon del comercio en la base de datos.
+        //agregarDatosUbicacionBD();
+
+        //Pasar a la actividad "registrarComercio_comprobarDatos".
+        if(cumpleRequisitos){
+            //Intent Act_registrarComercio_comprobarDatos = new Intent(this, registrarComercio_comprobarDatos.class);
+            //startActivity(Act_registrarComercio_comprobarDatos);
+        }
 
     }
 

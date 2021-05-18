@@ -24,13 +24,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //Crear la tabla comercios.
         db.execSQL("create table comercios(nombreComercio text primary key, " +
-                "telefono int, longitud real, latitud real, renta text, venta text, refil text," +
-                "FOREIGN KEY (nombreUsuario) REFERENCES usuarios(nombreUsuario))");
-
-        //Crear tabla valoraciones.
-        db.execSQL("create table valoraciones(idvaloracion int primary key, valoracion int, fechaValoracion date," +
-                "FOREIGN KEY (nombreUsuario) REFERENCES usuarios(nombreUsuario)," +
-                "FOREIGN KEY (nombreComercio) REFERENCES comercios(nombreComercio))");
+                "telefono int, longitud real, latitud real,direccion text,  " +
+                "renta text, venta text, refil text," +
+                "nombreUsuario text)");
 
     }
 

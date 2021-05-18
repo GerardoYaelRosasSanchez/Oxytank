@@ -45,8 +45,8 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="49dp"
-      android:onClick="convertirDireccionEnLatLon"
       android:contentDescription="@string/btn_registrarComercio_ubicacion_buscarDireccion"
+      android:onClick="convertirDireccionEnLatLon"
       app:layout_constraintStart_toEndOf="@+id/edt_registrarComercio_comercio_solicitarDireccion"
       app:layout_constraintTop_toTopOf="parent"
       app:srcCompat="@android:drawable/ic_menu_search" />
@@ -57,11 +57,12 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="49dp"
-      app:layout_constraintEnd_toEndOf="parent"
       android:contentDescription="@string/btn_registrarComercio_ubicacion_guardarDireccion"
+      android:onClick="agregarDatosUbicacion"
+      app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toEndOf="@+id/imgbtn_registrarComercio_ubicacion_buscarDireccion"
       app:layout_constraintTop_toTopOf="parent"
-      app:srcCompat="@android:drawable/ic_menu_save"/>
+      app:srcCompat="@android:drawable/ic_menu_save" />
 
   <!--Mapa-->
   <fragment

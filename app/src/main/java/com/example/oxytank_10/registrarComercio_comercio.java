@@ -37,13 +37,6 @@ public class registrarComercio_comercio extends AppCompatActivity {
     //Métodos.
 
     //Ir a la pantalla Registrar Comercio: Ubicacion.
-    public void registrarComercio_ubicacion(View view){
-        //Pasar a la actividad "registrarComercio_ubicacion".
-        Intent Act_registrarComercio_ubicacion = new Intent(this, registrarComercio_ubicacion.class);
-        startActivity(Act_registrarComercio_ubicacion);
-    }
-
-    //Ir a la pantalla Registrar Comercio: Ubicacion.
     public void agregarDatosComercio(View view){
 
         //Agregar los datos del comercio en la base de datos.
@@ -69,7 +62,8 @@ public class registrarComercio_comercio extends AppCompatActivity {
         // Guardar la información ingresada por el usuario.
         String nombreComercio = edt_nombreComercio.getText().toString();
         String telefono = edt_telefono.getText().toString();
-        String llaveForanea = getIntent().getStringExtra("comercio_id");
+        //Recibir el ID ingresado por el usuario de "registrarComercio_usuario"
+        String usuario_id = getIntent().getStringExtra("usuario_id");
 
         //Verificar que el usuario haya ingresado datos en los campos.
         if(!nombreComercio.isEmpty() && !telefono.isEmpty()){
@@ -83,6 +77,7 @@ public class registrarComercio_comercio extends AppCompatActivity {
                 //Guardar los datos en el objeto "registro".
                 registro.put("nombreComercio", nombreComercio);
                 registro.put("telefono", telefono);
+                registro.put("nombreUsuario", usuario_id);
 
                 //Revisar que cuales cajas selecciono el usuario.
                 //Revisar si el usuario renta tanques de oxigeno.
@@ -115,9 +110,10 @@ public class registrarComercio_comercio extends AppCompatActivity {
                     String refil = "Sin servicio";
                     registro.put("refil", refil);
                 }
-                registro.put("nombreUsuario", llaveForanea); //Se agrega la llave foranea de usuarios de tipo comercio.
 
-                //Insertar los valores dentro de la tabla "usuarios".
+
+
+                //Insertar los valores dentro de la tabla "comercios".
                 BaseDatos.insert("comercios", null, registro);
 
                 //Cerrar la Base de datos.
