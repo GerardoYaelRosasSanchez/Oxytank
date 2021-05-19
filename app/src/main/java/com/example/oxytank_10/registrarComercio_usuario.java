@@ -19,7 +19,6 @@ public class registrarComercio_usuario extends AppCompatActivity {
     private Boolean cumpleRequisitos = false;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
