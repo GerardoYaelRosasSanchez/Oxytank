@@ -113,7 +113,7 @@ public class registrarComercio_comercio extends AppCompatActivity {
                     registro.put("refil", refil);
                 }
 
-
+                int numComercios = BaseDatos.update("comercios", registro, "nombreComercio=" + id_comercio, null);
 
                 //Insertar los valores dentro de la tabla "comercios".
                 BaseDatos.insert("comercios", null, registro);

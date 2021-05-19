@@ -177,7 +177,7 @@ public class registrarComercio_ubicacion extends AppCompatActivity implements On
             registro.put("latitud", latitud_db);
 
             // Agregar la dirección del usuario en la base de datos.
-            int cantidad = BaseDatos.update("comercios", registro, "nombreComercio=" + id_comercio, null);
+            BaseDatos.update("comercios", registro, "nombreComercio=" + id_comercio, null);
 
             //Cerrar la Base de datos.
             BaseDatos.close();
