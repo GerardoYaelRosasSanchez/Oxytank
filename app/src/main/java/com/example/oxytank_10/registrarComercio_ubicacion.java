@@ -46,6 +46,7 @@ public class registrarComercio_ubicacion extends AppCompatActivity implements On
     Double latitud_db, longitud_db; // Guarda la latitud y la longitud del lugar.
     String direccionUsuario; //Guarda la direccion ingresada por el usuario.
     boolean cumpleRequisitos; //Cambio Actividad
+    int id_comercio; //Guardar el id del comercio ingresado por el usuario en la pantalla registrar comercio_comercio.
 
     // Al iniciar la aplicación.
     @Override
@@ -70,9 +71,10 @@ public class registrarComercio_ubicacion extends AppCompatActivity implements On
 
     // Métodos.
 
-    // Verificar que el usuario aceptara los permisos de Geolocalización.
+        // Verificar que el usuario aceptara los permisos de Geolocalización.
     private void revisarPermiso() {
 
+        //Opciones para pedir el permiso al usuario.
         Dexter.withContext(this).withPermission(Manifest.permission.ACCESS_FINE_LOCATION).withListener(new PermissionListener() {
             //Si el usuario acepta el permiso.
             @Override
@@ -157,7 +159,7 @@ public class registrarComercio_ubicacion extends AppCompatActivity implements On
 
         //Recibir el ID ingresado por el usuario de "registrarComercio_comercio"
         String comercio_id = getIntent().getStringExtra("comercio_id");
-        int id_comercio = Integer.parseInt(comercio_id);
+        id_comercio = Integer.parseInt(comercio_id);
 
         //Objeto: Administrar la base de datos.
         DBHelper admin = new DBHelper(this, "Oxytank_db", null, 1);
@@ -177,7 +179,7 @@ public class registrarComercio_ubicacion extends AppCompatActivity implements On
             registro.put("latitud", latitud_db);
 
             // Agregar la dirección del usuario en la base de datos.
-            BaseDatos.update("comercios", registro, "nombreComercio=" + id_comercio, null);
+            BaseDatos.update("comercios", registro, "idComercio=" + id_comercio, null);
 
             //Cerrar la Base de datos.
             BaseDatos.close();
@@ -193,8 +195,6 @@ public class registrarComercio_ubicacion extends AppCompatActivity implements On
             Toast.makeText(this, "Debes de llenar todos los campos", Toast.LENGTH_LONG).show();
         }
 
-
-
     }
 
     //Ir a la pantalla Comprobar información.
@@ -205,8 +205,10 @@ public class registrarComercio_ubicacion extends AppCompatActivity implements On
 
         //Pasar a la actividad "registrarComercio_comprobarDatos".
         if(cumpleRequisitos){
-            //Intent Act_registrarComercio_comprobarDatos = new Intent(this, registrarComercio_comprobarDatos.class);
-            //startActivity(Act_registrarComercio_comprobarDatos);
+            Intent Act_registrarComercio_comprobarDatos = new Intent(this, registrarComercio_comprobarDatos.class);
+            String IdComercio_String = Integer.toString(id_comercio);
+            Act_registrarComercio_comprobarDatos.putExtra("comercio_id", IdComercio_String);
+            startActivity(Act_registrarComercio_comprobarDatos);
         }
 
     }
