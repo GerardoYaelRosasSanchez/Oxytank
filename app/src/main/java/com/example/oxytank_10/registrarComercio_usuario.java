@@ -62,8 +62,7 @@ public class registrarComercio_usuario extends AppCompatActivity {
         String correo = edt_correo.getText().toString();
         String contrasenia = edt_contrasenia.getText().toString();
         String verificarContrasenia = edt_verificarContrasenia.getText().toString();
-
-        // Crear el id del usuario.
+        String tipoUsuario = "Comercio";
 
             //Contar cuantas filas tiene la tabla para crear el id.
         String contarUsuarios_Consulta = "SELECT nombreUsuario FROM usuarios"; // Guardar el texto que corresponde a la consulta.
@@ -88,6 +87,7 @@ public class registrarComercio_usuario extends AppCompatActivity {
                 registro.put("nombreUsuario", nombreUsuario);
                 registro.put("correo", correo);
                 registro.put("contrasenia", contrasenia);
+                registro.put("tipo", tipoUsuario);
 
                 //Insertar los valores dentro de la tabla "usuarios".
                 BaseDatos.insert("usuarios", null, registro);
