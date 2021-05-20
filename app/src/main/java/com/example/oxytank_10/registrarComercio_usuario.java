@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -62,6 +63,17 @@ public class registrarComercio_usuario extends AppCompatActivity {
         String contrasenia = edt_contrasenia.getText().toString();
         String verificarContrasenia = edt_verificarContrasenia.getText().toString();
 
+        // Crear el id del usuario.
+
+            //Contar cuantas filas tiene la tabla para crear el id.
+        String contarUsuarios_Consulta = "SELECT nombreUsuario FROM usuarios"; // Guardar el texto que corresponde a la consulta.
+        Cursor cursor = BaseDatos.rawQuery(contarUsuarios_Consulta, null); //Realizar la consulta en la base de datos.
+        int numUsuarios = cursor.getCount(); // Guardar el resultado de la consulta en una varianle-
+        cursor.close();
+
+            // En base al numero de usuarios, crear el ID de usuario.
+        numUsuarios += 1;
+
         //Verificar que el usuario haya ingresado datos en los campos.
         if(!nombreUsuario.isEmpty() && !correo.isEmpty() && !contrasenia.isEmpty() && !verificarContrasenia.isEmpty()){
 
@@ -72,6 +84,7 @@ public class registrarComercio_usuario extends AppCompatActivity {
                 ContentValues registro = new ContentValues();
 
                 //Guardar los datos en el objeto "registro".
+                registro.put("idUsuario", numUsuarios);
                 registro.put("nombreUsuario", nombreUsuario);
                 registro.put("correo", correo);
                 registro.put("contrasenia", contrasenia);
@@ -83,11 +96,13 @@ public class registrarComercio_usuario extends AppCompatActivity {
                 BaseDatos.close();
 
                 /*
-                edt_nombreUsuario.setText("");
+                String numU_S = Integer.toString(numUsuarios);
+
+                edt_nombreUsuario.setText(numU_S);
                 edt_correo.setText("");
                 edt_contrasenia.setText("");
                 edt_verificarContrasenia.setText("");
-                 */
+                */
 
                 Toast.makeText(this, "Registro exitoso.", Toast.LENGTH_LONG).show();
 
