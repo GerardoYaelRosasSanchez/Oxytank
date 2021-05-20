@@ -21,6 +21,9 @@ public class registrarComercio_comercio extends AppCompatActivity {
     //Cambio Actividad
     private Boolean cumpleRequisitos = false;
 
+    //Guardar el ID correspondiente al comercio
+    int numComercios;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +49,8 @@ public class registrarComercio_comercio extends AppCompatActivity {
         //Pasar a la actividad "registrarComercio_comercio".
         if(cumpleRequisitos){
             Intent Act_registrarComercio_ubicacion = new Intent(this, registrarComercio_ubicacion.class);
-            Act_registrarComercio_ubicacion.putExtra("comercio_id", edt_nombreComercio.getText().toString());
+            String IdComercio_String = Integer.toString(numComercios);
+            Act_registrarComercio_ubicacion.putExtra("comercio_id", IdComercio_String);
             startActivity(Act_registrarComercio_ubicacion);
         }
     }
@@ -62,10 +66,19 @@ public class registrarComercio_comercio extends AppCompatActivity {
 
         // Guardar la información ingresada por el usuario.
         String nombreComercio = edt_nombreComercio.getText().toString();
-        int id_comercio = Integer.parseInt(nombreComercio);
         String telefono = edt_telefono.getText().toString();
         //Recibir el ID ingresado por el usuario de "registrarComercio_usuario"
         String usuario_id = getIntent().getStringExtra("usuario_id");
+        int id_Usuario = Integer.parseInt(usuario_id);
+
+        //Contar cuantas filas tiene la tabla para crear el id.
+        String contarComercios_Consulta = "SELECT nombreComercio FROM comercios"; // Guardar el texto que corresponde a la consulta.
+        Cursor cursor = BaseDatos.rawQuery(contarComercios_Consulta, null); //Realizar la consulta en la base de datos.
+        numComercios = cursor.getCount(); // Guardar el resultado de la consulta en una varianle-
+        cursor.close();
+
+        // En base al numero de comercios, crear el ID de comercio.
+        numComercios += 1;
 
         //Verificar que el usuario haya ingresado datos en los campos.
         if(!nombreComercio.isEmpty() && !telefono.isEmpty()){
@@ -77,9 +90,11 @@ public class registrarComercio_comercio extends AppCompatActivity {
                 ContentValues registro = new ContentValues();
 
                 //Guardar los datos en el objeto "registro".
-                registro.put("nombreComercio", id_comercio);
+                registro.put("idComercio", numComercios);
+                registro.put("nombreComercio", nombreComercio);
                 registro.put("telefono", telefono);
-                registro.put("nombreUsuario", usuario_id);
+                registro.put("idUsuario", id_Usuario);
+
 
                 //Revisar que cuales cajas selecciono el usuario.
                 //Revisar si el usuario renta tanques de oxigeno.
@@ -112,8 +127,6 @@ public class registrarComercio_comercio extends AppCompatActivity {
                     String refil = "Sin servicio";
                     registro.put("refil", refil);
                 }
-
-                int numComercios = BaseDatos.update("comercios", registro, "nombreComercio=" + id_comercio, null);
 
                 //Insertar los valores dentro de la tabla "comercios".
                 BaseDatos.insert("comercios", null, registro);

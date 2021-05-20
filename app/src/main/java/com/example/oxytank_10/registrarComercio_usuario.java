@@ -19,6 +19,9 @@ public class registrarComercio_usuario extends AppCompatActivity {
     //Cambio Actividad
     private Boolean cumpleRequisitos = false;
 
+    // Guardar el ID correspondiente al usuario.
+    int numUsuarios;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +46,8 @@ public class registrarComercio_usuario extends AppCompatActivity {
         //Pasar a la actividad "registrarComercio_comercio".
         if(cumpleRequisitos){
             Intent Act_registrarComercio_comercio = new Intent(this, registrarComercio_comercio.class);
-            Act_registrarComercio_comercio.putExtra("usuario_id", edt_nombreUsuario.getText().toString());
+            String IdUsuario_String = Integer.toString(numUsuarios);
+            Act_registrarComercio_comercio.putExtra("usuario_id", IdUsuario_String);
             startActivity(Act_registrarComercio_comercio);
         }
     }
@@ -67,11 +71,13 @@ public class registrarComercio_usuario extends AppCompatActivity {
             //Contar cuantas filas tiene la tabla para crear el id.
         String contarUsuarios_Consulta = "SELECT nombreUsuario FROM usuarios"; // Guardar el texto que corresponde a la consulta.
         Cursor cursor = BaseDatos.rawQuery(contarUsuarios_Consulta, null); //Realizar la consulta en la base de datos.
-        int numUsuarios = cursor.getCount(); // Guardar el resultado de la consulta en una varianle-
+        numUsuarios = cursor.getCount(); // Guardar el resultado de la consulta en una varianle-
         cursor.close();
 
             // En base al numero de usuarios, crear el ID de usuario.
         numUsuarios += 1;
+
+
 
         //Verificar que el usuario haya ingresado datos en los campos.
         if(!nombreUsuario.isEmpty() && !correo.isEmpty() && !contrasenia.isEmpty() && !verificarContrasenia.isEmpty()){

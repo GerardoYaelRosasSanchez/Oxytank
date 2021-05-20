@@ -26,7 +26,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("create table comercios(idComercio primary key, nombreComercio text, " +
                 "telefono int, longitud real, latitud real,direccion text,  " +
                 "renta text, venta text, refil text," +
-                "nombreUsuario text)");
+                "idUsuario int)");
 
     }
 
