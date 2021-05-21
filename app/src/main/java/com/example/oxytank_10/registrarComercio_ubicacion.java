@@ -203,6 +203,13 @@ public class registrarComercio_ubicacion extends AppCompatActivity implements On
         //Agregala ubicacíon del comercio en la base de datos.
         agregarDatosUbicacionBD();
 
+        //Recibir el ID ingresado por el usuario de "registrarComercio_comercio"
+        String comercio_id = getIntent().getStringExtra("comercio_id");
+        id_comercio = Integer.parseInt(comercio_id);
+
+        //String IdComercio_String = Integer.toString(id_comercio);
+        //solicitarDireccion.setText(IdComercio_String);
+
         //Pasar a la actividad "registrarComercio_comprobarDatos".
         if(cumpleRequisitos){
             Intent Act_registrarComercio_comprobarDatos = new Intent(this, registrarComercio_comprobarDatos.class);

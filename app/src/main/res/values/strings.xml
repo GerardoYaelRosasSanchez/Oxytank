@@ -39,11 +39,14 @@
     <string name="tv_registrarComercio_comprobarDatos_usuarioMensaje">Nombre de Usuario:</string>
     <string name="tv_registrarComercio_comprobarDatos_correoMensaje">Correo:</string>
     <string name="tv_registrarComercio_comprobarDatos_contraseniaMensaje">Contraseña:</string>
+    <string name="tv_registrarComercio_comprobarDatos_tipoMensaje">Tipo de cuenta:</string>
     <string name="tv_registrarComercio_comprobarDatos_comercioMensaje">Nombre del comercio:</string>
     <string name="tv_registrarComercio_comprobarDatos_telefonoMensaje">Telefono:</string>
     <string name="tv_registrarComercio_comprobarDatos_serviciosMensaje">Servicios:</string>
     <string name="tv_registrarComercio_comprobarDatos_direccionMensaje">Dirección</string>
     <string name="btn_registrarComercio_comprobarDatos_finalizarRegistro">Finalizar</string>
+    <string name="tv_registrarComercio_comprobarDatos_registroIncorrecto">Registro incorrecto</string>
+
 
 
 

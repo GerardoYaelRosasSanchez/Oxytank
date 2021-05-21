@@ -69,7 +69,7 @@
                     android:autofillHints="@string/edt_registrarComercio_usuario_nombreUsuario"
                     android:ems="10"
                     android:fontFamily="sans-serif-condensed-light"
-                    android:text="@string/edt_registrarComercio_usuario_nombreUsuario"
+                    android:text="@string/tv_registrarComercio_comprobarDatos_registroIncorrecto"
                     android:textAlignment="center"
                     android:textSize="24sp"
                     android:typeface="serif" />
@@ -104,7 +104,7 @@
                     android:autofillHints="@string/edt_registrarComercio_usuario_correo"
                     android:ems="10"
                     android:fontFamily="sans-serif-condensed-light"
-                    android:text="@string/edt_registrarComercio_usuario_correo"
+                    android:text="@string/tv_registrarComercio_comprobarDatos_registroIncorrecto"
                     android:textAlignment="center"
                     android:textSize="24sp"
                     android:typeface="serif" />
@@ -140,7 +140,41 @@
                     android:autofillHints="@string/edt_registrarComercio_usuario_contrasenia"
                     android:ems="10"
                     android:fontFamily="sans-serif-condensed-light"
-                    android:text="@string/edt_registrarComercio_usuario_contrasenia"
+                    android:text="@string/tv_registrarComercio_comprobarDatos_registroIncorrecto"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:typeface="serif" />
+            </androidx.cardview.widget.CardView>
+
+            <!--Contenido: Mostrar tipo de usuario-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="390dp"
+                android:layout_height="150dp">
+
+                <!--TextView: Mensaje tipo-->
+                <TextView
+                    android:id="@+id/tv_registrarComercio_comprobarDatos_tipoMensaje"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@string/tv_registrarComercio_comprobarDatos_tipoMensaje"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"
+                    android:typeface="serif" />
+
+                <!--TextView: Contraseña-->
+                <TextView
+                    android:id="@+id/tv_registrarComercio_comprobarDatos_tipo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="80dp"
+                    android:ems="10"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="@string/tv_registrarComercio_comprobarDatos_registroIncorrecto"
                     android:textAlignment="center"
                     android:textSize="24sp"
                     android:typeface="serif" />
@@ -175,7 +209,7 @@
                     android:autofillHints="@string/edt_registrarComercio_usuario_verificarContrasenia"
                     android:ems="10"
                     android:fontFamily="sans-serif-condensed-light"
-                    android:text="@string/edt_registrarComercio_usuario_verificarContrasenia"
+                    android:text="@string/tv_registrarComercio_comprobarDatos_registroIncorrecto"
                     android:textAlignment="center"
                     android:textSize="24sp"
                     android:typeface="serif" />
@@ -210,7 +244,7 @@
                     android:autofillHints="@string/edt_registrarComercio_usuario_verificarContrasenia"
                     android:ems="10"
                     android:fontFamily="sans-serif-condensed-light"
-                    android:text="@string/edt_registrarComercio_usuario_verificarContrasenia"
+                    android:text="@string/tv_registrarComercio_comprobarDatos_registroIncorrecto"
                     android:textAlignment="center"
                     android:textSize="24sp"
                     android:typeface="serif" />
@@ -234,7 +268,7 @@
                     android:textAllCaps="false"
                     android:textSize="24sp"
                     android:typeface="serif"
-                    tools:text="@string/tv_registrarComercio_comercio_servicio" />
+                    tools:text="@string/tv_registrarComercio_comprobarDatos_registroIncorrecto" />
 
                 <!--TextView: Servicios_Venta-->
                 <TextView
@@ -308,7 +342,7 @@
                     android:autofillHints="@string/edt_registrarComercio_usuario_nombreUsuario"
                     android:ems="10"
                     android:fontFamily="sans-serif-condensed-light"
-                    android:text="@string/edt_registrarComercio_usuario_nombreUsuario"
+                    android:text="@string/tv_registrarComercio_comprobarDatos_registroIncorrecto"
                     android:textAlignment="center"
                     android:textSize="24sp"
                     android:typeface="serif" />

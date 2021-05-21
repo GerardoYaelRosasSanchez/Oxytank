@@ -135,10 +135,11 @@ public class registrarComercio_comercio extends AppCompatActivity {
                 BaseDatos.close();
 
                 /*
-                edt_nombreUsuario.setText("");
-                edt_correo.setText("");
-                edt_contrasenia.setText("");
-                edt_verificarContrasenia.setText("");
+                String S = Integer.toString(numComercios);
+                String A = Integer.toString(id_Usuario);
+                edt_nombreComercio.setText(S);
+                //edt_telefono.setText(id_Usuario);
+
                  */
 
                 Toast.makeText(this, "Registro exitoso.", Toast.LENGTH_LONG).show();
