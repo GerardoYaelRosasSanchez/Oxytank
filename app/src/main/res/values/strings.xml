@@ -52,15 +52,15 @@
     <string name="tv_cuentaTipoComercio_PantallaPrincipal_venta">Venta</string>
     <string name="tv_cuentaTipoComercio_PantallaPrincipal_renta">Renta</string>
     <string name="tv_cuentaTipoComercio_PantallaPrincipal_refil">Refil</string>
-    <string name="ckbx_cuentaTipoComercio_PantallaPrincipal_venta_Disponible">Disponible</string>
-    <string name="ckbx_cuentaTipoComercio_PantallaPrincipal_venta_NoDisponible">No Disponinble</string>
-    <string name="ckbx_cuentaTipoComercio_PantallaPrincipal_venta_SinServicio">Sin Servicio</string>
-    <string name="ckbx_cuentaTipoComercio_PantallaPrincipal_renta_Disponible">Disponible</string>
-    <string name="ckbx_cuentaTipoComercio_PantallaPrincipal_renta_NoDisponible">No Disponinble</string>
-    <string name="ckbx_cuentaTipoComercio_PantallaPrincipal_renta_SinServicio">Sin Servicio</string>
-    <string name="ckbx_cuentaTipoComercio_PantallaPrincipal_refil_Disponible">Disponible</string>
-    <string name="ckbx_cuentaTipoComercio_PantallaPrincipal_refil_NoDisponible">No Disponinble</string>
-    <string name="ckbx_cuentaTipoComercio_PantallaPrincipal_refil_SinServicio">Sin Servicio</string>
+    <string name="rb_cuentaTipoComercio_PantallaPrincipal_venta_Disponible">Disponible</string>
+    <string name="rb_cuentaTipoComercio_PantallaPrincipal_venta_NoDisponible">No Disponinble</string>
+    <string name="rb_cuentaTipoComercio_PantallaPrincipal_venta_SinServicio">Sin Servicio</string>
+    <string name="rb_cuentaTipoComercio_PantallaPrincipal_renta_Disponible">Disponible</string>
+    <string name="rb_cuentaTipoComercio_PantallaPrincipal_renta_NoDisponible">No Disponinble</string>
+    <string name="rb_cuentaTipoComercio_PantallaPrincipal_renta_SinServicio">Sin Servicio</string>
+    <string name="rb_cuentaTipoComercio_PantallaPrincipal_refil_Disponible">Disponible</string>
+    <string name="rb_cuentaTipoComercio_PantallaPrincipal_refil_NoDisponible">No Disponinble</string>
+    <string name="rb_cuentaTipoComercio_PantallaPrincipal_refil_SinServicio">Sin Servicio</string>
     <string name="btn_cuentaTipoComercio_PantallaPrincipal_Actualizar">Actualizar</string>
 
 </resources>

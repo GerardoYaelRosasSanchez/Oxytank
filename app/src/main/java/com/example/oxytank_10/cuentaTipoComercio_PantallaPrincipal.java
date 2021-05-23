@@ -5,15 +5,16 @@ import androidx.constraintlayout.widget.Placeholder;
 
 import android.os.Bundle;
 import android.widget.CheckBox;
+import android.widget.RadioButton;
 
 public class cuentaTipoComercio_PantallaPrincipal extends AppCompatActivity {
 
     //Relación con el entorno gráfico.
-    CheckBox venta_Disponible, venta_NoDisponible, venta_SinServicio;
-    CheckBox renta_Disponible, renta_NoDisponible, renta_SinServicio;
-    CheckBox refil_Disponible, refil_NoDisponible, refil_SinServicio;
+    RadioButton venta_Disponible, venta_NoDisponible, venta_SinServicio;
+    RadioButton renta_Disponible, renta_NoDisponible, renta_SinServicio;
+    RadioButton refil_Disponible, refil_NoDisponible, refil_SinServicio;
 
-    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
