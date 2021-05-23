@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".cuentaTipoComercio_PantallaPrincipal">
+
+    <!--TextView: Titulo-->
+    <TextView
+        android:id="@+id/tv_cuentaTipoComercio_PantallaPrincipal_titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="60dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="@string/tv_cuentaTipoComercio_PantallaPrincipal_titulo"
+        android:textAllCaps="true"
+        android:textSize="24sp"
+        android:typeface="serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/tv_cuentaTipoComercio_PantallaPrincipal_titulo" />
+
+    <!--TextView: Mensaje: Venta-->
+    <TextView
+        android:id="@+id/tv_cuentaTipoComercio_PantallaPrincipal_venta"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="60dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="@string/tv_cuentaTipoComercio_PantallaPrincipal_venta"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        android:typeface="serif"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cuentaTipoComercio_PantallaPrincipal_titulo" />
+
+    <!--TextView: Mensaje: Renta-->
+    <TextView
+        android:id="@+id/tv_cuentaTipoComercio_PantallaPrincipal_renta"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="@string/tv_cuentaTipoComercio_PantallaPrincipal_renta"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        android:typeface="serif"
+        app:layout_constraintEnd_toStartOf="@+id/tv_cuentaTipoComercio_PantallaPrincipal_refil"
+        app:layout_constraintStart_toEndOf="@+id/tv_cuentaTipoComercio_PantallaPrincipal_venta"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cuentaTipoComercio_PantallaPrincipal_titulo" />
+
+    <!--TextView: Mensaje: Refil-->
+    <TextView
+        android:id="@+id/tv_cuentaTipoComercio_PantallaPrincipal_refil"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="60dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="@string/tv_cuentaTipoComercio_PantallaPrincipal_refil"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        android:typeface="serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tv_cuentaTipoComercio_PantallaPrincipal_renta"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cuentaTipoComercio_PantallaPrincipal_titulo" />
+
+    <!--CheckBox: Servicio_Venta_Disponible-->
+    <CheckBox
+        android:id="@+id/ckbx_cuentaTipoComercio_PantallaPrincipal_venta_Disponible"
+        android:layout_width="125dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:gravity="center"
+        android:text="@string/ckbx_cuentaTipoComercio_PantallaPrincipal_venta_Disponible"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cuentaTipoComercio_PantallaPrincipal_renta" />
+
+    <!--CheckBox: Servicio_Renta_Disponible-->
+    <CheckBox
+        android:id="@+id/ckbx_cuentaTipoComercio_PantallaPrincipal_renta_Disponible"
+        android:layout_width="130dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:gravity="center"
+        android:text="@string/ckbx_cuentaTipoComercio_PantallaPrincipal_renta_Disponible"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/ckbx_cuentaTipoComercio_PantallaPrincipal_refil_Disponible"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ckbx_cuentaTipoComercio_PantallaPrincipal_venta_Disponible"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cuentaTipoComercio_PantallaPrincipal_renta" />
+
+    <!--CheckBox: Servicio_Refil_Disponible-->
+    <CheckBox
+        android:id="@+id/ckbx_cuentaTipoComercio_PantallaPrincipal_refil_Disponible"
+        android:layout_width="125dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:gravity="center"
+        android:text="@string/ckbx_cuentaTipoComercio_PantallaPrincipal_refil_Disponible"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cuentaTipoComercio_PantallaPrincipal_renta" />
+
+    <!--CheckBox: Servicio_Venta_NoDisponible-->
+    <CheckBox
+        android:id="@+id/ckbx_cuentaTipoComercio_PantallaPrincipal_venta_NoDisponible"
+        android:layout_width="125dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:gravity="center"
+        android:text="@string/ckbx_cuentaTipoComercio_PantallaPrincipal_venta_NoDisponible"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ckbx_cuentaTipoComercio_PantallaPrincipal_renta_Disponible" />
+
+    <!--CheckBox: Servicio_Renta_NoDisponible-->
+    <CheckBox
+        android:id="@+id/ckbx_cuentaTipoComercio_PantallaPrincipal_renta_NoDisponible"
+        android:layout_width="125dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:gravity="center"
+        android:text="@string/ckbx_cuentaTipoComercio_PantallaPrincipal_renta_NoDisponible"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/ckbx_cuentaTipoComercio_PantallaPrincipal_refil_NoDisponible"
+        app:layout_constraintHorizontal_bias="0.625"
+        app:layout_constraintStart_toEndOf="@+id/ckbx_cuentaTipoComercio_PantallaPrincipal_venta_NoDisponible"
+        app:layout_constraintTop_toBottomOf="@+id/ckbx_cuentaTipoComercio_PantallaPrincipal_renta_Disponible" />
+
+    <!--CheckBox: Servicio_Refil_NoDisponible-->
+    <CheckBox
+        android:id="@+id/ckbx_cuentaTipoComercio_PantallaPrincipal_refil_NoDisponible"
+        android:layout_width="125dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:gravity="center"
+        android:text="@string/ckbx_cuentaTipoComercio_PantallaPrincipal_refil_NoDisponible"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ckbx_cuentaTipoComercio_PantallaPrincipal_renta_Disponible" />
+
+    <!--CheckBox: Servicio_Venta_SinServicio-->
+    <CheckBox
+        android:id="@+id/ckbx_cuentaTipoComercio_PantallaPrincipal_venta_SinServicio"
+        android:layout_width="125dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:gravity="center"
+        android:text="@string/ckbx_cuentaTipoComercio_PantallaPrincipal_venta_SinServicio"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ckbx_cuentaTipoComercio_PantallaPrincipal_renta_NoDisponible" />
+
+    <!--CheckBox: Servicio_Renta_SinServicio-->
+    <CheckBox
+        android:id="@+id/ckbx_cuentaTipoComercio_PantallaPrincipal_renta_SinServicio"
+        android:layout_width="125dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:gravity="center"
+        android:text="@string/ckbx_cuentaTipoComercio_PantallaPrincipal_renta_SinServicio"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/ckbx_cuentaTipoComercio_PantallaPrincipal_refil_SinServicio"
+        app:layout_constraintStart_toEndOf="@+id/ckbx_cuentaTipoComercio_PantallaPrincipal_venta_SinServicio"
+        app:layout_constraintTop_toBottomOf="@+id/ckbx_cuentaTipoComercio_PantallaPrincipal_renta_NoDisponible" />
+
+    <!--CheckBox: Servicio_Refil_SinServicio-->
+    <CheckBox
+        android:id="@+id/ckbx_cuentaTipoComercio_PantallaPrincipal_refil_SinServicio"
+        android:layout_width="125dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:gravity="center"
+        android:text="@string/ckbx_cuentaTipoComercio_PantallaPrincipal_refil_SinServicio"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ckbx_cuentaTipoComercio_PantallaPrincipal_renta_NoDisponible" />
+
+    <!--Button: Actualizar información-->
+    <Button
+        android:id="@+id/btn_cuentaTipoComercio_PantallaPrincipal_Actualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="60dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="@string/btn_cuentaTipoComercio_PantallaPrincipal_Actualizar"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:typeface="serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ckbx_cuentaTipoComercio_PantallaPrincipal_renta_SinServicio" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
