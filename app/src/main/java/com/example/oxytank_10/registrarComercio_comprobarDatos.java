@@ -20,6 +20,9 @@ public class registrarComercio_comprobarDatos extends AppCompatActivity {
     String id_Usuario;
     int int_idUsuario;
 
+    //Guarda el id del comercio de la pantalla anterior.
+    String comercio_id;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,17 +48,15 @@ public class registrarComercio_comprobarDatos extends AppCompatActivity {
 
     //Métodos.
 
-    /*
+
     //Ir a la pantalla Registrar Comercio: Ubicacion.
     public void irPantallaPrincipalComercio(View view){
 
-        Intent Act_cuentaComercio_pantallaPrincipal = new Intent(this, registrarComercio_ubicacion.class);
-        String IdComercio_String = Integer.toString(numComercios);
-        Act_cuentaComercio_pantallaPrincipal.putExtra("comercio_id", IdComercio_String);
+        Intent Act_cuentaComercio_pantallaPrincipal = new Intent(this, cuentaTipoComercio_PantallaPrincipal.class);
+        Act_cuentaComercio_pantallaPrincipal.putExtra("comercio_id", comercio_id);
         startActivity(Act_cuentaComercio_pantallaPrincipal);
 
     }
-    */
 
     //Comprobar si los datos ingresados por el usuario de tipo comercio son correctos.
     public void mostrarDatos(){
@@ -68,8 +69,8 @@ public class registrarComercio_comprobarDatos extends AppCompatActivity {
         SQLiteDatabase BaseDatos = administrador.getWritableDatabase();
 
         //Recibir el ID ingresado correspondiente al comercio del usuario en el registro.
-        String id = getIntent().getStringExtra("comercio_id");
-        int id_comercio = Integer.parseInt(id); //Convertirlo a entero para usarlo en la base de datos.
+        comercio_id = getIntent().getStringExtra("comercio_id");
+        int id_comercio = Integer.parseInt(comercio_id); //Convertirlo a entero para usarlo en la base de datos.
 
         //Caso: Validar que los campos se encuentren llenos.
         //Objeto: Seleccionar un comercio.
@@ -84,9 +85,9 @@ public class registrarComercio_comprobarDatos extends AppCompatActivity {
             nombreComercio.setText(fila_comercio.getString(0));
             telefono.setText(fila_comercio.getString(1));
             direccion.setText(fila_comercio.getString(2));
-            servicio_renta.setText(fila_comercio.getString(3));
-            servicio_venta.setText(fila_comercio.getString(4));
-            servicio_refil.setText(fila_comercio.getString(5));
+            servicio_renta.setText("      Ren:    " +fila_comercio.getString(3));
+            servicio_venta.setText("      Ven:    " +fila_comercio.getString(4));
+            servicio_refil.setText("      Ref:    " + fila_comercio.getString(5));
             //Conseguir el ID del usuario que corresponde al negocio.
             id_Usuario = fila_comercio.getString(6);
             int_idUsuario = Integer.parseInt(id_Usuario);
