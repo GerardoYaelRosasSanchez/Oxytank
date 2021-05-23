@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mapF_registrarComercio_ubicacion_mapa"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".registrarComercio_ubicacion">
+
+  <!--Text View: Titulo-->
+  <TextView
+      android:id="@+id/tv_registrarComercio_ubicacion_titulo"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal|center_vertical"
+      android:fontFamily="sans-serif-condensed-medium"
+      android:textAllCaps="true"
+      android:textSize="24sp"
+      android:typeface="serif"
+      android:layout_marginTop="15dp"
+      android:text="@string/tv_registrarComercio_ubicacion_titulo"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.546"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <!--Edit Text: Solicitar dirección.-->
+  <EditText
+      android:id="@+id/edt_registrarComercio_comercio_solicitarDireccion"
+      android:layout_width="277dp"
+      android:layout_height="52dp"
+      android:layout_marginTop="49dp"
+      android:ems="10"
+      android:hint="@string/edt_registrarComercio_ubicacion_solicitarDireccion"
+      android:inputType="textPersonName"
+      android:autofillHints="@string/edt_registrarComercio_ubicacion_solicitarDireccion"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.025"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <!--Boton: Buscar la dirección en el mapa.-->
+  <ImageButton
+      android:id="@+id/imgbtn_registrarComercio_ubicacion_buscarDireccion"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="49dp"
+      android:contentDescription="@string/btn_registrarComercio_ubicacion_buscarDireccion"
+      android:onClick="convertirDireccionEnLatLon"
+      app:layout_constraintStart_toEndOf="@+id/edt_registrarComercio_comercio_solicitarDireccion"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@android:drawable/ic_menu_search" />
+
+  <!--Boton: Guardar los datos de la dirección.-->
+  <ImageButton
+      android:id="@+id/imgbtn_registrarComercio_ubicacion_guardarDireccion"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="49dp"
+      android:contentDescription="@string/btn_registrarComercio_ubicacion_guardarDireccion"
+      android:onClick="agregarDatosUbicacion"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/imgbtn_registrarComercio_ubicacion_buscarDireccion"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@android:drawable/ic_menu_save" />
+
+  <!--Mapa-->
+  <fragment
+      android:id="@+id/mapFr_registrarComercio_ubicacion_mapa"
+      android:name="com.google.android.gms.maps.SupportMapFragment"
+      android:layout_width="390dp"
+      android:layout_height="620dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="1.0" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

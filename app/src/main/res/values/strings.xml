@@ -3,7 +3,7 @@
     <string name="app_name">Oxytank_1.0</string>
 
     <!--Pantalla: registrarComercio_usuario-->
-    <string name="tv_registrarComercio_usuario_titulo">Regístrate</string>
+    <string name="tv_registrarComercio_usuario_titulo">Datos del usuario</string>
     <string name="tv_registrarComercio_usuario_nombreUsuario">Nombre de Usuario</string>
     <string name="edt_registrarComercio_usuario_nombreUsuario">Ingresar nombre de usuario</string>
     <string name="tv_registrarComercio_usuario_correo">Correo</string>
@@ -11,7 +11,7 @@
     <string name="tv_registrarComercio_usuario_contrasenia">Contraseña</string>
     <string name="edt_registrarComercio_usuario_contrasenia">Ingresar una contraseña</string>
     <string name="tv_registrarComercio_usuario_verificarContrasenia">Verificar Contraseña</string>
-    <string name="edt_registrarComercio_usuario_verificarContrasenia">Ingresar una contraseña</string>
+    <string name="edt_registrarComercio_usuario_verificarContrasenia">Verificar la contraseña</string>
     <string name="btn_registrarComercio_usuario_ingresarDatosComercio">Continuar</string>
 
     <!--Pantalla: registrarComercio_comercio-->
@@ -25,5 +25,30 @@
     <string name="ckbx_registrarComercio_comercio_servicio_Venta">Venta</string>
     <string name="ckbx_registrarComercio_comercio_servicio_Refil">Refil</string>
     <string name="btn_registrarComercio_comercio_guardarUbicacion">Continuar</string>
+    <string name="title_activity_registrar_comercio_ubicacion">Map</string>
+    <string name="title_activity_maps">Map</string>
+
+    <!--Pantalla: registrarComercio_ubicación-->
+    <string name="tv_registrarComercio_ubicacion_titulo">Agregar Dirección</string>
+    <string name="edt_registrarComercio_ubicacion_solicitarDireccion">Ingresa la ubicación del comercio</string>
+    <string name="btn_registrarComercio_ubicacion_buscarDireccion">Buscar</string>
+    <string name="btn_registrarComercio_ubicacion_guardarDireccion">Guardar</string>
+
+    <!--Pantalla: registrarComercio_comprobarDatos-->
+    <string name="tv_registrarComercio_comprobarDatos_titulo">Verficar los datos ingresados</string>
+    <string name="tv_registrarComercio_comprobarDatos_usuarioMensaje">Nombre de Usuario:</string>
+    <string name="tv_registrarComercio_comprobarDatos_correoMensaje">Correo:</string>
+    <string name="tv_registrarComercio_comprobarDatos_contraseniaMensaje">Contraseña:</string>
+    <string name="tv_registrarComercio_comprobarDatos_tipoMensaje">Tipo de cuenta:</string>
+    <string name="tv_registrarComercio_comprobarDatos_comercioMensaje">Nombre del comercio:</string>
+    <string name="tv_registrarComercio_comprobarDatos_telefonoMensaje">Telefono:</string>
+    <string name="tv_registrarComercio_comprobarDatos_serviciosMensaje">Servicios:</string>
+    <string name="tv_registrarComercio_comprobarDatos_direccionMensaje">Dirección</string>
+    <string name="btn_registrarComercio_comprobarDatos_finalizarRegistro">Finalizar</string>
+    <string name="tv_registrarComercio_comprobarDatos_registroIncorrecto">Registro incorrecto</string>
+
+
+
+
 
 </resources>
