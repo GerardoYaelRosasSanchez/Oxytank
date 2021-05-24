@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".registrarUsuario">
+    tools:context=".registrarCliente">
 
     <!--ScrollBar-->
     <ScrollView
@@ -28,12 +28,12 @@
 
                 <!--Título-->
                 <TextView
-                    android:id="@+id/tv_registrarUsuario_titulo"
+                    android:id="@+id/tv_registrarCliente_titulo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="@string/tv_registrarUsuario_titulo"
+                    android:text="@string/tv_registrarCliente_titulo"
                     android:textAllCaps="true"
                     android:textSize="24sp"
                     android:typeface="serif" />
@@ -47,13 +47,13 @@
 
                 <!--TextView: Usuario-->
                 <TextView
-                    android:id="@+id/tv_registrarUsuario_nombreUsuario"
+                    android:id="@+id/tv_registrarCliente_nombreUsuario"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="24dp"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="@string/tv_registrarUsuario_nombreUsuario"
+                    android:text="@string/tv_registrarCliente_nombreUsuario"
                     android:textAlignment="center"
                     android:textAllCaps="false"
                     android:textSize="24sp"
@@ -61,15 +61,15 @@
 
                 <!--EditText: Usuario-->
                 <EditText
-                    android:id="@+id/edt_registrarUsuario_nombreUsuario"
+                    android:id="@+id/edt_registrarCliente_nombreUsuario"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="80dp"
-                    android:autofillHints="@string/edt_registrarUsuario_nombreUsuario"
+                    android:autofillHints="@string/edt_registrarCliente_nombreUsuario"
                     android:ems="10"
                     android:fontFamily="sans-serif-condensed-light"
-                    android:hint="@string/edt_registrarUsuario_nombreUsuario"
+                    android:hint="@string/edt_registrarCliente_nombreUsuario"
                     android:inputType="text"
                     android:textAlignment="center"
                     android:textSize="24sp"
@@ -83,13 +83,13 @@
 
                 <!--TextView: Correo-->
                 <TextView
-                    android:id="@+id/tv_registrarUsuario_correo"
+                    android:id="@+id/tv_registrarCliente_correo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="24dp"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="@string/tv_registrarUsuario_correo"
+                    android:text="@string/tv_registrarCliente_correo"
                     android:textAlignment="center"
                     android:textAllCaps="false"
                     android:textSize="24sp"
@@ -97,15 +97,15 @@
 
                 <!--EditText: Correo-->
                 <EditText
-                    android:id="@+id/edt_registrarUsuario_correo"
+                    android:id="@+id/edt_registrarCliente_correo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="80dp"
-                    android:autofillHints="@string/edt_registrarUsuario_correo"
+                    android:autofillHints="@string/edt_registrarCliente_correo"
                     android:ems="10"
                     android:fontFamily="sans-serif-condensed-light"
-                    android:hint="@string/edt_registrarUsuario_correo"
+                    android:hint="@string/edt_registrarCliente_correo"
                     android:inputType="text"
                     android:textAlignment="center"
                     android:textSize="24sp"
@@ -120,13 +120,13 @@
 
                 <!--TextView: Contraseña-->
                 <TextView
-                    android:id="@+id/tv_registrarUsuario_contrasenia"
+                    android:id="@+id/tv_registrarCliente_contrasenia"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="24dp"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="@string/tv_registrarUsuario_contrasenia"
+                    android:text="@string/tv_registrarCliente_contrasenia"
                     android:textAlignment="center"
                     android:textAllCaps="false"
                     android:textSize="24sp"
@@ -134,15 +134,15 @@
 
                 <!--EditText: Contraseña-->
                 <EditText
-                    android:id="@+id/edt_registrarUsuario_usuario_contrasenia"
+                    android:id="@+id/edt_registrarCliente_contrasenia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="80dp"
-                    android:autofillHints="@string/edt_registrarUsuario_contrasenia"
+                    android:autofillHints="@string/edt_registrarCliente_contrasenia"
                     android:ems="10"
                     android:fontFamily="sans-serif-condensed-light"
-                    android:hint="@string/edt_registrarUsuario_contrasenia"
+                    android:hint="@string/edt_registrarCliente_contrasenia"
                     android:inputType="textPassword"
                     android:textAlignment="center"
                     android:textSize="24sp"
@@ -156,13 +156,13 @@
 
                 <!--TextView: Verificar contraseña-->
                 <TextView
-                    android:id="@+id/tv_registrarUsuario_verificarContrasenia"
+                    android:id="@+id/tv_registrarCliente_verificarContrasenia"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="24dp"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="@string/tv_registrarUsuario_verificarContrasenia"
+                    android:text="@string/tv_registrarCliente_verificarContrasenia"
                     android:textAlignment="center"
                     android:textAllCaps="false"
                     android:textSize="24sp"
@@ -170,15 +170,15 @@
 
                 <!--EditText: Verificar Contraseña-->
                 <EditText
-                    android:id="@+id/edt_registrarUsuario_verificarContrasenia"
+                    android:id="@+id/edt_registrarCliente_verificarContrasenia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="80dp"
-                    android:autofillHints="@string/edt_registrarUsuario_verificarContrasenia"
+                    android:autofillHints="@string/edt_registrarCliente_verificarContrasenia"
                     android:ems="10"
                     android:fontFamily="sans-serif-condensed-light"
-                    android:hint="@string/edt_registrarUsuario_verificarContrasenia"
+                    android:hint="@string/edt_registrarCliente_verificarContrasenia"
                     android:inputType="textPassword"
                     android:textAlignment="center"
                     android:textSize="24sp"
@@ -192,12 +192,12 @@
 
                 <!--Button: Intent (registrarComercio_comercio)-->
                 <Button
-                    android:id="@+id/btn_registrarUsuario_comprobarDatos_cuentaUsuario"
+                    android:id="@+id/btn_registrarCliente_comprobarDatos_cuentaCliente"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="@string/btn_registrarUsuario_comprobarDatos_cuentaUsuario"
+                    android:text="@string/btn_registrarCliente_comprobarDatos_cuentaCliente"
                     android:textAlignment="center"
                     android:textSize="24sp"
                     android:typeface="serif" />

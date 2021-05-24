@@ -23,6 +23,13 @@ public class seleccionarRegistro extends AppCompatActivity {
         startActivity(Act_registrarComercio_usuario);
     }
 
+    //Ir a la pantalla Registrar Cliente.
+    public void registrarCliente(View view){
+        //Pasar a la actividad "registrarCliente".
+        Intent Act_registrarCliente = new Intent(this, registrarCliente.class);
+        startActivity(Act_registrarCliente);
+    }
+
     //Ir a la pantalla Activity Main: Iniciar Sesión.
     public void activityMain_inicioSesion(View view){
         //Pasar a la actividad "activityMain".

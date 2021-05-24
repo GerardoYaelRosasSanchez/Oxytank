@@ -77,16 +77,25 @@
     <string name="btn_seleccionarRegistro_comercio">Comercio</string>
     <string name="btn_seleccionarRegistro_regresar">Regresar</string>
 
-    <!--Pantalla: registrarUsuario-->
-    <string name="tv_registrarUsuario_titulo">Datos del usuario</string>
-    <string name="tv_registrarUsuario_nombreUsuario">Nombre de Usuario</string>
-    <string name="edt_registrarUsuario_nombreUsuario">Ingresar nombre de usuario</string>
-    <string name="tv_registrarUsuario_correo">Correo</string>
-    <string name="edt_registrarUsuario_correo">Ingresar correo electronico</string>
-    <string name="tv_registrarUsuario_contrasenia">Contraseña</string>
-    <string name="edt_registrarUsuario_contrasenia">Ingresar una contraseña</string>
-    <string name="tv_registrarUsuario_verificarContrasenia">Verificar Contraseña</string>
-    <string name="edt_registrarUsuario_verificarContrasenia">Verificar la contraseña</string>
-    <string name="btn_registrarUsuario_comprobarDatos_cuentaUsuario">Continuar</string>
+    <!--Pantalla: registrarCliente-->
+    <string name="tv_registrarCliente_titulo">Datos del usuario</string>
+    <string name="tv_registrarCliente_nombreUsuario">Nombre de Usuario</string>
+    <string name="edt_registrarCliente_nombreUsuario">Ingresar nombre de usuario</string>
+    <string name="tv_registrarCliente_correo">Correo</string>
+    <string name="edt_registrarCliente_correo">Ingresar correo electronico</string>
+    <string name="tv_registrarCliente_contrasenia">Contraseña</string>
+    <string name="edt_registrarCliente_contrasenia">Ingresar una contraseña</string>
+    <string name="tv_registrarCliente_verificarContrasenia">Verificar Contraseña</string>
+    <string name="edt_registrarCliente_verificarContrasenia">Verificar la contraseña</string>
+    <string name="btn_registrarCliente_comprobarDatos_cuentaCliente">Continuar</string>
+
+    <!--Pantalla: registrarCliente_comprobarDatos-->
+    <string name="tv_registrarCliente_comprobarDatos_titulo">Verficar los datos ingresados</string>
+    <string name="tv_registrarCliente_comprobarDatos_usuarioMensaje">Nombre de Usuario:</string>
+    <string name="tv_registrarCliente_comprobarDatos_correoMensaje">Correo:</string>
+    <string name="tv_registrarCliente_comprobarDatos_contraseniaMensaje">Contraseña:</string>
+    <string name="tv_registrarCliente_comprobarDatos_tipoMensaje">Tipo de cuenta:</string>
+    <string name="btn_registrarCliente_comprobarDatos_finalizarRegistro">Finalizar</string>
+    <string name="tv_registrarCliente_comprobarDatos_registroIncorrecto">Registro incorrecto</string>
 
 </resources>
