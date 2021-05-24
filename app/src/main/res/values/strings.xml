@@ -63,4 +63,12 @@
     <string name="rb_cuentaTipoComercio_PantallaPrincipal_refil_SinServicio">Sin Servicio</string>
     <string name="btn_cuentaTipoComercio_PantallaPrincipal_Actualizar">Actualizar</string>
 
+    <!--Activity Main-->
+    <string name="tv_activityMain_tituloAplicacion">Oxytank</string>
+    <string name="tv_activityMain_tituloInicioSesion">Iniciar Sesion</string>
+    <string name="edt_activityMain_nombreUsuario">Ingresar nombre de usuario</string>
+    <string name="edt_activityMain_contrasenia">Ingresar contraseña</string>
+    <string name="btn_activityMain_iniciarSesion">Iniciar Sesion</string>
+    <string name="btn_activityMain_registrarme">Registrarme</string>
+
 </resources>
