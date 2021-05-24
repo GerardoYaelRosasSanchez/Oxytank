@@ -6,48 +6,69 @@
     android:layout_height="match_parent"
     tools:context=".seleccionarRegistro">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="336dp"
-        android:text="Cliente"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.525"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:onClick="registrarComercio_ingresarCodigo"
-        android:text="Comercio"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:text="Regresar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
-
+    <!--Título: Selecciona un tipo de cuenta.-->
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_seleccionarRegistro_titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="204dp"
-        android:text="Selecciona el tipo de cuenta con la que te deseas registrar"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="150dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="@string/tv_seleccionarRegistro_titulo"
+        android:textSize="24sp"
+        android:typeface="serif"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.615"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/tv_seleccionarRegistro_titulo" />
+
+    <!--Button: Intent (Registro de cliente)-->
+    <Button
+        android:id="@+id/btn_seleccionarRegistro_cliente"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="80dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="@string/btn_seleccionarRegistro_cliente"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:typeface="serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_seleccionarRegistro_titulo" />
+
+    <!--Button: Intent (Registro de comercio)-->
+    <Button
+        android:id="@+id/btn_seleccionarRegistro_comercio"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="80dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:onClick="registrarComercio_usuario"
+        android:text="@string/btn_seleccionarRegistro_comercio"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:typeface="serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_seleccionarRegistro_cliente" />
+
+    <!--Button: Intent (Regresar a la inicio de sesion)-->
+    <Button
+        android:id="@+id/btn_seleccionarRegistro_regresar"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="80dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="@string/btn_seleccionarRegistro_regresar"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:typeface="serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_seleccionarRegistro_comercio" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

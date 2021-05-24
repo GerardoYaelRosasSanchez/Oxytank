@@ -16,12 +16,18 @@ public class seleccionarRegistro extends AppCompatActivity {
 
     //Métodos.
 
-    //Ir a la pantalla Registrar Comercio: Pedir Codigo.
-    public void registrarComercio_ingresarCodigo(View view){
-        //Pasar a la actividad "registrarComercio_ingresarCodigo".
-        Intent Act_registrarComercio_ingresarCodigo = new Intent(this, registrarComercio_ingresarCodigo.class);
-        startActivity(Act_registrarComercio_ingresarCodigo);
+    //Ir a la pantalla Registrar Comercio: Ingresar Datos del usuario.
+    public void registrarComercio_usuario(View view){
+        //Pasar a la actividad "registrarComercio_usuario".
+        Intent Act_registrarComercio_usuario = new Intent(this, registrarComercio_usuario.class);
+        startActivity(Act_registrarComercio_usuario);
     }
 
+    //Ir a la pantalla Activity Main: Iniciar Sesión.
+    public void activityMain_inicioSesion(View view){
+        //Pasar a la actividad "activityMain".
+        Intent Act_activityMain = new Intent(this, MainActivity.class);
+        startActivity(Act_activityMain);
+    }
 
 }

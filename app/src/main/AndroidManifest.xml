@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Oxytank_10">
-        <activity android:name=".cuentaTipoComercio_PantallaPrincipal"></activity>
+        <activity android:name=".registrarUsuario"></activity>
+        <activity android:name=".cuentaTipoComercio_PantallaPrincipal" />
         <activity android:name=".registrarComercio_comprobarDatos" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -33,7 +34,6 @@
         <activity android:name=".registrarComercio_ubicacion" />
         <activity android:name=".registrarComercio_comercio" />
         <activity android:name=".registrarComercio_usuario" />
-        <activity android:name=".registrarComercio_ingresarCodigo" />
         <activity android:name=".seleccionarRegistro" />
         <activity android:name=".MainActivity">
             <intent-filter>

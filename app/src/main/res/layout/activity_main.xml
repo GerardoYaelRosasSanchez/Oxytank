@@ -7,17 +7,6 @@
     tools:context=".MainActivity">
 
     <!--Título: Titulo de la aplicación.-->
-
-    <!--Título: Inicio de sesión.-->
-
-    <!--EditText: Ingresar nombre de usuario.-->
-
-    <!--EditText: Ingresar contraseña.-->
-
-    <!--Button: Intent (Pantalla Principal)-->
-
-    <!--Button: Intent (Seleccionar registro)-->
-
     <TextView
         android:id="@+id/tv_activityMain_tituloAplicacion"
         android:layout_width="wrap_content"
@@ -34,6 +23,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/tv_activityMain_tituloAplicacion" />
 
+    <!--Título: Inicio de sesión.-->
     <TextView
         android:id="@+id/tv_activityMain_tituloInicioSesion"
         android:layout_width="wrap_content"
@@ -49,6 +39,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_activityMain_tituloAplicacion"
         tools:text="@string/tv_activityMain_tituloInicioSesion" />
 
+    <!--EditText: Ingresar nombre de usuario.-->
     <EditText
         android:id="@+id/edt_activityMain_nombreUsuario"
         android:layout_width="wrap_content"
@@ -67,6 +58,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_activityMain_tituloInicioSesion" />
 
+
+    <!--EditText: Ingresar contraseña.-->
     <EditText
         android:id="@+id/edt_activityMain_contrasenia"
         android:layout_width="wrap_content"
@@ -86,6 +79,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_activityMain_nombreUsuario" />
 
+
+    <!--Button: Intent (Pantalla Principal)-->
     <Button
         android:id="@+id/btn_activityMain_iniciarSesion"
         android:layout_width="250dp"
@@ -102,6 +97,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_activityMain_contrasenia" />
 
+    <!--Button: Intent (Seleccionar registro)-->
     <Button
         android:id="@+id/btn_activityMain_registrarme"
         android:layout_width="250dp"
@@ -116,6 +112,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_activityMain_iniciarSesion" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
