@@ -192,6 +192,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:fontFamily="sans-serif-condensed-medium"
+                    android:onClick="cuentaTipoCliente_PantallaPrincipal"
                     android:text="@string/btn_registrarCliente_comprobarDatos_finalizarRegistro"
                     android:textAlignment="center"
                     android:textSize="24sp"

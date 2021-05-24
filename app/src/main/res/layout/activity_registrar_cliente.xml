@@ -197,6 +197,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:fontFamily="sans-serif-condensed-medium"
+                    android:onClick="registrarCliente_comprobarDatos"
                     android:text="@string/btn_registrarCliente_comprobarDatos_cuentaCliente"
                     android:textAlignment="center"
                     android:textSize="24sp"
