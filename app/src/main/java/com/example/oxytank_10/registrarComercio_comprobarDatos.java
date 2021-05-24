@@ -52,8 +52,13 @@ public class registrarComercio_comprobarDatos extends AppCompatActivity {
     //Ir a la pantalla Registrar Comercio: Ubicacion.
     public void irPantallaPrincipalComercio(View view){
 
+        //Recibir el ID ingresado por el usuario de "registrarComercio_comercio"
+        String comercio_id = getIntent().getStringExtra("comercio_id");
+        int id_comercio = Integer.parseInt(comercio_id);
+
         Intent Act_cuentaComercio_pantallaPrincipal = new Intent(this, cuentaTipoComercio_PantallaPrincipal.class);
-        Act_cuentaComercio_pantallaPrincipal.putExtra("comercio_id", comercio_id);
+        String IdComercio_String = Integer.toString(id_comercio);
+        Act_cuentaComercio_pantallaPrincipal.putExtra("comercio_id", IdComercio_String);
         startActivity(Act_cuentaComercio_pantallaPrincipal);
 
     }
