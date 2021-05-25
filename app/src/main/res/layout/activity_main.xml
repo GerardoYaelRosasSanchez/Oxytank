@@ -88,6 +88,7 @@
         android:layout_gravity="center_horizontal|center_vertical"
         android:layout_marginTop="60dp"
         android:fontFamily="sans-serif-condensed-medium"
+        android:onClick="pantallaPrincipal"
         android:text="@string/btn_activityMain_iniciarSesion"
         android:textAlignment="center"
         android:textSize="24sp"
