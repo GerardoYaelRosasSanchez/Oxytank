@@ -17,10 +17,10 @@ public class MainActivity extends AppCompatActivity {
     //Variables para la relación con el entorno gráfico.
     EditText edt_nombreUsuario, edt_contrasenia;
 
-    // Guardar el ID correspondiente al usuario.
+    // Guardar el numero de usuarios que contiene la tabla usuarios.
     int numUsuarios;
 
-    //Arreglo "Usuarios_id"
+    //Guardar los id y los nombres de los usuarios de la tabla usuarios.
     int usuarios_id[] = new int[100];
     String usuarios_nombre[] = new String[100];
 
@@ -43,14 +43,16 @@ public class MainActivity extends AppCompatActivity {
 
     //Métodos.
 
-    //Consultar todos los usuarios de la base de datos y guardarlos en el ArrayAdapter.
-    public void consultarUsuarios(View view){
+    //Iniciar sesión.
+    public void iniciarSesion(View view){
 
-        int cont = 0;
+        int cont = 0; //Se utiliza para recorrer los arreglos y para realizar los ciclos en las funciones.
 
+        //Se guarda la información ingresada por el usuario.
         String nombreUsuario_ingresado = edt_nombreUsuario.getText().toString();
         String contrasenia_ingresado = edt_contrasenia.getText().toString();
-        
+
+        //Se utilizan para guardar la contraseña y el tipo de cuenta del usuario de la base de datos.
         String contrasenia;
         String tipo;
 
@@ -60,54 +62,61 @@ public class MainActivity extends AppCompatActivity {
         /// Abrir la base de datos en modo lectura y escritura.
         SQLiteDatabase BaseDatos = admin.getWritableDatabase();
 
-        //Conseguir una lista de los datos de la tabla usuarios.
+        //Conseguir una lista de los nombres y de los id de la tabla usuarios.
         String datosUsuarios_Consulta = "SELECT idUsuario, nombreUsuario FROM usuarios"; // Guardar el texto que corresponde a la consulta.
         Cursor cursor = BaseDatos.rawQuery(datosUsuarios_Consulta, null); //Realizar la consulta en la base de datos.
-        numUsuarios = cursor.getCount();
 
+        numUsuarios = cursor.getCount(); // Guardar cuantos usuarios hay en la tabla.
+
+        //Guardar los resultados de la consulta en sus respectivos arreglos.
         while (cursor.moveToNext()){
             usuarios_id[cont] = cursor.getInt(0);
             usuarios_nombre[cont] = cursor.getString(1);
             cont += 1;
         }
 
-        cont = 0;
+        cont = 0; //Reiniciar el contador.
 
-        cursor.close();
+        cursor.close(); //Cerrar el cursor.
 
-
-
+        // Recorrer el arreglo con los nombres de los usuarios para buscar si existe el usuario ingresado por el cliente.
         while (cont < numUsuarios){
-            String usuario = usuarios_nombre[cont];
-            if (usuario.equals(nombreUsuario_ingresado)){
-                existe = true;
-                posicionUsuario = cont;
-                cont = numUsuarios;
+            //Caso: Si existe el nombre de usuario ingresado por el cliente.
+            if (usuarios_nombre[cont].equals(nombreUsuario_ingresado)){
+                existe = true; //Comprobar existencia.
+                posicionUsuario = cont; // Guardar su posicion en el arreglo.
+                cont = numUsuarios; // Terminar el ciclo.
             }
-            cont += 1;
+            cont += 1; //Pasar al siguiente ciclo.
         }
 
+        //Comprobar si existe el usuario.
         if (existe){
-
+            //Conseguir la contraseña y el tipo de cuenta de la BD correspondiente al usuario.
             Cursor fila_usuario = BaseDatos.rawQuery
                     ("select contrasenia, tipo from usuarios " +
                             "where idUsuario =" + usuarios_id[posicionUsuario], null);
 
-            //Caso: Se encontro el usuario.
+            //Si se encontro la información en la base de datos.
             if(fila_usuario.moveToFirst()){
-                //Mostrar datos del usuario en la pantalla.
+
+                //Guardar la información.
                 contrasenia = fila_usuario.getString(0);
                 tipo = fila_usuario.getString(1);
 
+                //Caso: La contraseña ingresada por el usuario coincide con la contraseña en la BD.
                 if (contrasenia.equals(contrasenia_ingresado)){
 
+                    //Si es una cuenta de tipo cliente, se pasa a la pantalla principal de cliente.
                     if(tipo.equals("Cliente")){
                         //Pasar a la actividad "PantallaPrincipal cuenta cliente".
                         Intent Act_PantallaPrincipal_cliente = new Intent(this, cuentaTipoCliente_PantallaPrincipal.class);
+                        //Enviar el id del usuario a la pantalla siguiente.
                         String IdUsuario_String = Integer.toString(usuarios_id[posicionUsuario]);
                         Act_PantallaPrincipal_cliente.putExtra("usuario_id", IdUsuario_String);
                         startActivity(Act_PantallaPrincipal_cliente);
                     }
+                    //Si es una cuenta de tipo comercio
                     else if (tipo.equals("Comercio")){
                         //Pasar a la actividad "PantallaPrincipal de la cuenta comercio".
                         Intent Act_PantallaPrincipal_cliente = new Intent(this, cuentaTipoCliente_PantallaPrincipal.class);
@@ -115,19 +124,22 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                 }
+                //Caso: Si la contraseña ingresada por el usuario es incorrecta.
                 else {
                     Toast.makeText(this, "Contraseña incorrecta.", Toast.LENGTH_LONG).show();
                 }
             }
             
         }
+        //Caso: Si el nombre de usuario no existe.
         else{
             Toast.makeText(this, "No existe el usuario.", Toast.LENGTH_LONG).show();
         }
 
         //Cerrar la Base de datos.
         BaseDatos.close();
-        
+
+        //Reiniciar el estado en el caso de que el usuario ingrese mal los datos.
         existe = false;
 
 
@@ -139,78 +151,5 @@ public class MainActivity extends AppCompatActivity {
         Intent Act_seleccionarRegistro = new Intent(this, seleccionarRegistro.class);
         startActivity(Act_seleccionarRegistro);
     }
-
-    //Ir a la pantalla principal correspondiente al tipo de cliente que inicio sesión.
-    public void pantallaPrincipal(View view){
-
-        //iniciarSesion();
-
-        //Pasar a la actividad "PantallaPrincipal".
-        //Intent Act_PantallaPrincipal_cliente = new Intent(this, seleccionarRegistro.class);
-        //startActivity(Act_PantallaPrincipal_cliente);
-    }
-
-
-    /*
-    //Realizar la consulta en la base de datos.
-    public void iniciarSesion(){
-
-        // Guardar la información ingresada por el usuario.
-        String nombreUsuario = edt_nombreUsuario.getText().toString();
-        String contrasenia = edt_contrasenia.getText().toString();
-
-        //Verificar que el usuario haya ingresado datos en los campos.
-        if(!nombreUsuario.isEmpty() && !contrasenia.isEmpty()){
-
-            //Objeto: Administrar la base de datos.
-            DBHelper admin = new DBHelper(this, "Oxytank_db", null, 1);
-
-            // Abrir la base de datos en modo lectura y escritura.
-            SQLiteDatabase BaseDatos = admin.getWritableDatabase();
-
-            //Buscar el usuario correspondiente a lo que ingreso el usuario
-            Cursor fila_cliente = BaseDatos.rawQuery
-                    ("select idUsuario, contrasenia, tipo from usuarios " +
-                            "where nombreUsuario =" + nombreUsuario, null);
-
-            //Caso: Se encontro el cliente.
-            if(fila_cliente.moveToFirst()){
-
-                //Guardar el nombre de usuario y la contrasenia.
-                String idUsuario_db = fila_cliente.getString(0);
-                String contrasenia_db = fila_cliente.getString(1);
-                String tipo_db = fila_cliente.getString(2);
-
-
-                //Verificar que la contraseña ingresada en la base de datos se la misma
-                //que la ingresada por el usuario.
-                if (contrasenia_db.equals(contrasenia)){
-
-                    Toast.makeText(this, "Contraseña incorrecta.", Toast.LENGTH_LONG).show();
-
-                }
-
-
-            }
-
-            //Caso: No se encontro el usuario.
-            else {
-
-                Toast.makeText(this, "No existe el usuario.", Toast.LENGTH_LONG).show();
-
-            }
-
-            //Cerrar la Base de datos.
-            BaseDatos.close();
-
-        }
-
-        //Solicitar que el usuario llene todos los campos.
-        else{
-            Toast.makeText(this, "Se deben de llenar ambos campos.", Toast.LENGTH_LONG).show();
-        }
-
-    }
-    */
 
 }
