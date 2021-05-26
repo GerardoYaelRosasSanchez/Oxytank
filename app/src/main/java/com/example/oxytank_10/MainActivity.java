@@ -49,9 +49,10 @@ public class MainActivity extends AppCompatActivity {
         int cont = 0;
 
         String nombreUsuario_ingresado = edt_nombreUsuario.getText().toString();
-        String contrasenia_ingresado = edt_nombreUsuario.getText().toString();
+        String contrasenia_ingresado = edt_contrasenia.getText().toString();
         
-        String contrasenia; 
+        String contrasenia;
+        String tipo;
 
         //Objeto: Administrar la base de datos.
         DBHelper admin = new DBHelper(this, "Oxytank_db", null, 1);
@@ -87,19 +88,36 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (existe){
+
             Cursor fila_usuario = BaseDatos.rawQuery
                     ("select contrasenia, tipo from usuarios " +
                             "where idUsuario =" + usuarios_id[posicionUsuario], null);
 
             //Caso: Se encontro el usuario.
             if(fila_usuario.moveToFirst()){
-
                 //Mostrar datos del usuario en la pantalla.
-                String contrasenia = fila_usuario.getString(0);
-                String tipo = fila_usuario.getString(1);
-                
-                
+                contrasenia = fila_usuario.getString(0);
+                tipo = fila_usuario.getString(1);
 
+                if (contrasenia.equals(contrasenia_ingresado)){
+
+                    if(tipo.equals("Cliente")){
+                        //Pasar a la actividad "PantallaPrincipal cuenta cliente".
+                        Intent Act_PantallaPrincipal_cliente = new Intent(this, cuentaTipoCliente_PantallaPrincipal.class);
+                        String IdUsuario_String = Integer.toString(usuarios_id[posicionUsuario]);
+                        Act_PantallaPrincipal_cliente.putExtra("usuario_id", IdUsuario_String);
+                        startActivity(Act_PantallaPrincipal_cliente);
+                    }
+                    else if (tipo.equals("Comercio")){
+                        //Pasar a la actividad "PantallaPrincipal de la cuenta comercio".
+                        Intent Act_PantallaPrincipal_cliente = new Intent(this, cuentaTipoCliente_PantallaPrincipal.class);
+                        startActivity(Act_PantallaPrincipal_cliente);
+                    }
+
+                }
+                else {
+                    Toast.makeText(this, "Contraseña incorrecta.", Toast.LENGTH_LONG).show();
+                }
             }
             
         }
