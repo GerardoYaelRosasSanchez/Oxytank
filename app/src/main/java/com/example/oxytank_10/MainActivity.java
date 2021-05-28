@@ -90,50 +90,61 @@ public class MainActivity extends AppCompatActivity {
             cont += 1; //Pasar al siguiente ciclo.
         }
 
-        //Comprobar si existe el usuario.
-        if (existe){
-            //Conseguir la contraseña y el tipo de cuenta de la BD correspondiente al usuario.
-            Cursor fila_usuario = BaseDatos.rawQuery
-                    ("select contrasenia, tipo from usuarios " +
-                            "where idUsuario =" + usuarios_id[posicionUsuario], null);
-
-            //Si se encontro la información en la base de datos.
-            if(fila_usuario.moveToFirst()){
-
-                //Guardar la información.
-                contrasenia = fila_usuario.getString(0);
-                tipo = fila_usuario.getString(1);
-
-                //Caso: La contraseña ingresada por el usuario coincide con la contraseña en la BD.
-                if (contrasenia.equals(contrasenia_ingresado)){
-
-                    //Si es una cuenta de tipo cliente, se pasa a la pantalla principal de cliente.
-                    if(tipo.equals("Cliente")){
-                        //Pasar a la actividad "PantallaPrincipal cuenta cliente".
-                        Intent Act_PantallaPrincipal_cliente = new Intent(this, cuentaTipoCliente_PantallaPrincipal.class);
-                        //Enviar el id del usuario a la pantalla siguiente.
-                        String IdUsuario_String = Integer.toString(usuarios_id[posicionUsuario]);
-                        Act_PantallaPrincipal_cliente.putExtra("usuario_id", IdUsuario_String);
-                        startActivity(Act_PantallaPrincipal_cliente);
-                    }
-                    //Si es una cuenta de tipo comercio
-                    else if (tipo.equals("Comercio")){
-                        //Pasar a la actividad "PantallaPrincipal de la cuenta comercio".
-                        Intent Act_PantallaPrincipal_cliente = new Intent(this, cuentaTipoCliente_PantallaPrincipal.class);
-                        startActivity(Act_PantallaPrincipal_cliente);
-                    }
-
-                }
-                //Caso: Si la contraseña ingresada por el usuario es incorrecta.
-                else {
-                    Toast.makeText(this, "Contraseña incorrecta.", Toast.LENGTH_LONG).show();
-                }
+        //Verificar que todos los campos esten llenos.
+        if (nombreUsuario_ingresado.isEmpty() || contrasenia_ingresado.isEmpty()){
+            if (nombreUsuario_ingresado.isEmpty()){
+                edt_nombreUsuario.setError("Faltan Datos.");
             }
-            
+            if (contrasenia_ingresado.isEmpty()){
+                edt_contrasenia.setError("Faltan Datos.");
+            }
         }
-        //Caso: Si el nombre de usuario no existe.
         else{
-            Toast.makeText(this, "No existe el usuario.", Toast.LENGTH_LONG).show();
+            //Comprobar si existe el usuario.
+            if (existe){
+                //Conseguir la contraseña y el tipo de cuenta de la BD correspondiente al usuario.
+                Cursor fila_usuario = BaseDatos.rawQuery
+                        ("select contrasenia, tipo from usuarios " +
+                                "where idUsuario =" + usuarios_id[posicionUsuario], null);
+
+                //Si se encontro la información en la base de datos.
+                if(fila_usuario.moveToFirst()){
+
+                    //Guardar la información.
+                    contrasenia = fila_usuario.getString(0);
+                    tipo = fila_usuario.getString(1);
+
+                    //Caso: La contraseña ingresada por el usuario coincide con la contraseña en la BD.
+                    if (contrasenia.equals(contrasenia_ingresado)){
+
+                        //Si es una cuenta de tipo cliente, se pasa a la pantalla principal de cliente.
+                        if(tipo.equals("Cliente")){
+                            //Pasar a la actividad "PantallaPrincipal cuenta cliente".
+                            Intent Act_PantallaPrincipal_cliente = new Intent(this, cuentaTipoCliente_PantallaPrincipal.class);
+                            //Enviar el id del usuario a la pantalla siguiente.
+                            String IdUsuario_String = Integer.toString(usuarios_id[posicionUsuario]);
+                            Act_PantallaPrincipal_cliente.putExtra("usuario_id", IdUsuario_String);
+                            startActivity(Act_PantallaPrincipal_cliente);
+                        }
+                        //Si es una cuenta de tipo comercio
+                        else if (tipo.equals("Comercio")){
+                            //Pasar a la actividad "PantallaPrincipal de la cuenta comercio".
+                            Intent Act_PantallaPrincipal_cliente = new Intent(this, cuentaTipoCliente_PantallaPrincipal.class);
+                            startActivity(Act_PantallaPrincipal_cliente);
+                        }
+
+                    }
+                    //Caso: Si la contraseña ingresada por el usuario es incorrecta.
+                    else {
+                        edt_contrasenia.setError("Contraseña incorrecta.");
+                    }
+                }
+
+            }
+            //Caso: Si el nombre de usuario no existe.
+            else{
+                edt_nombreUsuario.setError("No existe el usuario.");
+            }
         }
 
         //Cerrar la Base de datos.
@@ -141,7 +152,6 @@ public class MainActivity extends AppCompatActivity {
 
         //Reiniciar el estado en el caso de que el usuario ingrese mal los datos.
         existe = false;
-
 
     }
 
