@@ -7,6 +7,11 @@
     tools:context=".cuentaTipoCliente_PantallaPrincipal">
 
     <!--Título: Selecciona un negocio.-->
+
+    <!--ListView: Mostrar todos los comercios.-->
+
+    <!--Edit Text: Ingresar el nombre del comercio.-->
+
     <TextView
         android:id="@+id/tv_cuentaTipoCliente_PantallaPrincipal_titulo"
         android:layout_width="wrap_content"
@@ -14,7 +19,7 @@
         android:layout_gravity="center_horizontal|center_vertical"
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
         android:fontFamily="sans-serif-condensed-medium"
@@ -23,32 +28,30 @@
         android:textSize="24sp"
         android:typeface="serif"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/tv_cuentaTipoCliente_PantallaPrincipal_titulo" />
 
-    <!--ListView: Mostrar todos los comercios.-->
     <ListView
         android:id="@+id/lv_cuentaTipoCliente_PantallaPrincipal_mostrarComercios"
         android:layout_width="351dp"
-        android:layout_height="463dp"
+        android:layout_height="440dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="230dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--Edit Text: Ingresar el nombre del comercio.-->
+    <!--Boton: Buscar el comercio.-->
     <EditText
         android:id="@+id/edt_cuentaTipoCliente_PantallaPrincipal_solicitarNombre"
         android:layout_width="280dp"
         android:layout_height="52dp"
-        android:layout_marginTop="620dp"
+        android:layout_marginTop="50dp"
         android:autofillHints="@string/edt_cuentaTipoCliente_PantallaPrincipal_solicitarNombre"
         android:ems="10"
         android:hint="@string/edt_cuentaTipoCliente_PantallaPrincipal_solicitarNombre"
@@ -56,22 +59,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.185"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_cuentaTipoCliente_PantallaPrincipal_titulo" />
 
-    <!--Boton: Buscar el comercio.-->
     <ImageButton
         android:id="@+id/imgbtn_cuentaTipoCliente_PantallaPrincipal_buscarComercio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="620dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="21dp"
         android:layout_marginRight="21dp"
         android:contentDescription="@string/imgbtn_cuentaTipoCliente_PantallaPrincipal_buscarComercio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/edt_cuentaTipoCliente_PantallaPrincipal_solicitarNombre"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cuentaTipoCliente_PantallaPrincipal_titulo"
         app:srcCompat="@android:drawable/ic_menu_search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
