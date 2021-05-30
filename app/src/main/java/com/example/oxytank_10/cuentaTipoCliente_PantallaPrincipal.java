@@ -159,9 +159,9 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
 
             //Mostrar la información.
             comercios_tv.setText(l_Comercios[position]);
-            venta_tv.setText(l_servicios_venta[position]);
-            refil_tv.setText(l_servicios_refil[position]);
-            renta_tv.setText(l_servicios_renta[position]);
+            venta_tv.setText("Venta:\n" + l_servicios_venta[position]);
+            refil_tv.setText("Refil:\n" + l_servicios_refil[position]);
+            renta_tv.setText("Renta:\n" + l_servicios_renta[position]);
 
 
             return fila;
