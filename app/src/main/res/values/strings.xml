@@ -105,6 +105,8 @@
 
     <!--Pantalla: Diseño del listView con la lista de comercios.-->
     <string name="tv_listItems_listaComercios_nombre">Sin comercio</string>
-    <string name="tv_listItems_listaComercios_servicio">Sin servicio</string>
+    <string name="tv_listItems_listaComercios_servicioVenta">Sin servicio</string>
+    <string name="tv_listItems_listaComercios_servicioRefil">Sin servicio</string>
+    <string name="tv_listItems_listaComercios_servicioRenta">Sin servicio</string>
 
 </resources>

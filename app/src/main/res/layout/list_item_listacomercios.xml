@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!--Diseño ListView de la "Pantalla Principal de la cuenta cliente", "lv_cuentaTipoCliente_PantallaPrincipal_mostrarComercios"-->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--Contenido: Título-->
-
-    <!--Diseño ListView de la "Pantalla Principal de la cuenta cliente", "lv_cuentaTipoCliente_PantallaPrincipal_mostrarComercios"-->
-
+    <!--Contenido: Diseño de la fila de la lista de comercios.-->
     <androidx.cardview.widget.CardView
-        android:layout_width="390dp"
+        android:layout_width="370dp"
         android:layout_height="140dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginRight="3dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <!--TextView: Nombre del comercio.-->
         <TextView
             android:id="@+id/tv_listItems_listaComercios_nombre"
             android:layout_width="match_parent"
@@ -30,26 +31,45 @@
             android:textColor="#ffffff"
             android:textSize="24sp" />
 
+        <!--TextView: Servicio venta.-->
         <TextView
-            android:id="@+id/tv_listItems_listaComercios_servicio"
-            android:layout_width="150dp"
+            android:id="@+id/tv_listItems_listaComercios_servicioVenta"
+            android:layout_width="123dp"
             android:layout_height="70dp"
             android:layout_marginTop="70dp"
             android:background="#63439E"
-            android:padding="20sp"
-            android:text="@string/tv_listItems_listaComercios_servicio"
+            android:gravity="center"
+            android:text="@string/tv_listItems_listaComercios_servicioVenta"
             android:textColor="#ffffff"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
-        <RatingBar
-            android:id="@+id/ratbar_listItems_listaComercios_calificacion"
-            android:layout_width="240dp"
+        <!--TextView: Servicio refil.-->
+        <TextView
+            android:id="@+id/tv_listItems_listaComercios_servicioRefil"
+            android:layout_width="123dp"
             android:layout_height="70dp"
-            android:layout_marginStart="150dp"
-            android:layout_marginLeft="150dp"
             android:layout_marginTop="70dp"
+            android:layout_marginStart="123dp"
+            android:layout_marginLeft="123dp"
             android:background="#63439E"
-            android:paddingTop="10sp" />
+            android:gravity="center"
+            android:text="@string/tv_listItems_listaComercios_servicioRefil"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+        <!--TextView: Servicio renta.-->
+        <TextView
+            android:id="@+id/tv_listItems_listaComercios_servicioRenta"
+            android:layout_width="124dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginStart="245dp"
+            android:layout_marginLeft="245dp"
+            android:background="#63439E"
+            android:gravity="center"
+            android:text="@string/tv_listItems_listaComercios_servicioRenta"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
 
     </androidx.cardview.widget.CardView>
 
