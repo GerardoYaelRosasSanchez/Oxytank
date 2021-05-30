@@ -15,8 +15,13 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
     private String sinComercios[] = {"Sin comercios", "Sin comercios", "Sin comercios",
             "Sin comercios", "Sin comercios", "Sin comercios", "Sin comercios", "Sin comercios",
             "Sin comercios", "Sin comercios", "Sin comercios", "Sin comercios", "Sin comercios"};
+    private final String [][] datosComercio = {
+            {"Sin comercios", "Sin servicio"}, {"Sin comercios", "Sin servicio"}, {"Sin comercios", "Sin servicio"},
+            {"Sin comercios", "Sin servicio"}, {"Sin comercios", "Sin servicio"}, {"Sin comercios", "Sin servicio"},
+            {"Sin comercios", "Sin servicio"}, {"Sin comercios", "Sin servicio"}, {"Sin comercios", "Sin servicio"}
+    };
 
-
+    int [] lista_calificacion = {5, 2, 3, 2, 4, 5, 5, 5, 4};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +33,10 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
 
 
         //Mostrar al usuario que aún no se ha registrado ningun comercio.
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_item_listacomercios, sinComercios);
-        lv_listaComercios.setAdapter(adapter);
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_item_listacomercios, sinComercios);
+        //lv_listaComercios.setAdapter(new Adaptador_listaComercios(this, datosComercio, lista_calificacion));
+
+        lv_listaComercios.setAdapter(new Adaptador_listaComercios());
 
         /*
         //Caso: Si aun no se ha registrado ningun comercio.

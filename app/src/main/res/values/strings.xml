@@ -103,4 +103,8 @@
     <string name="edt_cuentaTipoCliente_PantallaPrincipal_solicitarNombre">Ingresa el nombre de un comercio</string>
     <string name="imgbtn_cuentaTipoCliente_PantallaPrincipal_buscarComercio">Buscar</string>
 
+    <!--Pantalla: Diseño del listView con la lista de comercios.-->
+    <string name="tv_listItems_listaComercios_nombre">Sin comercio</string>
+    <string name="tv_listItems_listaComercios_servicio">Sin servicio</string>
+
 </resources>
