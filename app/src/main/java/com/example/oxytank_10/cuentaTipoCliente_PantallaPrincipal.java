@@ -41,6 +41,9 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
 
     //Guardar dar el nombre del comercio en una lista.
     String lista_comercios_nombre[] = new String[100];
+    String lista_comercios_venta[] = new String[100];
+    String lista_comercios_refil[] = new String[100];
+    String lista_comercios_renta[] = new String[100];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +58,16 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
 
         //Crear el arreglo con el que se mostraran los comercios del tamaño de comercios que existen.
         String lv_listaComercios_nombre[] = new String[numComercios];
+        String lv_listaComercios_venta[] = new String[numComercios];
+        String lv_listaComercios_renta[] = new String[numComercios];
+        String lv_listaComercios_refil[] = new String[numComercios];
 
-        //Guardar los comercios en el array lv para mostrarlos en el listView.
+        //Guardar los datos de los comercios en el array lv para mostrarlos en el listView.
         for (int i = 0; i < numComercios; i++){
-            lv_listaComercios_nombre[i] = lista_comercios_nombre[i];
+            lv_listaComercios_nombre[i] = lista_comercios_nombre[i]; //Guardar el nombre del comercio.
+            lv_listaComercios_venta[i] = lista_comercios_venta[i]; //Guardar el estatus del servicio de venta.
+            lv_listaComercios_renta[i] = lista_comercios_renta[i]; //Guardar el estatus del servicio de renta.
+            lv_listaComercios_refil[i] = lista_comercios_refil[i]; //Guardar el estatus del servicio de refil.
         }
 
         //Caso: Si no existen comercios.
@@ -70,7 +79,7 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
         //De lo contrario: Mostrar comercios en "ListView".
         else{
             //Mostrar los comercios en la pantalla principal mediante ListView "lv_cuentaTipoCliente_PantallaPrincipal_mostrarComercios".
-            MyAdapter adapter = new MyAdapter(this, lv_listaComercios_nombre, sinServicio, sinServicio, sinServicio);
+            MyAdapter adapter = new MyAdapter(this, lv_listaComercios_nombre, lv_listaComercios_venta, lv_listaComercios_renta, lv_listaComercios_refil);
             lv_listaComercios.setAdapter(adapter); //Mostrar los datos en listView.
 
             //Llevar al usuario a la pantalla correspondiente al comercio que selecciono.
@@ -107,7 +116,9 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
             //Llenar el arreglo comercios.
             do{
                 lista_comercios_nombre[cont] = cursor.getString(1); //Guardar el nombre del comercio.
-
+                lista_comercios_renta[cont] = cursor.getString(6); //Guardar el estatus del servicio de renta.
+                lista_comercios_venta[cont] = cursor.getString(7); //Guardar el estatus del servicio de venta.
+                lista_comercios_refil[cont] = cursor.getString(8); //Guardar el estatus del servicio de refil.
                 cont += 1; //Pasar a la siguiente posición del arreglo.
 
             }while (cursor.moveToNext()); //Pasar al siguiente elemento del cursos.

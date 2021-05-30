@@ -164,7 +164,7 @@ public class cuentaTipoComercio_PantallaPrincipal extends AppCompatActivity {
             refil_Disponible.setChecked(true);
         }
         else if (refil_NoDisponible.isChecked()){
-            servicio_refil = "No Disponoble";
+            servicio_refil = "No Disponible";
             refil_NoDisponible.setChecked(true);
         }
         else if (renta_SinServicio.isChecked()){
