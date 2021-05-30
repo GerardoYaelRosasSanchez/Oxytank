@@ -99,7 +99,7 @@
     <string name="tv_registrarCliente_comprobarDatos_registroIncorrecto">Registro incorrecto</string>
 
     <!--Pantalla: cuentaTipoCliente_PantallaPrincipal-->
-    <string name="tv_cuentaTipoCliente_PantallaPrincipal_titulo">Selecciona un negocio</string>
+    <string name="tv_cuentaTipoCliente_PantallaPrincipal_titulo">Selecciona un comercio</string>
     <string name="edt_cuentaTipoCliente_PantallaPrincipal_solicitarNombre">Ingresa el nombre de un comercio</string>
     <string name="imgbtn_cuentaTipoCliente_PantallaPrincipal_buscarComercio">Buscar</string>
 
