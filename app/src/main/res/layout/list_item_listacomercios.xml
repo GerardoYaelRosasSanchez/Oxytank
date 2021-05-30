@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--Diseño ListView de la "Pantalla Principal de la cuenta cliente", "lv_cuentaTipoCliente_PantallaPrincipal_mostrarComercios"-->
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#63439E"
+    android:textSize="24sp"
+    android:padding="20sp"
+    android:textColor="#ffffff"
+    xmlns:android="http://schemas.android.com/apk/res/android" />
