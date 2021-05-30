@@ -64,13 +64,13 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
         //Caso: Si no existen comercios.
         if(numComercios == 0){
             //Se utiliza un adapter para mostrar la información por defaul en el listView.
-            MyAdapter adapter = new MyAdapter(this, sinComercios);
+            MyAdapter adapter = new MyAdapter(this, sinComercios, sinServicio, sinServicio, sinServicio);
             lv_listaComercios.setAdapter(adapter); //Mostrar los datos en el listView.
         }
         //De lo contrario: Mostrar comercios en "ListView".
         else{
             //Mostrar los comercios en la pantalla principal mediante ListView "lv_cuentaTipoCliente_PantallaPrincipal_mostrarComercios".
-            MyAdapter adapter = new MyAdapter(this, lv_listaComercios_nombre);
+            MyAdapter adapter = new MyAdapter(this, lv_listaComercios_nombre, sinServicio, sinServicio, sinServicio);
             lv_listaComercios.setAdapter(adapter); //Mostrar los datos en listView.
 
             //Llevar al usuario a la pantalla correspondiente al comercio que selecciono.
@@ -127,13 +127,18 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
         Context context;
         //Variables para guardar los datos que se utilizaran.
         String l_Comercios[];
-        //String l_sinServicios[];
+        String l_servicios_venta[];
+        String l_servicios_refil[];
+        String l_servicios_renta[];
 
         //Constructor.
-        MyAdapter (Context context, String comercios[]){
+        MyAdapter (Context context, String comercios[], String venta[], String refil[], String renta[]){
             super(context, R.layout.list_item_listacomercios, R.id.tv_listItems_listaComercios_nombre, comercios);
             this.context = context;
             this.l_Comercios = comercios;
+            this.l_servicios_venta = venta;
+            this.l_servicios_refil = refil;
+            this.l_servicios_renta = renta;
 
         }
 
@@ -148,9 +153,16 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
 
             //Relación de las variables con el entorno gráfico.
             TextView comercios_tv = fila.findViewById(R.id.tv_listItems_listaComercios_nombre);
+            TextView venta_tv = fila.findViewById(R.id.tv_listItems_listaComercios_servicioVenta);
+            TextView refil_tv = fila.findViewById(R.id.tv_listItems_listaComercios_servicioRefil);
+            TextView renta_tv = fila.findViewById(R.id.tv_listItems_listaComercios_servicioRenta);
 
             //Mostrar la información.
             comercios_tv.setText(l_Comercios[position]);
+            venta_tv.setText(l_servicios_venta[position]);
+            refil_tv.setText(l_servicios_refil[position]);
+            renta_tv.setText(l_servicios_renta[position]);
+
 
             return fila;
 

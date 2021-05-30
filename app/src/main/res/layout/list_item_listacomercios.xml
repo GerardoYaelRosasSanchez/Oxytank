@@ -38,7 +38,6 @@
             android:layout_marginTop="70dp"
             android:background="#63439E"
             android:gravity="center"
-            android:text="@string/tv_listItems_listaComercios_servicioVenta"
             android:textColor="#ffffff"
             android:textSize="18sp" />
 
@@ -52,7 +51,6 @@
             android:layout_marginLeft="123dp"
             android:background="#63439E"
             android:gravity="center"
-            android:text="@string/tv_listItems_listaComercios_servicioRefil"
             android:textColor="#ffffff"
             android:textSize="18sp" />
 
@@ -66,7 +64,6 @@
             android:layout_marginLeft="245dp"
             android:background="#63439E"
             android:gravity="center"
-            android:text="@string/tv_listItems_listaComercios_servicioRenta"
             android:textColor="#ffffff"
             android:textSize="18sp" />
 
