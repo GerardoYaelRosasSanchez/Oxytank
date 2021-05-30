@@ -5,14 +5,19 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
 
@@ -29,6 +34,12 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
             "Sin servicio", "Sin servicio", "Sin servicio", "Sin servicio", "Sin servicio",
             "Sin servicio", "Sin servicio", "Sin servicio", "Sin servicio", "Sin servicio"};
 
+    // Guardar el numero de usuarios que contiene la tabla usuarios.
+    int numComercios = 0;
+
+    //Guardar el id del comercio y del usuario de la tabla comercios en una lista.
+    String comercio_nombre[] = new String[100];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,9 +48,67 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
         //Relación de las varaibles con el entorno gráfico.
         lv_listaComercios = findViewById(R.id.lv_cuentaTipoCliente_PantallaPrincipal_mostrarComercios);
 
-        //Se utiliza un adapter para mostrar la información por defaul en el listView.
-        MyAdapter adapter = new MyAdapter(this, sinComercios, sinServicio);
-        lv_listaComercios.setAdapter(adapter);
+        consultarComercio();
+
+        //Caso: Si no existen comercios.
+        if(numComercios == 0){
+            //Se utiliza un adapter para mostrar la información por defaul en el listView.
+            MyAdapter adapter = new MyAdapter(this, sinComercios);
+            lv_listaComercios.setAdapter(adapter);
+        }
+        //De lo contrario: Mostrar comercios en "ListView".
+        else{
+            //Mostrar los negocios en la pantalla principal mediante ListView "lv_pantallaPrincipal_listaNegocios".
+            MyAdapter adapter = new MyAdapter(this, comercio_nombre);
+            lv_listaComercios.setAdapter(adapter); //Mostrar los datos en listView.
+
+            //Llevar al usuario a la pantalla correspondiente al comercio que selecciono.
+            lv_listaComercios.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    //
+                }
+            });
+        }
+
+
+
+    }
+
+    //Mostar los comerxios ingresados por el usuario de tipo comercio en "ListView".
+    public void consultarComercio(){
+
+        int cont = 0; //Se utiliza para recorrer los arreglos y para realizar los ciclos en las funciones.
+
+        //Objeto: Administrar la base de datos.
+        DBHelper administrador = new DBHelper(this, "Oxytank_db", null, 1);
+
+        //Abrir Base de Datos
+        SQLiteDatabase BaseDatos = administrador.getReadableDatabase();
+
+        //Buscar todos los nombres de la base de datos.
+        Cursor cursor = BaseDatos.rawQuery("select * from comercios", null);
+
+        numComercios = cursor.getCount();
+
+        //Caso: Se encontraron los nombres.
+        if(cursor.moveToFirst()){
+            //Llenar el arreglo comercios.
+            do{
+                comercio_nombre[cont] = cursor.getString(1);
+
+                cont += 1;
+
+            }while (cursor.moveToNext());
+        }
+
+        cont = 0;
+
+        //Cerrar el cursor.
+        cursor.close();
+
+        //Cerrar la base de datos.
+        BaseDatos.close();
 
     }
 
@@ -48,15 +117,14 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
 
         Context context;
         //Variables para guardar los datos que se utilizaran.
-        String l_sinComercios[];
-        String l_sinServicios[];
+        String l_Comercios[];
+        //String l_sinServicios[];
 
         //Constructor.
-        MyAdapter (Context context, String sinComercio[], String sinServicio[]){
-            super(context, R.layout.list_item_listacomercios, R.id.tv_listItems_listaComercios_nombre, sinComercio);
+        MyAdapter (Context context, String comercios[]){
+            super(context, R.layout.list_item_listacomercios, R.id.tv_listItems_listaComercios_nombre, comercios);
             this.context = context;
-            this.l_sinComercios = sinComercios;
-            this.l_sinServicios = sinServicio;
+            this.l_Comercios = comercios;
 
         }
 
@@ -71,11 +139,8 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
 
             //Relación de las variables con el entorno gráfico.
             TextView comercios = fila.findViewById(R.id.tv_listItems_listaComercios_nombre);
-            TextView servicio = fila.findViewById(R.id.tv_listItems_listaComercios_servicioVenta);
 
-            //Mostrar los datos utilizando el formato personalizado.
-            comercios.setText(l_sinComercios[position]);
-            servicio.setText(l_sinServicios[position]);
+            comercios.setText(l_Comercios[position]);
 
             return fila;
 

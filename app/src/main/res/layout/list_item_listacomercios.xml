@@ -27,7 +27,6 @@
             android:background="#63439E"
             android:gravity="center"
             android:padding="20sp"
-            android:text="@string/tv_listItems_listaComercios_nombre"
             android:textColor="#ffffff"
             android:textSize="24sp" />
 
