@@ -8,6 +8,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -50,6 +52,12 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
 
         consultarComercio();
 
+        String prueba[] = new String[numComercios];
+
+        for (int i = 0; i < numComercios; i++){
+            prueba[i] = comercio_nombre[i];
+        }
+
         //Caso: Si no existen comercios.
         if(numComercios == 0){
             //Se utiliza un adapter para mostrar la información por defaul en el listView.
@@ -59,7 +67,7 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
         //De lo contrario: Mostrar comercios en "ListView".
         else{
             //Mostrar los negocios en la pantalla principal mediante ListView "lv_pantallaPrincipal_listaNegocios".
-            MyAdapter adapter = new MyAdapter(this, comercio_nombre);
+            MyAdapter adapter = new MyAdapter(this, prueba);
             lv_listaComercios.setAdapter(adapter); //Mostrar los datos en listView.
 
             //Llevar al usuario a la pantalla correspondiente al comercio que selecciono.
