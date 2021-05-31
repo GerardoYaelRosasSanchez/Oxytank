@@ -1,6 +1,6 @@
 <resources>
     <!--Barra de acción-->
-    <string name="app_name">Oxytank_1.0</string>
+    <string name="app_name">Oxytank</string>
 
     <!--Pantalla: registrarComercio_usuario-->
     <string name="tv_registrarComercio_usuario_titulo">Datos del usuario</string>
@@ -127,7 +127,7 @@
     <string name="btn_cuentaTipoCliente_modificarInformacion_actualizarInformacion">Actualizar</string>
     <string name="edt_cuentaTipoCliente_modificarInformacion_error">Error</string>
 
-    <!--Pantalla: cuentaTipoCLiente_modificarInformacion-->
+    <!--Pantalla: cuentaTipoComercio_modificarInformacion-->
     <string name="tv_cuentaTipoComercio_modificarInformacion_titulo">Actualizar informacion</string>
     <string name="tv_cuentaTipoComercio_modificarInformacion_nombreComercioMensaje">Nombre del Comercio</string>
     <string name="tv_cuentaTipoComercio_modificarInformacion_telefonoMensaje">Telefono</string>
@@ -137,5 +137,9 @@
     <string name="tv_cuentaTipoComercio_modificarInformacion_verificarContraseniaMensaje">Verificar Contraseña</string>
     <string name="btn_cuentaTipoComercio_modificarInformacion_actualizarInformacion">Actualizar</string>
     <string name="edt_cuentaTipoComercio_modificarInformacion_error">Error</string>
+
+    <!--Cuenta de tipo cliente: Menu Overflow.-->
+    <string name="cuentaTipoCliente_overflow_item_modificarDatos">Modificar informacion</string>
+    <string name="cuentaTipoCliente_oveflow_item_cerrarSesion">Cerrar Sesion</string>
 
 </resources>

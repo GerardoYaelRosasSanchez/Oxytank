@@ -9,20 +9,17 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.text.Editable;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
 
 public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
 
@@ -251,4 +248,26 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
 
         }
     }
+
+    //Ocultar y mostrar el menu overflow
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.overflow_cuentacliente, menu);
+        return true;
+    }
+
+    //Opciones del menu overflow.
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+
+        if (id == R.id.cuentaTipoCliente_overflow_item_modificarDatos){
+            Intent Act_cuentaTipoCliente_modificarinformacion = new Intent(this, cuentaTipoCliente_modificarInformacion.class);
+            startActivity(Act_cuentaTipoCliente_modificarinformacion);
+        }
+        else if (id == R.id.cuentaTipoCliente_overflow_item_cerrarSesion){
+            Intent Act_MainActivity = new Intent(this, MainActivity.class);
+            startActivity(Act_MainActivity);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }
