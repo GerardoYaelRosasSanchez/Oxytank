@@ -105,7 +105,9 @@
                     android:fontFamily="sans-serif-condensed-light"
                     android:padding="20dp"
                     android:text="@string/ckbx_registrarComercio_comercio_servicio_Venta"
-                    android:textSize="20sp" />
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:gravity="center"/>
 
                 <!--TextView: Servicios_Renta-->
                 <TextView
@@ -118,7 +120,9 @@
                     android:fontFamily="sans-serif-condensed-light"
                     android:padding="20dp"
                     android:text="@string/ckbx_registrarComercio_comercio_servicio_Renta"
-                    android:textSize="20sp" />
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:gravity="center"/>
 
                 <!--TextView: Servicios_Refil-->
                 <TextView
@@ -133,7 +137,9 @@
                     android:fontFamily="sans-serif-condensed-light"
                     android:padding="20dp"
                     android:text="@string/ckbx_registrarComercio_comercio_servicio_Refil"
-                    android:textSize="20sp" />
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:gravity="center"/>
 
             </androidx.cardview.widget.CardView>
 
@@ -169,7 +175,9 @@
                     android:fontFamily="sans-serif-condensed-light"
                     android:text="@string/btn_cuentaTipoCliente_mostrarComercio_registroIncorrecto"
                     android:textSize="24sp"
-                    android:typeface="serif" />
+                    android:typeface="serif"
+                    android:textAlignment="center"
+                    android:gravity="center"/>
 
                 <!--Button: Intent (cuentaTipoCliente_verDireccion)-->
                 <Button
@@ -198,6 +206,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:fontFamily="sans-serif-condensed-medium"
+                    android:onClick="irPantallaPrincipal"
                     android:text="@string/btn_cuentaTipoCliente_mostrarComercio_regresarPantallaPrincipal"
                     android:textAlignment="center"
                     android:textSize="24sp"

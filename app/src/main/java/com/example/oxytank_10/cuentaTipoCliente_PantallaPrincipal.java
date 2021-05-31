@@ -97,11 +97,21 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
             lv_listaComercios.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    String i = Integer.toString(position);
-                    edt_nombreComercio_ingresado.setText(i);
+
+                    posicionComercio = position + 1; //Guardar la posición del comercio como variable global.
+
+                    irMostrarDatos();//
                 }
             });
         }
+    }
+
+    //Ir a la pantalla mostrar comercio en funcion a la seleccion del cliente.
+    public void irMostrarDatos(){
+        Intent Act_cuentaTipoCliente_PantallaPrincipal = new Intent(this, cuentaTipoCliente_mostrarComercio.class);
+        String IdComercio_String = Integer.toString(posicionComercio);
+        Act_cuentaTipoCliente_PantallaPrincipal.putExtra("comercio_id", IdComercio_String);
+        startActivity(Act_cuentaTipoCliente_PantallaPrincipal);
     }
 
     //Guardar en una lista los datos del id, nombre y servicios de los comercios.
