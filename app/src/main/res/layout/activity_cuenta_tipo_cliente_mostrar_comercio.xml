@@ -184,10 +184,11 @@
                     android:id="@+id/btn_cuentaTipoCliente_mostrarComercio_verDireccion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="80dp"
                     android:layout_marginStart="220dp"
                     android:layout_marginLeft="220dp"
+                    android:layout_marginTop="80dp"
                     android:fontFamily="sans-serif-condensed-medium"
+                    android:onClick="VerDireccion"
                     android:text="@string/btn_cuentaTipoCliente_mostrarComercio_verDireccion"
                     android:textSize="24sp"
                     android:typeface="serif" />

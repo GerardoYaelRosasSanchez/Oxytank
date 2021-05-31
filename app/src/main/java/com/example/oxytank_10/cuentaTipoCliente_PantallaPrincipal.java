@@ -184,7 +184,7 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
                 cont += 1; //Pasar al siguiente ciclo.
             }
 
-            if (existe == true){
+            if (existe){
                 //El comercio existe.
                 Intent Act_cuentaTipoCliente_PantallaPrincipal = new Intent(this, cuentaTipoCliente_mostrarComercio.class);
                 String IdComercio_String = Integer.toString(posicionComercio);

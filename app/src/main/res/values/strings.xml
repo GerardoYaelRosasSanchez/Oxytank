@@ -116,5 +116,6 @@
     <string name="btn_cuentaTipoCliente_mostrarComercio_verDireccion">Ver lugar</string>
     <string name="btn_cuentaTipoCliente_mostrarComercio_regresarPantallaPrincipal">Regresar</string>
     <string name="btn_cuentaTipoCliente_mostrarComercio_registroIncorrecto">Registro incorrecto</string>
+    <string name="title_activity_cuenta_tipo_cliente_ver_direccion">Map</string>
 
 </resources>

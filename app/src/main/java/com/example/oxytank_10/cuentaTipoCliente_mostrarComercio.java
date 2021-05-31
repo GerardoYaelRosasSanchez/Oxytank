@@ -88,4 +88,45 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
 
     }
 
+    //Ver dirección del comercio
+    public void VerDireccion(View view){
+        //Objeto: Administrar la base de datos.
+        DBHelper administrador = new DBHelper(this, "Oxytank_db", null, 1);
+
+        //Abrir Base de Datos
+        SQLiteDatabase BaseDatos = administrador.getWritableDatabase();
+
+        int id_int = Integer.parseInt(comercio_id);
+
+        //Caso: Validar que los campos se encuentren llenos.
+        //Objeto: Seleccionar un comercio.
+        Cursor fila = BaseDatos.rawQuery
+                ("select latitud, longitud from comercios " +
+                        "where idComercio =" + id_int, null);
+
+        //Caso: Se encontro el comercio.
+        if(fila.moveToFirst()){
+
+            //Conseguir la latitud y longitud
+            String latitud = fila.getString(0);
+            String longitud = fila.getString(1);
+
+            fila.close(); //Cerrar el cursor.
+
+            //Cerrar la Base de datos.
+            BaseDatos.close();
+
+            //Pasar a la actividad "cuentaTipoCliente_verDireccion".
+            Intent Act_cuentaTipoCliente_verDireccion = new Intent(this, cuentaTipoCliente_verDireccion.class);
+            Act_cuentaTipoCliente_verDireccion.putExtra("comercio_latitud", latitud); //Pasar la latitud del comercio a la siguiente pantalla.
+            Act_cuentaTipoCliente_verDireccion.putExtra("comercio_longitud", longitud); //Pasar la longitud del comercio a la siguiente pantalla.
+            startActivity(Act_cuentaTipoCliente_verDireccion);
+
+        }
+
+
+
+
+    }
+
 }
