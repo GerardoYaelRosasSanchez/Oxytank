@@ -68,6 +68,7 @@
         android:layout_marginEnd="21dp"
         android:layout_marginRight="21dp"
         android:contentDescription="@string/imgbtn_cuentaTipoCliente_PantallaPrincipal_buscarComercio"
+        android:onClick="BuscarPorNombre"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/edt_cuentaTipoCliente_PantallaPrincipal_solicitarNombre"
         app:layout_constraintTop_toBottomOf="@+id/tv_cuentaTipoCliente_PantallaPrincipal_titulo"

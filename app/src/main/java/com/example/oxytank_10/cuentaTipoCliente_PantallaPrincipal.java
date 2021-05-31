@@ -5,15 +5,18 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -25,6 +28,7 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
 
     //Relación de las variables con el entorno gráfico.
     ListView lv_listaComercios;
+    EditText edt_nombreComercio_ingresado;
 
     //Arreglos que se utilizaran en el caso de que aún no exista ningun comercio registrado.
         //Comercios.
@@ -39,6 +43,12 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
     // Guardar el numero de comercios que contiene la tabla comercios.
     int numComercios = 0;
 
+    //Verificar si existe el comercio.
+    Boolean existe = false;
+
+    //Guardar la posicion del id correspondiente al comercio.
+    int posicionComercio;
+
     //Guardar dar el nombre del comercio en una lista.
     String lista_comercios_nombre[] = new String[100];
     String lista_comercios_venta[] = new String[100];
@@ -52,6 +62,7 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
 
         //Relación de las varaibles con el entorno gráfico.
         lv_listaComercios = findViewById(R.id.lv_cuentaTipoCliente_PantallaPrincipal_mostrarComercios);
+        edt_nombreComercio_ingresado = findViewById(R.id.edt_cuentaTipoCliente_PantallaPrincipal_solicitarNombre);
 
         //Llenar el array "lista_comercios_nombre" con la información de comercio.
         consultarComercio();
@@ -86,13 +97,11 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
             lv_listaComercios.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    //
+                    String i = Integer.toString(position);
+                    edt_nombreComercio_ingresado.setText(i);
                 }
             });
         }
-
-
-
     }
 
     //Guardar en una lista los datos del id, nombre y servicios de los comercios.
@@ -129,6 +138,56 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
 
         //Cerrar la base de datos.
         BaseDatos.close();
+
+    }
+
+    //Buscar comercio.
+    public void BuscarPorNombre(View view){
+
+        int cont = 0; //Se utiliza para recorrer los arreglos y para realizar los ciclos en las funciones.
+
+        //Objeto: Administrar la base de datos.
+        DBHelper administrador = new DBHelper(this, "Oxytank_db", null, 1);
+
+        //Abrir Base de Datos
+        SQLiteDatabase BaseDatos = administrador.getWritableDatabase();
+
+        //Guardar datos ingresados por el usuario.
+        String nombreComercio_ingresado = edt_nombreComercio_ingresado.getText().toString();
+
+        if(edt_nombreComercio_ingresado.getText().toString().isEmpty()){
+            edt_nombreComercio_ingresado.setError("Ingresar Datos");
+
+            //Mensaje de registro fallido.
+            Toast.makeText(this, "Se debe de ingresar el nombre del comercio.", Toast.LENGTH_LONG).show();
+        }
+        else{ ;
+
+            // Recorrer el arreglo con los nombres de los comercios para buscar si existe el comercio ingresado por el cliente.
+            while (cont < numComercios){
+                //Caso: Si existe el nombre de comercio ingresado por el cliente.
+                if (lista_comercios_nombre[cont].equals(nombreComercio_ingresado)){
+                    existe = true; //Comprobar existencia.
+                    posicionComercio = cont; // Guardar su posicion en el arreglo.
+                    cont = numComercios; // Terminar el ciclo.
+                }
+                cont += 1; //Pasar al siguiente ciclo.
+            }
+
+            if (existe == true){
+                //El comercio existe.
+                Toast.makeText(this, "Comercio existente", Toast.LENGTH_LONG).show();
+            }
+            else{
+                //El comercio no existe.
+                Toast.makeText(this, "Comercio no existe", Toast.LENGTH_LONG).show();
+            }
+            //Cerrar la Base de datos.
+            BaseDatos.close();
+
+            //Reiniciar existencia
+            existe = false;
+        }
 
     }
 
