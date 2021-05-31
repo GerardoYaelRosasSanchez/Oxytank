@@ -178,7 +178,7 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
                 //Caso: Si existe el nombre de comercio ingresado por el cliente.
                 if (lista_comercios_nombre[cont].equals(nombreComercio_ingresado)){
                     existe = true; //Comprobar existencia.
-                    posicionComercio = cont; // Guardar su posicion en el arreglo.
+                    posicionComercio = cont + 1; // Guardar su posicion en el arreglo.
                     cont = numComercios; // Terminar el ciclo.
                 }
                 cont += 1; //Pasar al siguiente ciclo.
@@ -186,7 +186,10 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
 
             if (existe == true){
                 //El comercio existe.
-                Toast.makeText(this, "Comercio existente", Toast.LENGTH_LONG).show();
+                Intent Act_cuentaTipoCliente_PantallaPrincipal = new Intent(this, cuentaTipoCliente_mostrarComercio.class);
+                String IdComercio_String = Integer.toString(posicionComercio);
+                Act_cuentaTipoCliente_PantallaPrincipal.putExtra("comercio_id", IdComercio_String);
+                startActivity(Act_cuentaTipoCliente_PantallaPrincipal);
             }
             else{
                 //El comercio no existe.
