@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Oxytank_10">
-        <activity android:name=".cuentaTipoCliente_PantallaPrincipal"></activity>
+        <activity android:name=".cuentaTipoCliente_mostrarComercio"></activity>
+        <activity android:name=".cuentaTipoCliente_PantallaPrincipal" />
         <activity android:name=".registrarCliente_comprobarDatos" />
         <activity android:name=".registrarCliente" />
         <activity android:name=".cuentaTipoComercio_PantallaPrincipal" />

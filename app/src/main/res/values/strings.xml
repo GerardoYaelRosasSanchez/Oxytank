@@ -109,4 +109,12 @@
     <string name="tv_listItems_listaComercios_servicioRefil">Sin servicio</string>
     <string name="tv_listItems_listaComercios_servicioRenta">Sin servicio</string>
 
+    <!--Pantalla: registrarComercio_comprobarDatos-->
+    <string name="tv_cuentaTipoCliente_mostrarComercio_telefonoMensaje">Telefono:</string>
+    <string name="tv_cuentaTipoCliente_mostrarComercio_serviciosMensaje">Servicios:</string>
+    <string name="tv_cuentaTipoCliente_mostrarComercio_direccionMensaje">Dirección</string>
+    <string name="btn_cuentaTipoCliente_mostrarComercio_verDireccion">Ver lugar</string>
+    <string name="btn_cuentaTipoCliente_mostrarComercio_regresarPantallaPrincipal">Regresar</string>
+    <string name="btn_cuentaTipoCliente_mostrarComercio_registroIncorrecto">Registro incorrecto</string>
+
 </resources>

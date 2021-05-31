@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".cuentaTipoCliente_mostrarComercio">
+
+    <!--ScrollBar-->
+    <ScrollView
+        android:layout_width="390dp"
+        android:layout_height="720dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!--LinearLayout-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--Contenido: Título-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="390dp"
+                android:layout_height="100dp">
+
+                <!--Título-->
+                <TextView
+                    android:id="@+id/tv_cuentaTipoCliente_mostrarComercio_titulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:textAllCaps="true"
+                    android:textSize="24sp"
+                    android:typeface="serif" />
+
+            </androidx.cardview.widget.CardView>
+
+            <!--Contenido: Mostrar telefono del comercio.-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="390dp"
+                android:layout_height="150dp">
+
+                <!--TextView: Mostrar telefono-->
+                <TextView
+                    android:id="@+id/tv_cuentaTipoCliente_mostrarComercio_telefonoMensaje"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@string/tv_cuentaTipoCliente_mostrarComercio_telefonoMensaje"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"
+                    android:typeface="serif" />
+
+                <!--TextView: Telefono-->
+                <TextView
+                    android:id="@+id/tv_cuentaTipoCliente_mostrarComercio_telefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="80dp"
+                    android:autofillHints="@string/btn_cuentaTipoCliente_mostrarComercio_registroIncorrecto"
+                    android:ems="10"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="@string/btn_cuentaTipoCliente_mostrarComercio_registroIncorrecto"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:typeface="serif" />
+            </androidx.cardview.widget.CardView>
+
+            <!--Contenido: Servicios del comercio-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="390dp"
+                android:layout_height="170dp">
+
+                <!--TextView: Mostrar Servicios-->
+                <TextView
+                    android:id="@+id/tv_cuentaTipoCliente_mostrarComercio_serviciosMensaje"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@string/tv_cuentaTipoCliente_mostrarComercio_serviciosMensaje"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"
+                    android:typeface="serif"
+                    tools:text="@string/tv_cuentaTipoCliente_mostrarComercio_serviciosMensaje" />
+
+                <!--TextView: Servicios_Venta-->
+                <TextView
+                    android:id="@+id/tv_cuentaTipoCliente_mostrarComercio_serviciosVenta"
+                    android:layout_width="125dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="80dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:padding="20dp"
+                    android:text="@string/ckbx_registrarComercio_comercio_servicio_Venta"
+                    android:textSize="20sp" />
+
+                <!--TextView: Servicios_Renta-->
+                <TextView
+                    android:id="@+id/tv_cuentaTipoCliente_mostrarComercio_serviciosRenta"
+                    android:layout_width="125dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="140dp"
+                    android:layout_marginStart="140dp"
+                    android:layout_marginTop="80dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:padding="20dp"
+                    android:text="@string/ckbx_registrarComercio_comercio_servicio_Renta"
+                    android:textSize="20sp" />
+
+                <!--TextView: Servicios_Refil-->
+                <TextView
+                    android:id="@+id/tv_cuentaTipoCliente_mostrarComercio_serviciosRefil"
+                    android:layout_width="125dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="265dp"
+                    android:layout_marginStart="265dp"
+                    android:layout_marginTop="80dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:padding="20dp"
+                    android:text="@string/ckbx_registrarComercio_comercio_servicio_Refil"
+                    android:textSize="20sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <!--TextView: Dirección del comercio.-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="390dp"
+                android:layout_height="150dp">
+
+                <!--TextView: Mensaje Dirección-->
+                <TextView
+                    android:id="@+id/tv_cuentaTipoCliente_mostrarComercio_direccionMensaje"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@string/tv_cuentaTipoCliente_mostrarComercio_direccionMensaje"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"
+                    android:typeface="serif" />
+
+                <!--TextView: Dirección-->
+                <TextView
+                    android:id="@+id/tv_cuentaTipoCliente_mostrarComercio_direccion"
+                    android:layout_width="195dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="90dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:autofillHints="@string/btn_cuentaTipoCliente_mostrarComercio_registroIncorrecto"
+                    android:ems="10"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="@string/btn_cuentaTipoCliente_mostrarComercio_registroIncorrecto"
+                    android:textSize="24sp"
+                    android:typeface="serif" />
+
+                <!--Button: Intent (cuentaTipoCliente_verDireccion)-->
+                <Button
+                    android:id="@+id/btn_cuentaTipoCliente_mostrarComercio_verDireccion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="80dp"
+                    android:layout_marginStart="220dp"
+                    android:layout_marginLeft="220dp"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@string/btn_cuentaTipoCliente_mostrarComercio_verDireccion"
+                    android:textSize="24sp"
+                    android:typeface="serif" />
+
+            </androidx.cardview.widget.CardView>
+
+            <!--Contenido: Pasar a la actividad "cuentaTipoCliente_PantallaPrincipal"-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="390dp"
+                android:layout_height="100dp">
+
+                <!--Button: Intent (cuentaTipoCliente_PantallaPrincipal)-->
+                <Button
+                    android:id="@+id/btn_cuentaTipoCliente_mostrarComercio_regresarPantallaPrincipal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@string/btn_cuentaTipoCliente_mostrarComercio_regresarPantallaPrincipal"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:typeface="serif" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
