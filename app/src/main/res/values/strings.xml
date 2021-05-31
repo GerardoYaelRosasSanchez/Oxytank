@@ -118,4 +118,13 @@
     <string name="btn_cuentaTipoCliente_mostrarComercio_registroIncorrecto">Registro incorrecto</string>
     <string name="title_activity_cuenta_tipo_cliente_ver_direccion">Map</string>
 
+    <!--Pantalla: registrarCliente-->
+    <string name="tv_cuentaTipoCliente_modificarInformacion_titulo">Actualizar informacion</string>
+    <string name="tv_cuentaTipoCliente_modificarInformacion_nombreMensaje">Nombre de Usuario</string>
+    <string name="tv_cuentaTipoCliente_modificarInformacion_correoMensaje">Correo</string>
+    <string name="tv_cuentaTipoCliente_modificarInformacion_contraseniaMensaje">Contraseña</string>
+    <string name="tv_cuentaTipoCliente_modificarInformacion_verificarContraseniaMensaje">Verificar Contraseña</string>
+    <string name="btn_cuentaTipoCliente_modificarInformacion_actualizarInformacion">Actualizar</string>
+    <string name="edt_cuentaTipoCliente_modificarInformacion_error">Error</string>
+
 </resources>
