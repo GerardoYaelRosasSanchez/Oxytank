@@ -261,9 +261,13 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
 
         if (id == R.id.cuentaTipoCliente_overflow_item_modificarDatos){
             Intent Act_cuentaTipoCliente_modificarinformacion = new Intent(this, cuentaTipoCliente_modificarInformacion.class);
+            //Recibir el ID ingresado por el usuario de "MainActivity"
+            String usuario_id = getIntent().getStringExtra("usuario_id");
+            Act_cuentaTipoCliente_modificarinformacion.putExtra("usuario_id", usuario_id);
             startActivity(Act_cuentaTipoCliente_modificarinformacion);
         }
         else if (id == R.id.cuentaTipoCliente_overflow_item_cerrarSesion){
+
             Intent Act_MainActivity = new Intent(this, MainActivity.class);
             startActivity(Act_MainActivity);
         }
