@@ -186,6 +186,8 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
                 Intent Act_cuentaTipoCliente_PantallaPrincipal = new Intent(this, cuentaTipoCliente_mostrarComercio.class);
                 String IdComercio_String = Integer.toString(posicionComercio);
                 Act_cuentaTipoCliente_PantallaPrincipal.putExtra("comercio_id", IdComercio_String);
+                String usuario_id = getIntent().getStringExtra("usuario_id");
+                Act_cuentaTipoCliente_PantallaPrincipal.putExtra("usuario_id", usuario_id);
                 startActivity(Act_cuentaTipoCliente_PantallaPrincipal);
             }
             else{

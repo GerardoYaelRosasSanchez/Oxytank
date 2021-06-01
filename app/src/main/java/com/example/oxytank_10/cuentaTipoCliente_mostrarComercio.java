@@ -43,6 +43,8 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
     public void irPantallaPrincipal(View view){
 
         Intent Act_cuentaCliente_pantallaPrincipal = new Intent(this, cuentaTipoCliente_PantallaPrincipal.class);
+        String usuario_id = getIntent().getStringExtra("usuario_id");
+        Act_cuentaCliente_pantallaPrincipal.putExtra("usuario_id", usuario_id);
         startActivity(Act_cuentaCliente_pantallaPrincipal);
 
     }
@@ -120,12 +122,11 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
             Intent Act_cuentaTipoCliente_verDireccion = new Intent(this, cuentaTipoCliente_verDireccion.class);
             Act_cuentaTipoCliente_verDireccion.putExtra("comercio_latitud", latitud); //Pasar la latitud del comercio a la siguiente pantalla.
             Act_cuentaTipoCliente_verDireccion.putExtra("comercio_longitud", longitud); //Pasar la longitud del comercio a la siguiente pantalla.
+            String usuario_id = getIntent().getStringExtra("usuario_id");
+            Act_cuentaTipoCliente_verDireccion.putExtra("usuario_id", usuario_id);
             startActivity(Act_cuentaTipoCliente_verDireccion);
 
         }
-
-
-
 
     }
 
