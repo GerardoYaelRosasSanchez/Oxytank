@@ -1,14 +1,15 @@
 package com.example.oxytank_10;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.Placeholder;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -184,6 +185,31 @@ public class cuentaTipoComercio_PantallaPrincipal extends AppCompatActivity {
             BaseDatos.close();
 
             Toast.makeText(this, "Actualizacion exitosa.", Toast.LENGTH_LONG).show();
+    }
+
+    //Ocultar y mostrar el menu overflow
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.overflow_cuentacomercio, menu);
+        return true;
+    }
+
+    //Opciones del menu overflow.
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+
+        if (id == R.id.cuentaTipoComercio_overflow_item_modificarDatos){
+            Intent Act_cuentaTipoComercio_modificarinformacion = new Intent(this, cuentaTipoComercio_modificarInformacion.class);
+            //Recibir el ID ingresado por el usuario de "MainActivity"
+            String IdComercio_String = getIntent().getStringExtra("comercio_id");
+            Act_cuentaTipoComercio_modificarinformacion.putExtra("comercio_id", IdComercio_String);
+            startActivity(Act_cuentaTipoComercio_modificarinformacion);
+        }
+        else if (id == R.id.cuentaTipoComercio_overflow_item_cerrarSesion){
+
+            Intent Act_MainActivity = new Intent(this, MainActivity.class);
+            startActivity(Act_MainActivity);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

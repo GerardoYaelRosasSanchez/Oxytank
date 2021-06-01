@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--Modificar datos del comercio-->
+    <item
+        android:id="@+id/cuentaTipoComercio_overflow_item_modificarDatos"
+        android:title="@string/cuentaTipoComercio_overflow_item_modificarDatos" />
+    <!--Cerrar sesion-->
+    <item
+        android:id="@+id/cuentaTipoComercio_overflow_item_cerrarSesion"
+        android:title="@string/cuentaTipoComercio_oveflow_item_cerrarSesion" />
+
+</menu>

@@ -142,4 +142,8 @@
     <string name="cuentaTipoCliente_overflow_item_modificarDatos">Modificar informacion</string>
     <string name="cuentaTipoCliente_oveflow_item_cerrarSesion">Cerrar Sesion</string>
 
+    <!--Cuenta de tipo comercio: Menu Overflow.-->
+    <string name="cuentaTipoComercio_overflow_item_modificarDatos">Modificar informacion</string>
+    <string name="cuentaTipoComercio_oveflow_item_cerrarSesion">Cerrar Sesion</string>
+
 </resources>
