@@ -94,8 +94,95 @@ public class cuentaTipoComercio_modificarInformacion extends AppCompatActivity {
 
         }
 
+        //Cerrar el cursor.
+        fila_usuario.close();
+
         //Cerrar la base de datos.
         BaseDatos.close();
+
+    }
+
+    //Ir a la pantalla principal de la cuenta de tipo comercio.
+    public void cuentaTipoComercio_modificarInformacion_modificarDatos(View view){
+
+        //Agregar del usuario en la base de datos.
+        modificarDatosComercioBD();
+
+        //Pasar a la actividad "cuentaTipoComercio_PantallaPrincipal".
+        if(cumpleRequisitos){
+            //Pasar a la actividad "cuentaTipoComercio_PantallaPrincipal".
+            Intent Act_cuentaTipoComercio_PantallaPrincipal = new Intent(this, cuentaTipoComercio_PantallaPrincipal.class);
+            String IdComercio_String = getIntent().getStringExtra("comercio_id");
+            Act_cuentaTipoComercio_PantallaPrincipal.putExtra("comercio_id", IdComercio_String);
+            startActivity(Act_cuentaTipoComercio_PantallaPrincipal);
+        }
+
+    }
+
+    // Modificar los datos del comercio en la base de datos.
+    public void modificarDatosComercioBD(){
+
+        //Objeto: Administrar la base de datos.
+        DBHelper admin = new DBHelper(this, "Oxytank_db", null, 1);
+
+        // Abrir la base de datos en modo lectura y escritura.
+        SQLiteDatabase BaseDatos = admin.getWritableDatabase();
+
+        // Guardar la información ingresada por el usuario.
+        String nombreComercio = edt_nombreComercio.getText().toString();
+        String telefono = edt_telefono.getText().toString();
+        String nombreUsuario = edt_nombreUsuario.getText().toString();
+        String correo = edt_correo.getText().toString();
+        String contrasenia = edt_contrasenia.getText().toString();
+        String verificarContrasenia = edt_verificarContrasenia.getText().toString();
+
+        //Verificar que el usuario haya ingresado datos en los campos.
+        if(!nombreUsuario.isEmpty() && !correo.isEmpty() && !contrasenia.isEmpty() && !verificarContrasenia.isEmpty() &&
+                !nombreComercio.isEmpty() && !telefono.isEmpty()){
+
+            // Comprobar que la contrasenia sea la misma.
+            if (contrasenia.equals(verificarContrasenia)){
+
+                //Objeto: Guardar las opciones ingresadas por el usuario.
+                ContentValues registro_comercio = new ContentValues();
+                ContentValues registro_usuario = new ContentValues();
+
+                //Guardar los datos en el objeto "registro_usuario".
+                registro_usuario.put("nombreUsuario", nombreUsuario);
+                registro_usuario.put("correo", correo);
+                registro_usuario.put("contrasenia", contrasenia);
+                //Guardar los datos en el objeto "registro_comercio".
+                registro_comercio.put("nombreComercio", nombreComercio);
+                registro_comercio.put("telefono", telefono);
+
+                //Modificar los valores dentro de la tabla "usuarios".
+                BaseDatos.update("usuarios", registro_usuario, "idUsuario=" + int_idUsuario, null);
+
+                //Recibir el ID correspondiente al comercio.
+                String comercio_id = getIntent().getStringExtra("comercio_id");
+                int id_comercio = Integer.parseInt(comercio_id);
+
+                //Modificar los valores dentro de la tabla "comercios".
+                BaseDatos.update("comercios", registro_comercio, "idComercio=" + id_comercio, null);
+
+                //Cerrar la Base de datos.
+                BaseDatos.close();
+
+                Toast.makeText(this, "Modificacion exitosa.", Toast.LENGTH_LONG).show();
+
+                //Permitir pasar a la siguiente actividad.
+                cumpleRequisitos = true;
+
+            }
+            //Solicitar que el usuario revise las contraseñas.
+            else{
+                Toast.makeText(this, "Las contraseñas tiene que ser iguales.", Toast.LENGTH_LONG).show();
+            }
+        }
+        //Solicitar al usuario que llene todos los campos.
+        else{
+            Toast.makeText(this, "Debes de llenar todos los campos", Toast.LENGTH_LONG).show();
+        }
 
     }
 
