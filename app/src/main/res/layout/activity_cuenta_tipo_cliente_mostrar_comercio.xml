@@ -195,6 +195,53 @@
 
             </androidx.cardview.widget.CardView>
 
+            <!--TextView: Valoración del comercio.-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="390dp"
+                android:layout_height="240dp">
+
+                <!--TextView: Mensaje valoración-->
+                <TextView
+                    android:id="@+id/tv_cuentaTipoCliente_mostrarComercio_valoracionMensaje"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@string/tv_cuentaTipoCliente_mostrarComercio_valoracionMensaje"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"
+                    android:typeface="serif" />
+
+                <!--RatingBar: Valoración-->
+                <RatingBar
+                    android:id="@+id/ratbr_cuentaTipoCliente_mostrarComercio_valoracion"
+                    android:layout_width="245dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="80dp"
+                    android:gravity="center"
+                    android:numStars="5"
+                    android:rating="0"
+                    android:stepSize="0.5"
+                    android:isIndicator="false"
+                    android:layout_gravity="center_horizontal"/>
+
+                <!--Button: Intent (cuentaTipoCliente_Valorar)-->
+                <Button
+                    android:id="@+id/btn_cuentaTipoCliente_mostrarComercio_valorar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="160dp"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:onClick="VerDireccion"
+                    android:text="@string/btn_cuentaTipoCliente_mostrarComercio_valorar"
+                    android:textSize="24sp"
+                    android:typeface="serif"
+                    android:layout_gravity="center_horizontal"/>
+
+            </androidx.cardview.widget.CardView>
+
             <!--Contenido: Pasar a la actividad "cuentaTipoCliente_PantallaPrincipal"-->
             <androidx.cardview.widget.CardView
                 android:layout_width="390dp"

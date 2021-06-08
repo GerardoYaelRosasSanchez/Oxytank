@@ -125,6 +125,8 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
             String usuario_id = getIntent().getStringExtra("usuario_id");
             Act_cuentaTipoCliente_verDireccion.putExtra("usuario_id", usuario_id);
             startActivity(Act_cuentaTipoCliente_verDireccion);
+            
+            
 
         }
 
