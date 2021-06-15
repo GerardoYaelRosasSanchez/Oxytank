@@ -232,13 +232,13 @@
                     android:id="@+id/btn_cuentaTipoCliente_mostrarComercio_valorar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginTop="160dp"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:onClick="VerDireccion"
+                    android:onClick="valorarComercio"
                     android:text="@string/btn_cuentaTipoCliente_mostrarComercio_valorar"
                     android:textSize="24sp"
-                    android:typeface="serif"
-                    android:layout_gravity="center_horizontal"/>
+                    android:typeface="serif" />
 
             </androidx.cardview.widget.CardView>
 

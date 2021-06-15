@@ -2,6 +2,7 @@ package com.example.oxytank_10;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -47,7 +48,7 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
 
         mostrarDatos(); // Mostrar datos del comercio.
 
-        valorarComercio(); //Valorar comercio.
+        valoracionRatingBar(); //Valorar comercio.
 
     }
 
@@ -104,8 +105,47 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
 
     }
 
+    // Guardar la valoración del ratingbar en una variable.
+    public void valoracionRatingBar(){
+
+        //Almacenar la valoracion del usuario en una variable.
+        valoracion.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+
+                //Convertir la valoración del usuario en un valor entero.
+                valoracion_usuario_int = (int) rating;
+
+                // Almacenar la valoración que dio el usuario al comercio utilizando la rating bar.
+                switch (valoracion_usuario_int){
+
+                    case 1:
+                        valoracion_usuario = 1;
+                        break;
+
+                    case 2:
+                        valoracion_usuario = 2;
+                        break;
+
+                    case 3:
+                        valoracion_usuario = 3;
+                        break;
+
+                    case 4:
+                        valoracion_usuario = 4;
+                        break;
+
+                    case 5:
+                        valoracion_usuario = 5;
+                        break;
+
+                }
+            }
+        });
+    }
+
     //Guarda la valoración del comercio ingresada por el usuario en la base de datos.
-    public void valorarComercio(){
+    public void valorarComercio(View view){
 
         //Objeto: Administrar la base de datos.
         DBHelper admin = new DBHelper(this, "Oxytank_db", null, 1);
@@ -114,7 +154,7 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
         SQLiteDatabase BaseDatos = admin.getWritableDatabase();
 
         //Contar cuantas filas tiene la tabla para crear el id.
-        String contarValoraciones_Consulta = "SELECT nombreComercio FROM comercios"; // Guardar el texto que corresponde a la consulta.
+        String contarValoraciones_Consulta = "SELECT valoracionUsuario FROM valoraciones"; // Guardar el texto que corresponde a la consulta.
         Cursor cursor = BaseDatos.rawQuery(contarValoraciones_Consulta, null); //Realizar la consulta en la base de datos.
         numValoraciones = cursor.getCount(); // Guardar el resultado de la consulta en una variable.
         cursor.close();
@@ -130,48 +170,24 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
         usuario_id = getIntent().getStringExtra("usuario_id");
         int id_usuario = Integer.parseInt(usuario_id); //Convertirlo a entero para usarlo en la base de datos.
 
-        //Almacenar la valoracion del usuario en una variable.
-        valoracion.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+        //Objeto: Guardar las opciones ingresadas por el usuario.
+        ContentValues registro = new ContentValues();
 
-                //Convertir la valoración del usuario en un valor entero.
-                valoracion_usuario_int = (int) rating;
-                String mensaje = null;
+        // Guardar el id de la valoración, el id del comercio que fue valorado y el id del usuario que valoro el comercio.
+        registro.put("idValoracion", numValoraciones);
+        registro.put("valoracionUsuario", valoracion_usuario);
+        registro.put("idComercio", id_comercio);
+        registro.put("idUsuario", id_usuario);
 
-                // Almacenar la valoración que dio el usuario al comercio utilizando la rating bar.
-                switch (valoracion_usuario_int){
+        //Insertar los valores dentro de la tabla "usuarios".
+        BaseDatos.insert("valoraciones", null, registro);
 
-                    case 1:
-                        mensaje = "Uno";
-                        break;
-
-                    case 2:
-                        mensaje = "Dos";
-                        break;
-
-                    case 3:
-                        mensaje = "Tres";
-                        break;
-
-                    case 4:
-                        mensaje = "Cuatro";
-                        break;
-
-                    case 5:
-                        mensaje = "Cinco";
-                        break;
-
-                }
-
-                //Toast.makeText(cuentaTipoCliente_mostrarComercio.this, mensaje, Toast.LENGTH_LONG).show();
-
-            }
-        });
 
         //Cerrar la Base de datos.
         BaseDatos.close();
 
+        String algo = Integer.toString(valoracion_usuario);
+        Toast.makeText(this, algo, Toast.LENGTH_LONG).show();
     }
 
     //Ver dirección del comercio
