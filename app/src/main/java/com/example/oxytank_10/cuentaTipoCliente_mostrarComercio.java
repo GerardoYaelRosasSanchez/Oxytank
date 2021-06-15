@@ -7,16 +7,23 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
 
     //Relación con el entorno grafico.
     TextView nombreComercio, telefono, direccion;
     TextView servicio_venta, servicio_renta, servicio_refil;
+    RatingBar valoracion;
 
     //Guarda el id del comercio de la pantalla anterior.
     String comercio_id;
+
+    //Guardar la valoración ingresada por el usuario.
+    float valoracion_usuario;
+    int valoracion_usuario_int;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +37,48 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
         servicio_venta = findViewById(R.id.tv_cuentaTipoCliente_mostrarComercio_serviciosVenta);
         servicio_renta = findViewById(R.id.tv_cuentaTipoCliente_mostrarComercio_serviciosRenta);
         servicio_refil = findViewById(R.id.tv_cuentaTipoCliente_mostrarComercio_serviciosRefil);
+        valoracion = findViewById(R.id.ratbr_cuentaTipoCliente_mostrarComercio_valoracion);
 
         // Mostrar los datos.
         mostrarDatos();
+
+        //Almacenar la valoracion del usuario en una variable.
+        valoracion.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+
+                //Convertir la valoración del usuario en un valor entero.
+                valoracion_usuario_int = (int) rating;
+                String mensaje = null;
+
+                switch (valoracion_usuario_int){
+
+                    case 1:
+                        mensaje = "Uno";
+                        break;
+
+                    case 2:
+                        mensaje = "Dos";
+                        break;
+
+                    case 3:
+                        mensaje = "Tres";
+                        break;
+
+                    case 4:
+                        mensaje = "Cuatro";
+                        break;
+
+                    case 5:
+                        mensaje = "Cinco";
+                        break;
+
+                }
+
+                Toast.makeText(cuentaTipoCliente_mostrarComercio.this, mensaje, Toast.LENGTH_LONG).show();
+
+            }
+        });
 
     }
 
@@ -125,11 +171,11 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
             String usuario_id = getIntent().getStringExtra("usuario_id");
             Act_cuentaTipoCliente_verDireccion.putExtra("usuario_id", usuario_id);
             startActivity(Act_cuentaTipoCliente_verDireccion);
-            
-            
 
         }
 
     }
+
+
 
 }
