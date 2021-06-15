@@ -31,6 +31,12 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
     //Guardar la valoración ingresada por el usuario.
     int valoracion_usuario;
     int valoracion_usuario_int;
+    float valoracion_comercio = 0;
+
+    //Lista para guardar los datos referentes a las valoraciones del comercio
+    int lista_valoraciones_valoracion[];
+    int lista_valoraciones_idComercios[];
+    int lista_valoraciones_idUsuarios[];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +51,16 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
         servicio_renta = findViewById(R.id.tv_cuentaTipoCliente_mostrarComercio_serviciosRenta);
         servicio_refil = findViewById(R.id.tv_cuentaTipoCliente_mostrarComercio_serviciosRefil);
         valoracion = findViewById(R.id.ratbr_cuentaTipoCliente_mostrarComercio_valoracion);
+
+        guardarCanValoraciones(); // Guarda el numero de valoraciones registradas.
+
+        //Guarga el tamaño de las valoraciones.
+        lista_valoraciones_valoracion = new int[numValoraciones];
+        lista_valoraciones_idComercios = new int[numValoraciones];
+        lista_valoraciones_idUsuarios = new int[numValoraciones];
+
+        //Llenar el array "lista_comercios_nombre" con la información de comercio.
+        guardarValoracionesenLista();
 
         mostrarDatos(); // Mostrar datos del comercio.
 
@@ -64,9 +80,65 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
 
     }
 
+    // Guardar la cantidad de valoraciones que hay.
+    public void guardarCanValoraciones(){
+        //Objeto: Administrar la base de datos.
+        DBHelper administrador = new DBHelper(this, "Oxytank_db", null, 1);
+
+        //Abrir Base de Datos
+        SQLiteDatabase BaseDatos = administrador.getWritableDatabase();
+
+        //Buscar todos los datos en las valoraciones de la base de datos.
+        Cursor cursor = BaseDatos.rawQuery("select * from valoraciones", null);
+
+        numValoraciones = cursor.getCount(); //Guardar cuantas caloraciones estan registradas.
+
+        //Cerrar el cursor.
+        cursor.close();
+
+        //Cerrar la base de datos.
+        BaseDatos.close();
+
+    }
+
+    //Guardar en una lista los datos del la valoracion, el id del comercio y usuario correspondiente a esa valoración.
+    public void guardarValoracionesenLista(){
+
+        int cont = 0; //Se utiliza para recorrer los arreglos y para realizar los ciclos en las funciones.
+
+        //Objeto: Administrar la base de datos.
+        DBHelper administrador = new DBHelper(this, "Oxytank_db", null, 1);
+
+        //Abrir Base de Datos
+        SQLiteDatabase BaseDatos = administrador.getReadableDatabase();
+
+        //Buscar todos los nombres de la base de datos.
+        Cursor cursor = BaseDatos.rawQuery("select * from valoraciones", null);
+
+        //Caso: Se encontraron valoraciones.
+        if(cursor.moveToFirst()){
+            //Llenar el arreglo valoraciones.
+            do{
+                lista_valoraciones_valoracion[cont] = cursor.getInt(1); //Guardar la valoración del comercio.
+                lista_valoraciones_idComercios[cont] = cursor.getInt(2); //Guardar el id del comercio valorado.
+                lista_valoraciones_idUsuarios[cont] = cursor.getInt(3); //Guardar el id del usuario valorado.
+                cont += 1; //Pasar a la siguiente posición del arreglo.
+
+            }while (cursor.moveToNext()); //Pasar al siguiente elemento del cursos.
+        }
+
+        //Cerrar el cursor.
+        cursor.close();
+
+        //Cerrar la base de datos.
+        BaseDatos.close();
+
+    }
+
     //Mostrar los datos corres.
     public void mostrarDatos(){
 
+        int cant = 0;
 
         //Objeto: Administrar la base de datos.
         DBHelper administrador = new DBHelper(this, "Oxytank_db", null, 1);
@@ -78,11 +150,26 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
         comercio_id = getIntent().getStringExtra("comercio_id");
         int id_comercio = Integer.parseInt(comercio_id); //Convertirlo a entero para usarlo en la base de datos.
 
+        //Recibir el ID ingresado correspondiente al comercio del usuario en el registro.
+        usuario_id = getIntent().getStringExtra("usuario_id");
+        int id_usuario = Integer.parseInt(usuario_id); //Convertirlo a entero para usarlo en la base de datos.
+
         //Caso: Validar que los campos se encuentren llenos.
         //Objeto: Seleccionar un comercio.
         Cursor fila_comercio = BaseDatos.rawQuery
                 ("select nombreComercio, telefono, direccion, renta, venta, refil from comercios " +
                         "where idComercio =" + id_comercio, null);
+
+        //Guardar los datos de los comercios en el array lv para mostrarlos en el listView.
+        for (int i = 0; i < numValoraciones; i++){
+            if (lista_valoraciones_idComercios[i] == id_comercio && lista_valoraciones_idUsuarios[i] == id_usuario){
+                valoracion_comercio += lista_valoraciones_valoracion[i];  //Guardar el nombre del comercio.
+                cant += 1;
+            }
+
+        }
+
+        valoracion_comercio = valoracion_comercio/cant;
 
         //Caso: Se encontro el comercio.
         if(fila_comercio.moveToFirst()){
@@ -94,6 +181,7 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
             servicio_renta.setText("Renta:\n" +fila_comercio.getString(3));
             servicio_venta.setText("Venta:\n" +fila_comercio.getString(4));
             servicio_refil.setText("Refil:\n" + fila_comercio.getString(5));
+            valoracion.setRating(valoracion_comercio);
 
         }
 
@@ -102,6 +190,46 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
 
         //Cerrar la Base de datos.
         BaseDatos.close();
+
+    }
+
+    //Ver dirección del comercio
+    public void VerDireccion(View view){
+        //Objeto: Administrar la base de datos.
+        DBHelper administrador = new DBHelper(this, "Oxytank_db", null, 1);
+
+        //Abrir Base de Datos
+        SQLiteDatabase BaseDatos = administrador.getWritableDatabase();
+
+        int id_int = Integer.parseInt(comercio_id);
+
+        //Caso: Validar que los campos se encuentren llenos.
+        //Objeto: Seleccionar un comercio.
+        Cursor fila = BaseDatos.rawQuery
+                ("select latitud, longitud from comercios " +
+                        "where idComercio =" + id_int, null);
+
+        //Caso: Se encontro el comercio.
+        if(fila.moveToFirst()){
+
+            //Conseguir la latitud y longitud
+            String latitud = fila.getString(0);
+            String longitud = fila.getString(1);
+
+            fila.close(); //Cerrar el cursor.
+
+            //Cerrar la Base de datos.
+            BaseDatos.close();
+
+            //Pasar a la actividad "cuentaTipoCliente_verDireccion".
+            Intent Act_cuentaTipoCliente_verDireccion = new Intent(this, cuentaTipoCliente_verDireccion.class);
+            Act_cuentaTipoCliente_verDireccion.putExtra("comercio_latitud", latitud); //Pasar la latitud del comercio a la siguiente pantalla.
+            Act_cuentaTipoCliente_verDireccion.putExtra("comercio_longitud", longitud); //Pasar la longitud del comercio a la siguiente pantalla.
+            String usuario_id = getIntent().getStringExtra("usuario_id");
+            Act_cuentaTipoCliente_verDireccion.putExtra("usuario_id", usuario_id);
+            startActivity(Act_cuentaTipoCliente_verDireccion);
+
+        }
 
     }
 
@@ -190,45 +318,7 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
         Toast.makeText(this, algo, Toast.LENGTH_LONG).show();
     }
 
-    //Ver dirección del comercio
-    public void VerDireccion(View view){
-        //Objeto: Administrar la base de datos.
-        DBHelper administrador = new DBHelper(this, "Oxytank_db", null, 1);
 
-        //Abrir Base de Datos
-        SQLiteDatabase BaseDatos = administrador.getWritableDatabase();
-
-        int id_int = Integer.parseInt(comercio_id);
-
-        //Caso: Validar que los campos se encuentren llenos.
-        //Objeto: Seleccionar un comercio.
-        Cursor fila = BaseDatos.rawQuery
-                ("select latitud, longitud from comercios " +
-                        "where idComercio =" + id_int, null);
-
-        //Caso: Se encontro el comercio.
-        if(fila.moveToFirst()){
-
-            //Conseguir la latitud y longitud
-            String latitud = fila.getString(0);
-            String longitud = fila.getString(1);
-
-            fila.close(); //Cerrar el cursor.
-
-            //Cerrar la Base de datos.
-            BaseDatos.close();
-
-            //Pasar a la actividad "cuentaTipoCliente_verDireccion".
-            Intent Act_cuentaTipoCliente_verDireccion = new Intent(this, cuentaTipoCliente_verDireccion.class);
-            Act_cuentaTipoCliente_verDireccion.putExtra("comercio_latitud", latitud); //Pasar la latitud del comercio a la siguiente pantalla.
-            Act_cuentaTipoCliente_verDireccion.putExtra("comercio_longitud", longitud); //Pasar la longitud del comercio a la siguiente pantalla.
-            String usuario_id = getIntent().getStringExtra("usuario_id");
-            Act_cuentaTipoCliente_verDireccion.putExtra("usuario_id", usuario_id);
-            startActivity(Act_cuentaTipoCliente_verDireccion);
-
-        }
-
-    }
 
 
 
