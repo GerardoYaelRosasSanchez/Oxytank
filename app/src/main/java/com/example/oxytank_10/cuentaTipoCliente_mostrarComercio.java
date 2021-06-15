@@ -21,8 +21,14 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
     //Guarda el id del comercio de la pantalla anterior.
     String comercio_id;
 
+    //Guardar el id del usuario que esta consultando el comercio.
+    String usuario_id;
+
+    // Guardar el ID correspondiente al la valoración.
+    int numValoraciones;
+
     //Guardar la valoración ingresada por el usuario.
-    float valoracion_usuario;
+    int valoracion_usuario;
     int valoracion_usuario_int;
 
     @Override
@@ -39,51 +45,13 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
         servicio_refil = findViewById(R.id.tv_cuentaTipoCliente_mostrarComercio_serviciosRefil);
         valoracion = findViewById(R.id.ratbr_cuentaTipoCliente_mostrarComercio_valoracion);
 
-        // Mostrar los datos.
-        mostrarDatos();
+        mostrarDatos(); // Mostrar datos del comercio.
 
-        //Almacenar la valoracion del usuario en una variable.
-        valoracion.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-
-                //Convertir la valoración del usuario en un valor entero.
-                valoracion_usuario_int = (int) rating;
-                String mensaje = null;
-
-                switch (valoracion_usuario_int){
-
-                    case 1:
-                        mensaje = "Uno";
-                        break;
-
-                    case 2:
-                        mensaje = "Dos";
-                        break;
-
-                    case 3:
-                        mensaje = "Tres";
-                        break;
-
-                    case 4:
-                        mensaje = "Cuatro";
-                        break;
-
-                    case 5:
-                        mensaje = "Cinco";
-                        break;
-
-                }
-
-                Toast.makeText(cuentaTipoCliente_mostrarComercio.this, mensaje, Toast.LENGTH_LONG).show();
-
-            }
-        });
+        valorarComercio(); //Valorar comercio.
 
     }
 
     //Métodos.
-
 
     //Ir a la pantalla principal de la cuenta de tipo comercio.
     public void irPantallaPrincipal(View view){
@@ -95,7 +63,7 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
 
     }
 
-    //Comprobar si los datos ingresados por el usuario de tipo comercio son correctos.
+    //Mostrar los datos corres.
     public void mostrarDatos(){
 
 
@@ -130,6 +98,76 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
 
         //Cerrar el cursor.
         fila_comercio.close();
+
+        //Cerrar la Base de datos.
+        BaseDatos.close();
+
+    }
+
+    //Guarda la valoración del comercio ingresada por el usuario en la base de datos.
+    public void valorarComercio(){
+
+        //Objeto: Administrar la base de datos.
+        DBHelper admin = new DBHelper(this, "Oxytank_db", null, 1);
+
+        // Abrir la base de datos en modo lectura y escritura.
+        SQLiteDatabase BaseDatos = admin.getWritableDatabase();
+
+        //Contar cuantas filas tiene la tabla para crear el id.
+        String contarValoraciones_Consulta = "SELECT nombreComercio FROM comercios"; // Guardar el texto que corresponde a la consulta.
+        Cursor cursor = BaseDatos.rawQuery(contarValoraciones_Consulta, null); //Realizar la consulta en la base de datos.
+        numValoraciones = cursor.getCount(); // Guardar el resultado de la consulta en una variable.
+        cursor.close();
+
+        // En base al numero de valoraciones, crear el ID de la valoracion.
+        numValoraciones += 1;
+
+        //Recibir el ID ingresado correspondiente al comercio del usuario en el registro.
+        comercio_id = getIntent().getStringExtra("comercio_id");
+        int id_comercio = Integer.parseInt(comercio_id); //Convertirlo a entero para usarlo en la base de datos.
+
+        //Recibir el ID del usuario que esta realizando la valoración.
+        usuario_id = getIntent().getStringExtra("usuario_id");
+        int id_usuario = Integer.parseInt(usuario_id); //Convertirlo a entero para usarlo en la base de datos.
+
+        //Almacenar la valoracion del usuario en una variable.
+        valoracion.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+
+                //Convertir la valoración del usuario en un valor entero.
+                valoracion_usuario_int = (int) rating;
+                String mensaje = null;
+
+                // Almacenar la valoración que dio el usuario al comercio utilizando la rating bar.
+                switch (valoracion_usuario_int){
+
+                    case 1:
+                        mensaje = "Uno";
+                        break;
+
+                    case 2:
+                        mensaje = "Dos";
+                        break;
+
+                    case 3:
+                        mensaje = "Tres";
+                        break;
+
+                    case 4:
+                        mensaje = "Cuatro";
+                        break;
+
+                    case 5:
+                        mensaje = "Cinco";
+                        break;
+
+                }
+
+                //Toast.makeText(cuentaTipoCliente_mostrarComercio.this, mensaje, Toast.LENGTH_LONG).show();
+
+            }
+        });
 
         //Cerrar la Base de datos.
         BaseDatos.close();

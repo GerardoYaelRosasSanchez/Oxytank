@@ -28,6 +28,9 @@ public class DBHelper extends SQLiteOpenHelper {
                 "renta text, venta text, refil text," +
                 "idUsuario int)");
 
+        //Crear la tabla valoraciones.
+        db.execSQL("create table valoraciones(idValoracion primary key, valoracionUsuario int,  idComercio int, idUsuario int)");
+
     }
 
     @Override

@@ -46,6 +46,9 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
     //Guardar la posicion del id correspondiente al comercio.
     int posicionComercio;
 
+    //Guardar el Id del usuario.
+    String usuario_id;
+
     //Guardar dar el nombre del comercio en una lista.
     String lista_comercios_nombre[] = new String[100];
     String lista_comercios_venta[] = new String[100];
@@ -60,6 +63,9 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
         //Relación de las varaibles con el entorno gráfico.
         lv_listaComercios = findViewById(R.id.lv_cuentaTipoCliente_PantallaPrincipal_mostrarComercios);
         edt_nombreComercio_ingresado = findViewById(R.id.edt_cuentaTipoCliente_PantallaPrincipal_solicitarNombre);
+
+        // Guardar el id del usuario.
+        usuario_id = getIntent().getStringExtra("usuario_id");
 
         //Llenar el array "lista_comercios_nombre" con la información de comercio.
         consultarComercio();
@@ -108,6 +114,7 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
         Intent Act_cuentaTipoCliente_PantallaPrincipal = new Intent(this, cuentaTipoCliente_mostrarComercio.class);
         String IdComercio_String = Integer.toString(posicionComercio);
         Act_cuentaTipoCliente_PantallaPrincipal.putExtra("comercio_id", IdComercio_String);
+        Act_cuentaTipoCliente_PantallaPrincipal.putExtra("usuario_id", usuario_id);
         startActivity(Act_cuentaTipoCliente_PantallaPrincipal);
     }
 
@@ -186,7 +193,6 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
                 Intent Act_cuentaTipoCliente_PantallaPrincipal = new Intent(this, cuentaTipoCliente_mostrarComercio.class);
                 String IdComercio_String = Integer.toString(posicionComercio);
                 Act_cuentaTipoCliente_PantallaPrincipal.putExtra("comercio_id", IdComercio_String);
-                String usuario_id = getIntent().getStringExtra("usuario_id");
                 Act_cuentaTipoCliente_PantallaPrincipal.putExtra("usuario_id", usuario_id);
                 startActivity(Act_cuentaTipoCliente_PantallaPrincipal);
             }
@@ -263,8 +269,6 @@ public class cuentaTipoCliente_PantallaPrincipal extends AppCompatActivity {
 
         if (id == R.id.cuentaTipoCliente_overflow_item_modificarDatos){
             Intent Act_cuentaTipoCliente_modificarinformacion = new Intent(this, cuentaTipoCliente_modificarInformacion.class);
-            //Recibir el ID ingresado por el usuario de "MainActivity"
-            String usuario_id = getIntent().getStringExtra("usuario_id");
             Act_cuentaTipoCliente_modificarinformacion.putExtra("usuario_id", usuario_id);
             startActivity(Act_cuentaTipoCliente_modificarinformacion);
         }
