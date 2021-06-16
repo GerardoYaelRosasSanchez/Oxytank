@@ -7,10 +7,16 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.DragAndDropPermissions;
 import android.view.View;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.sql.Time;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
 
@@ -37,6 +43,17 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
     int lista_valoraciones_valoracion[];
     int lista_valoraciones_idComercios[];
     int lista_valoraciones_idUsuarios[];
+
+    // Objeto para administrar la fecha.
+    Calendar calendario = Calendar.getInstance(TimeZone.getDefault());
+    int dia = calendario.get(calendario.DATE);
+    int mes = calendario.get(calendario.MONTH);
+    int anio = calendario.get(calendario.YEAR);
+
+    // Convertir los datos de la fecha actual en String para poder compararlos.
+    String dia_string = Integer.toString(dia);
+    String mes_string = Integer.toString(mes);
+    String anio_string = Integer.toString(anio);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -278,6 +295,12 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
     //Guarda la valoración del comercio ingresada por el usuario en la base de datos.
     public void valorarComercio(View view){
 
+        Toast.makeText(this, dia_string, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, mes_string, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, anio_string, Toast.LENGTH_LONG).show();
+
+        /*
+
         //Objeto: Administrar la base de datos.
         DBHelper admin = new DBHelper(this, "Oxytank_db", null, 1);
 
@@ -319,6 +342,8 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
 
         //String algo = Integer.toString(valoracion_usuario);
         //Toast.makeText(this, algo, Toast.LENGTH_LONG).show();
+
+         */
     }
 
 
