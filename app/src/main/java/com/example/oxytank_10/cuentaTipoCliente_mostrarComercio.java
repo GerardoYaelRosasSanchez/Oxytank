@@ -29,9 +29,9 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
     int numValoraciones;
 
     //Guardar la valoración ingresada por el usuario.
-    int valoracion_usuario;
-    int valoracion_usuario_int;
-    float valoracion_comercio = 0;
+    int valoracion_usuario; // Guarda la valoración que se agregara en la base de datos.
+    int valoracion_usuario_int; // Guarda la valoración seleccionada en la rating bar.
+    float valoracion_comercio = 0; // Gurda la valoración del comercio de la base de datos por promedio.
 
     //Lista para guardar los datos referentes a las valoraciones del comercio
     int lista_valoraciones_valoracion[];
@@ -54,7 +54,7 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
 
         guardarCanValoraciones(); // Guarda el numero de valoraciones registradas.
 
-        //Guarga el tamaño de las valoraciones.
+        //Le da a las listas el tamaño en base a las valoraciones.
         lista_valoraciones_valoracion = new int[numValoraciones];
         lista_valoraciones_idComercios = new int[numValoraciones];
         lista_valoraciones_idUsuarios = new int[numValoraciones];
@@ -82,6 +82,7 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
 
     // Guardar la cantidad de valoraciones que hay.
     public void guardarCanValoraciones(){
+
         //Objeto: Administrar la base de datos.
         DBHelper administrador = new DBHelper(this, "Oxytank_db", null, 1);
 
@@ -112,16 +113,16 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
         //Abrir Base de Datos
         SQLiteDatabase BaseDatos = administrador.getReadableDatabase();
 
-        //Buscar todos los nombres de la base de datos.
+        //Buscar todos los datos de la tabla valoraciones de la base de datos.
         Cursor cursor = BaseDatos.rawQuery("select * from valoraciones", null);
 
         //Caso: Se encontraron valoraciones.
         if(cursor.moveToFirst()){
             //Llenar el arreglo valoraciones.
             do{
-                lista_valoraciones_valoracion[cont] = cursor.getInt(1); //Guardar la valoración del comercio.
-                lista_valoraciones_idComercios[cont] = cursor.getInt(2); //Guardar el id del comercio valorado.
-                lista_valoraciones_idUsuarios[cont] = cursor.getInt(3); //Guardar el id del usuario valorado.
+                lista_valoraciones_valoracion[cont] = cursor.getInt(1); //Guardar las valoraciones del comercio.
+                lista_valoraciones_idComercios[cont] = cursor.getInt(2); //Guardar el id de los comercios valorados.
+                lista_valoraciones_idUsuarios[cont] = cursor.getInt(3); //Guardar el id de los usuarios que valoron el comercio.
                 cont += 1; //Pasar a la siguiente posición del arreglo.
 
             }while (cursor.moveToNext()); //Pasar al siguiente elemento del cursos.
@@ -150,7 +151,7 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
         comercio_id = getIntent().getStringExtra("comercio_id");
         int id_comercio = Integer.parseInt(comercio_id); //Convertirlo a entero para usarlo en la base de datos.
 
-        //Recibir el ID ingresado correspondiente al comercio del usuario en el registro.
+        //Recibir el ID ingresado correspondiente al usuario que esta realizando la consulta.
         usuario_id = getIntent().getStringExtra("usuario_id");
         int id_usuario = Integer.parseInt(usuario_id); //Convertirlo a entero para usarlo en la base de datos.
 
@@ -160,16 +161,18 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
                 ("select nombreComercio, telefono, direccion, renta, venta, refil from comercios " +
                         "where idComercio =" + id_comercio, null);
 
-        //Guardar los datos de los comercios en el array lv para mostrarlos en el listView.
+        //Guardar la suma de las valoraciones que corresponden al comercio seleccionado por el usuairo.
         for (int i = 0; i < numValoraciones; i++){
-            if (lista_valoraciones_idComercios[i] == id_comercio && lista_valoraciones_idUsuarios[i] == id_usuario){
-                valoracion_comercio += lista_valoraciones_valoracion[i];  //Guardar el nombre del comercio.
-                cant += 1;
+            // Verificar que la valoración en la lista corresponde al comercio que selecciono el usuario.
+            if (lista_valoraciones_idComercios[i] == id_comercio){
+            //if (lista_valoraciones_idComercios[i] == id_comercio && lista_valoraciones_idUsuarios[i] == id_usuario){
+                valoracion_comercio += lista_valoraciones_valoracion[i];  //Guardar la suma de las valoraciones.
+                cant += 1; // Guardar el numero de valoraciones del comercio que tiene el usuario.
             }
 
         }
 
-        valoracion_comercio = valoracion_comercio/cant;
+        valoracion_comercio = valoracion_comercio/cant; // Calcular la valoración del comercio utilizando el promedio.
 
         //Caso: Se encontro el comercio.
         if(fila_comercio.moveToFirst()){
@@ -281,7 +284,7 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
         // Abrir la base de datos en modo lectura y escritura.
         SQLiteDatabase BaseDatos = admin.getWritableDatabase();
 
-        //Contar cuantas filas tiene la tabla para crear el id.
+        //Contar cuantas filas tiene la tabla para crear el id de la valoración.
         String contarValoraciones_Consulta = "SELECT valoracionUsuario FROM valoraciones"; // Guardar el texto que corresponde a la consulta.
         Cursor cursor = BaseDatos.rawQuery(contarValoraciones_Consulta, null); //Realizar la consulta en la base de datos.
         numValoraciones = cursor.getCount(); // Guardar el resultado de la consulta en una variable.
@@ -307,15 +310,15 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
         registro.put("idComercio", id_comercio);
         registro.put("idUsuario", id_usuario);
 
-        //Insertar los valores dentro de la tabla "usuarios".
+        //Insertar los valores dentro de la tabla "valoraciones".
         BaseDatos.insert("valoraciones", null, registro);
 
 
         //Cerrar la Base de datos.
         BaseDatos.close();
 
-        String algo = Integer.toString(valoracion_usuario);
-        Toast.makeText(this, algo, Toast.LENGTH_LONG).show();
+        //String algo = Integer.toString(valoracion_usuario);
+        //Toast.makeText(this, algo, Toast.LENGTH_LONG).show();
     }
 
 
