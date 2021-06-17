@@ -29,7 +29,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "idUsuario int)");
 
         //Crear la tabla valoraciones.
-        db.execSQL("create table valoraciones(idValoracion primary key, valoracionUsuario int,  idComercio int, idUsuario int)");
+        db.execSQL("create table valoraciones(idValoracion primary key, valoracionUsuario int,  idComercio int, idUsuario int, dia text, mes text, anio text)");
 
     }
 

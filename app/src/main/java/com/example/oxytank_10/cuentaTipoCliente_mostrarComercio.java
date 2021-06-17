@@ -43,6 +43,9 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
     int lista_valoraciones_valoracion[];
     int lista_valoraciones_idComercios[];
     int lista_valoraciones_idUsuarios[];
+    String lista_valoraciones_dias[];
+    String lista_valoraciones_meses[];
+    String lista_valoraciones_anios[];
 
     // Objeto para administrar la fecha.
     Calendar calendario = Calendar.getInstance(TimeZone.getDefault());
@@ -54,6 +57,9 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
     String dia_string = Integer.toString(dia);
     String mes_string = Integer.toString(mes);
     String anio_string = Integer.toString(anio);
+
+    // Verificar si la valoracion es del mismo dia.
+    boolean mismoDia = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +81,9 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
         lista_valoraciones_valoracion = new int[numValoraciones];
         lista_valoraciones_idComercios = new int[numValoraciones];
         lista_valoraciones_idUsuarios = new int[numValoraciones];
+        lista_valoraciones_dias = new String[numValoraciones];
+        lista_valoraciones_meses = new String[numValoraciones];
+        lista_valoraciones_anios = new String[numValoraciones];
 
         //Llenar el array "lista_comercios_nombre" con la información de comercio.
         guardarValoracionesenLista();
@@ -140,6 +149,9 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
                 lista_valoraciones_valoracion[cont] = cursor.getInt(1); //Guardar las valoraciones del comercio.
                 lista_valoraciones_idComercios[cont] = cursor.getInt(2); //Guardar el id de los comercios valorados.
                 lista_valoraciones_idUsuarios[cont] = cursor.getInt(3); //Guardar el id de los usuarios que valoron el comercio.
+                lista_valoraciones_dias[cont] = cursor.getString(4); //Guardar el dia en el que se hizo la valoracion.
+                lista_valoraciones_meses[cont] = cursor.getString(5); //Guardar el mes en el que se hizo la valoracion.
+                lista_valoraciones_anios[cont] = cursor.getString(6); //Guardar el año en el que se hizo la valoracion.
                 cont += 1; //Pasar a la siguiente posición del arreglo.
 
             }while (cursor.moveToNext()); //Pasar al siguiente elemento del cursos.
@@ -292,62 +304,81 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
         });
     }
 
+    // Verificar si el usuario ya valoro el comercio el dia de hoy.
+    public void valoracionMismoDia(){
+
+        int id_comercio = Integer.parseInt(comercio_id); // Convertirlo a string para compararlo.
+        int id_usuario = Integer.parseInt(usuario_id); //Convertirlo a string para compararlo.
+
+        //Recorrer los arreglos de dia, mes y anio.
+        for (int i = 0; i < numValoraciones; i++){
+            // Verificar si la valoracion corresponde al cliente y al comercio actual.
+            if (lista_valoraciones_idUsuarios[i] == id_usuario && lista_valoraciones_idComercios[i] == id_comercio){
+                // Verificar si el dia corresponde con alguna valoracion en la base de datos.
+                if (lista_valoraciones_dias[i].equals(dia_string) && lista_valoraciones_meses[i].equals(mes_string) && lista_valoraciones_anios[i].equals(anio_string)){
+                    mismoDia = true;
+                }
+            }
+        }
+    }
+
     //Guarda la valoración del comercio ingresada por el usuario en la base de datos.
     public void valorarComercio(View view){
 
-        Toast.makeText(this, dia_string, Toast.LENGTH_LONG).show();
-        Toast.makeText(this, mes_string, Toast.LENGTH_LONG).show();
-        Toast.makeText(this, anio_string, Toast.LENGTH_LONG).show();
+        //Comparar si ya existe una valoracio hecha por el usuario el dia de hoy.
+        valoracionMismoDia();
 
-        /*
+        // Verificar que el usuario no haya valorado el comercio el dia de hoy.
+        if (mismoDia == false){
+            //Objeto: Administrar la base de datos.
+            DBHelper admin = new DBHelper(this, "Oxytank_db", null, 1);
 
-        //Objeto: Administrar la base de datos.
-        DBHelper admin = new DBHelper(this, "Oxytank_db", null, 1);
+            // Abrir la base de datos en modo lectura y escritura.
+            SQLiteDatabase BaseDatos = admin.getWritableDatabase();
 
-        // Abrir la base de datos en modo lectura y escritura.
-        SQLiteDatabase BaseDatos = admin.getWritableDatabase();
+            //Contar cuantas filas tiene la tabla para crear el id de la valoración.
+            String contarValoraciones_Consulta = "SELECT valoracionUsuario FROM valoraciones"; // Guardar el texto que corresponde a la consulta.
+            Cursor cursor = BaseDatos.rawQuery(contarValoraciones_Consulta, null); //Realizar la consulta en la base de datos.
+            numValoraciones = cursor.getCount(); // Guardar el resultado de la consulta en una variable.
+            cursor.close();
 
-        //Contar cuantas filas tiene la tabla para crear el id de la valoración.
-        String contarValoraciones_Consulta = "SELECT valoracionUsuario FROM valoraciones"; // Guardar el texto que corresponde a la consulta.
-        Cursor cursor = BaseDatos.rawQuery(contarValoraciones_Consulta, null); //Realizar la consulta en la base de datos.
-        numValoraciones = cursor.getCount(); // Guardar el resultado de la consulta en una variable.
-        cursor.close();
+            // En base al numero de valoraciones, crear el ID de la valoracion.
+            numValoraciones += 1;
 
-        // En base al numero de valoraciones, crear el ID de la valoracion.
-        numValoraciones += 1;
+            //Recibir el ID ingresado correspondiente al comercio del usuario en el registro.
+            comercio_id = getIntent().getStringExtra("comercio_id");
+            int id_comercio = Integer.parseInt(comercio_id); //Convertirlo a entero para usarlo en la base de datos.
 
-        //Recibir el ID ingresado correspondiente al comercio del usuario en el registro.
-        comercio_id = getIntent().getStringExtra("comercio_id");
-        int id_comercio = Integer.parseInt(comercio_id); //Convertirlo a entero para usarlo en la base de datos.
+            //Recibir el ID del usuario que esta realizando la valoración.
+            usuario_id = getIntent().getStringExtra("usuario_id");
+            int id_usuario = Integer.parseInt(usuario_id); //Convertirlo a entero para usarlo en la base de datos.
 
-        //Recibir el ID del usuario que esta realizando la valoración.
-        usuario_id = getIntent().getStringExtra("usuario_id");
-        int id_usuario = Integer.parseInt(usuario_id); //Convertirlo a entero para usarlo en la base de datos.
+            //Objeto: Guardar las opciones ingresadas por el usuario.
+            ContentValues registro = new ContentValues();
 
-        //Objeto: Guardar las opciones ingresadas por el usuario.
-        ContentValues registro = new ContentValues();
+            // Guardar el id de la valoración, el id del comercio que fue valorado y el id del usuario que valoro el comercio.
+            registro.put("idValoracion", numValoraciones);
+            registro.put("valoracionUsuario", valoracion_usuario);
+            registro.put("idComercio", id_comercio);
+            registro.put("idUsuario", id_usuario);
+            registro.put("dia", dia_string);
+            registro.put("mes", mes_string);
+            registro.put("anio", anio_string);
 
-        // Guardar el id de la valoración, el id del comercio que fue valorado y el id del usuario que valoro el comercio.
-        registro.put("idValoracion", numValoraciones);
-        registro.put("valoracionUsuario", valoracion_usuario);
-        registro.put("idComercio", id_comercio);
-        registro.put("idUsuario", id_usuario);
-
-        //Insertar los valores dentro de la tabla "valoraciones".
-        BaseDatos.insert("valoraciones", null, registro);
+            //Insertar los valores dentro de la tabla "valoraciones".
+            BaseDatos.insert("valoraciones", null, registro);
 
 
-        //Cerrar la Base de datos.
-        BaseDatos.close();
+            //Cerrar la Base de datos.
+            BaseDatos.close();
 
-        //String algo = Integer.toString(valoracion_usuario);
-        //Toast.makeText(this, algo, Toast.LENGTH_LONG).show();
+            mostrarDatos(); // Refrescar la pantalla.
 
-         */
+        }
+        else {
+            Toast.makeText(this, "Ya has valorado este comercio el dia de hoy.", Toast.LENGTH_LONG).show();
+        }
+
     }
-
-
-
-
 
 }
