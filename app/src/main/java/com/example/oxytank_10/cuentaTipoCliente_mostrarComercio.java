@@ -194,9 +194,11 @@ public class cuentaTipoCliente_mostrarComercio extends AppCompatActivity {
         for (int i = 0; i < numValoraciones; i++){
             // Verificar que la valoración en la lista corresponde al comercio que selecciono el usuario.
             if (lista_valoraciones_idComercios[i] == id_comercio){
-            //if (lista_valoraciones_idComercios[i] == id_comercio && lista_valoraciones_idUsuarios[i] == id_usuario){
-                valoracion_comercio += lista_valoraciones_valoracion[i];  //Guardar la suma de las valoraciones.
-                cant += 1; // Guardar el numero de valoraciones del comercio que tiene el usuario.
+                // Verificar que solo se tomen en cuenta las valoraciones del dia de hoy.
+                if (lista_valoraciones_dias[i].equals(dia_string) && lista_valoraciones_meses[i].equals(mes_string) && lista_valoraciones_anios[i].equals(anio_string)){
+                    valoracion_comercio += lista_valoraciones_valoracion[i];  //Guardar la suma de las valoraciones.
+                    cant += 1; // Guardar el numero de valoraciones del comercio que tiene el usuario.
+                }
             }
 
         }
